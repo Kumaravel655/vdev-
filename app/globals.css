@@ -1,0 +1,430 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* AI Sky Blue Theme - Futuristic & Clean */
+    --background: 210 40% 98%;
+    --foreground: 220 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 10%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 220 30% 10%;
+    --muted: 210 25% 95%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 199 85% 92%;
+    --accent-foreground: 199 89% 35%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 199 89% 48%;
+    --chart-1: 199 89% 48%;
+    --chart-2: 187 85% 43%;
+    --chart-3: 220 70% 50%;
+    --chart-4: 180 60% 45%;
+    --chart-5: 260 70% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 220 30% 10%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 85% 92%;
+    --sidebar-accent-foreground: 199 89% 35%;
+    --sidebar-border: 210 30% 88%;
+    --sidebar-ring: 199 89% 48%;
+  }
+  .dark {
+    /* AI Dark Theme - Cyber Tech */
+    --background: 220 25% 6%;
+    --foreground: 210 20% 98%;
+    --card: 220 25% 10%;
+    --card-foreground: 210 20% 98%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 199 100% 55%;
+    --primary-foreground: 220 25% 6%;
+    --secondary: 220 25% 15%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 25% 15%;
+    --muted-foreground: 210 15% 60%;
+    --accent: 199 60% 15%;
+    --accent-foreground: 199 100% 70%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 25% 18%;
+    --input: 220 25% 18%;
+    --ring: 199 100% 55%;
+    --chart-1: 199 100% 55%;
+    --chart-2: 187 85% 50%;
+    --chart-3: 220 80% 60%;
+    --chart-4: 180 60% 50%;
+    --chart-5: 260 80% 65%;
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 199 100% 55%;
+    --sidebar-primary-foreground: 220 25% 6%;
+    --sidebar-accent: 199 60% 15%;
+    --sidebar-accent-foreground: 199 100% 70%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 199 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* AI Neural Network Animation */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float-delay {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+  
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+  
+  .animate-pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-neural {
+    animation: neural-pulse 3s ease-in-out infinite;
+  }
+  
+  .animate-data-flow {
+    animation: data-flow 4s linear infinite;
+  }
+  
+  .animate-typing {
+    animation: typing 1.5s steps(20) infinite;
+  }
+  
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  .animate-orbit {
+    animation: orbit 15s linear infinite;
+  }
+  
+  .animate-particle {
+    animation: particle 8s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px hsl(199 89% 48% / 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px hsl(199 89% 48% / 0.6);
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes typing {
+  0%, 100% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+@keyframes particle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(40px, 0) scale(1);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(20px, 30px) scale(0.8);
+    opacity: 1;
+  }
+}
+
+/* AI Gradient Animation */
+.animated-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(199 100% 50%) 0%,
+    hsl(220 80% 55%) 25%,
+    hsl(260 70% 55%) 50%,
+    hsl(199 100% 50%) 75%,
+    hsl(180 80% 45%) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neural Network Grid */
+.neural-grid {
+  background-image: 
+    linear-gradient(hsl(199 89% 48% / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(199 89% 48% / 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+/* Glass Effect */
+.glass {
+  background: hsl(var(--background) / 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* AI Glow Effects */
+.ai-glow {
+  box-shadow: 
+    0 0 20px hsl(199 89% 48% / 0.3),
+    0 0 40px hsl(199 89% 48% / 0.2),
+    0 0 60px hsl(199 89% 48% / 0.1);
+}
+
+.ai-glow-intense {
+  box-shadow: 
+    0 0 30px hsl(199 89% 48% / 0.5),
+    0 0 60px hsl(199 89% 48% / 0.3),
+    0 0 90px hsl(199 89% 48% / 0.2);
+}
+
+/* Cyber Lines */
+.cyber-line {
+  background: linear-gradient(90deg, transparent, hsl(199 89% 48%), transparent);
+  height: 1px;
+}
+
+/* Circuit Pattern */
+.circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%230ea5e9' stroke-width='0.5' stroke-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 30px hsl(199 89% 48% / 0.2);
+}
+
+.chatbot-message-ai {
+  background: linear-gradient(135deg, hsl(199 89% 48% / 0.1), hsl(220 80% 55% / 0.1));
+  border-left: 3px solid hsl(199 89% 48%);
+}
+
+.chatbot-message-user {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
