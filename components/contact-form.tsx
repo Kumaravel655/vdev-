@@ -2,12 +2,7 @@
 
 import * as React from "react"
 import { useState } from "react"
-import {
-  Mail,
-  Building2,
-  Send,
-  CheckCircle2,
-} from "lucide-react"
+import { Mail, Building2, Send, CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,31 +18,68 @@ const contactInfo = [
   },
   {
     label: "Support",
-    value: "support@velandev.in",
+    value: "hello@velandev.in",
     icon: Mail,
-    href: "mailto:support@velandev.in",
+    href: "mailto:hello@velandev.in",
   },
   {
     label: "Sales",
-    value: "sales@velandev.in",
+    value: "hello@velandev.in",
     icon: Mail,
-    href: "mailto:sales@velandev.in",
+    href: "mailto:hello@velandev.in",
   },
 ]
+
+type ContactPayload = {
+  fullName: string
+  email: string
+  phone: string
+  company: string
+  message: string
+}
 
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsLoading(false)
-    setIsSubmitted(true)
+    setErrorMessage(null)
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const payload: ContactPayload = {
+      fullName: String(formData.get("fullName") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      company: String(formData.get("company") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null)
+        setErrorMessage(data?.error || "Something went wrong. Please try again.")
+        return
+      }
+
+      setIsSubmitted(true)
+      form.reset()
+    } catch {
+      setErrorMessage("Unable to send your message. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -79,7 +111,10 @@ export function ContactForm() {
                       <Button
                         variant="outline"
                         className="mt-6 bg-transparent"
-                        onClick={() => setIsSubmitted(false)}
+                        onClick={() => {
+                          setIsSubmitted(false)
+                          setErrorMessage(null)
+                        }}
                       >
                         Send Another Message
                       </Button>
@@ -114,7 +149,7 @@ export function ContactForm() {
                             id="phone"
                             name="phone"
                             type="tel"
-                            placeholder="+1 (555) 000-0000"
+                            placeholder="6369472659"
                           />
                         </div>
                         <div className="space-y-2">
@@ -146,6 +181,9 @@ export function ContactForm() {
                           </>
                         )}
                       </Button>
+                      {errorMessage ? (
+                        <p className="text-sm text-destructive">{errorMessage}</p>
+                      ) : null}
                     </form>
                   )}
                 </CardContent>

@@ -13,6 +13,10 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 export const metadata: Metadata = {
   title: 'VelanDev - Product & Service Based IT Company',
   description: 'VelanDev is a product and service based IT company delivering high-quality software solutions, AI-powered platforms and enterprise applications for startups and growing enterprises.',
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 }
 
 export const viewport: Viewport = {
@@ -32,7 +36,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

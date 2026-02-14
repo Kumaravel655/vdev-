@@ -13,6 +13,10 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { CareersApply } from "@/components/careers-apply"
+import { listJobs } from "@/lib/careers-db"
+
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "Careers - VelanDev",
@@ -42,45 +46,9 @@ const benefits = [
   },
 ]
 
-const openings = [
-  {
-    title: "Frontend Developer (React)",
-    department: "Engineering",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Build responsive, performant user interfaces using React, TypeScript, and modern frontend technologies.",
-  },
-  {
-    title: "Backend Developer (Django / Node)",
-    department: "Engineering",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Design and implement scalable backend systems, APIs, and database architectures.",
-  },
-  {
-    title: "Mobile App Developer (Flutter)",
-    department: "Engineering",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Create cross-platform mobile applications with beautiful UIs and great performance.",
-  },
-  {
-    title: "UI/UX Designer",
-    department: "Design",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Design intuitive user experiences and interfaces for web and mobile applications.",
-  },
-  {
-    title: "QA Engineer",
-    department: "Quality",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Ensure software quality through comprehensive testing strategies and automation.",
-  },
-]
-
 export default function CareersPage() {
+  const jobs = listJobs()
+
   return (
     <div className="flex flex-col">
       {/* Header Section */}
@@ -142,41 +110,51 @@ export default function CareersPage() {
               </p>
             </div>
             <div className="mt-12 space-y-4">
-              {openings.map((job) => (
-                <Card key={job.title} className="border-0 bg-background transition-shadow hover:shadow-md">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="font-semibold text-foreground">{job.title}</h3>
-                          <Badge variant="secondary">{job.department}</Badge>
-                        </div>
-                        <p className="mt-2 text-sm text-muted-foreground">{job.description}</p>
-                        <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <MapPin className="h-4 w-4" />
-                            {job.location}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-4 w-4" />
-                            {job.type}
-                          </span>
-                        </div>
-                      </div>
-                      <Button asChild className="shrink-0">
-                        <Link href="/contact">
-                          Apply Now
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
+              {jobs.length === 0 ? (
+                <Card className="border-0 bg-background">
+                  <CardContent className="p-6 text-center text-sm text-muted-foreground">
+                    No roles are posted yet. Submit a general application below.
                   </CardContent>
                 </Card>
-              ))}
+              ) : (
+                jobs.map((job) => (
+                  <Card key={job.id} className="border-0 bg-background transition-shadow hover:shadow-md">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="font-semibold text-foreground">{job.title}</h3>
+                            <Badge variant="secondary">{job.department}</Badge>
+                          </div>
+                          <p className="mt-2 text-sm text-muted-foreground">{job.description}</p>
+                          <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <MapPin className="h-4 w-4" />
+                              {job.location}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-4 w-4" />
+                              {job.type}
+                            </span>
+                          </div>
+                        </div>
+                        <Button asChild className="shrink-0">
+                          <Link href="#apply">
+                            Apply Now
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
             </div>
           </div>
         </div>
       </section>
+
+      <CareersApply jobs={jobs.map((job) => ({ id: job.id, title: job.title }))} />
 
       {/* CTA Section */}
       <section className="py-16">
@@ -189,7 +167,7 @@ export default function CareersPage() {
               {"We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities."}
             </p>
             <Button size="lg" variant="outline" asChild className="mt-8 bg-transparent">
-              <Link href="/contact">
+              <Link href="#apply">
                 Send Your Resume
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

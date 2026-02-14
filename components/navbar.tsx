@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, BrainCircuit, Sparkles } from "lucide-react"
+import { Menu, X, Sparkles } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -48,7 +49,14 @@ export function Navbar() {
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105"
         >
           <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-cyan-500 to-blue-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
-            <BrainCircuit className="h-5 w-5 text-primary-foreground" />
+            <Image
+              src="/logo.png"
+              alt="VelanDev logo"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
+            />
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
           <div className="flex flex-col">

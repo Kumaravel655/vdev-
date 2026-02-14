@@ -12,14 +12,78 @@ interface Message {
   timestamp: Date
 }
 
-const aiResponses = [
-  "Hello! I'm VelanDev's AI assistant. How can I help you today with your software development needs?",
-  "We specialize in custom software development, AI integration, and enterprise solutions. Would you like to know more about any specific service?",
-  "Our team has successfully delivered 100+ projects across various industries including Healthcare, Finance, Education, and Logistics.",
-  "I can help you schedule a consultation with our experts. Would you like me to connect you with our team?",
-  "We offer end-to-end development services from ideation to deployment and maintenance. What kind of project are you working on?",
-  "VelanDev uses cutting-edge technologies like React, Next.js, Node.js, Python, and various AI/ML frameworks to build scalable solutions.",
-]
+const contactDetails = {
+  email: "hello@velandev.in",
+  phone: "6369472659",
+  location: "Sholinganallur, Chennai, Tamil Nadu, India",
+  hours: "Monday - Friday: 9:00 AM - 6:00 PM IST",
+}
+
+const quickTopics = ["services", "products", "industries", "pricing", "contact", "careers"]
+
+const getBotReply = (input: string) => {
+  const normalized = input.toLowerCase()
+
+  const keywordReplies: { keywords: string[]; reply: string }[] = [
+    {
+      keywords: ["hi", "hello", "hey", "good morning", "good evening"],
+      reply:
+        "Hello! I'm the VelanDev assistant. How can I help you today?",
+    },
+    {
+      keywords: ["service", "services", "what do you do"],
+      reply:
+        "We build custom software, AI solutions, web and mobile apps, cloud platforms, and UI/UX design. Want a quick overview of a specific service?",
+    },
+    {
+      keywords: ["product", "products"],
+      reply:
+        "Our products include ERP, inventory, HR platforms, and custom SaaS solutions. Tell me your industry and I can suggest options.",
+    },
+    {
+      keywords: ["industry", "industries", "healthcare", "finance", "education", "logistics", "retail"],
+      reply:
+        "We serve Healthcare, Finance, Education, Logistics, Retail, Manufacturing, and more. Which industry are you in?",
+    },
+    {
+      keywords: ["price", "pricing", "cost", "quote", "budget"],
+      reply:
+        "Pricing depends on scope. Share a brief requirement and I can help you start a quote. You can also contact us at hello@velandev.in.",
+    },
+    {
+      keywords: ["contact", "email", "mail", "phone", "call", "location", "address"],
+      reply:
+        `You can reach us at ${contactDetails.email} or ${contactDetails.phone}. Our location is ${contactDetails.location}.`,
+    },
+    {
+      keywords: ["hours", "timing", "open"],
+      reply: `Business hours: ${contactDetails.hours}.`,
+    },
+    {
+      keywords: ["career", "careers", "job", "hiring"],
+      reply:
+        "We are hiring for multiple roles. Visit the Careers page or share your role/skills and I will point you to the right opening.",
+    },
+    {
+      keywords: ["ai", "ml", "machine learning"],
+      reply:
+        "Yes, we deliver AI/ML solutions like automation, intelligent analytics, and custom models. What problem are you solving?",
+    },
+    {
+      keywords: ["website", "app", "mobile", "web"],
+      reply:
+        "We design and develop modern web and mobile apps using React, Next.js, and other scalable stacks. Need help scoping a build?",
+    },
+  ]
+
+  const matched = keywordReplies.find((item) =>
+    item.keywords.some((keyword) => normalized.includes(keyword))
+  )
+
+  if (matched) return matched.reply
+
+  return `I can help with ${quickTopics.join(", ")}. Tell me what you need.`
+}
 
 export function AIChatbot() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -34,6 +98,7 @@ export function AIChatbot() {
   const [inputValue, setInputValue] = React.useState("")
   const [isTyping, setIsTyping] = React.useState(false)
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
+  const nextId = React.useRef(2)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -47,7 +112,7 @@ export function AIChatbot() {
     if (!inputValue.trim()) return
 
     const userMessage: Message = {
-      id: messages.length + 1,
+      id: nextId.current++,
       text: inputValue,
       isAi: false,
       timestamp: new Date(),
@@ -57,17 +122,18 @@ export function AIChatbot() {
     setInputValue("")
     setIsTyping(true)
 
-    // Simulate AI response
+    const replyText = getBotReply(inputValue)
+
     setTimeout(() => {
       const aiMessage: Message = {
-        id: messages.length + 2,
-        text: aiResponses[Math.floor(Math.random() * aiResponses.length)],
+        id: nextId.current++,
+        text: replyText,
         isAi: true,
         timestamp: new Date(),
       }
       setMessages((prev) => [...prev, aiMessage])
       setIsTyping(false)
-    }, 1500)
+    }, 650)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -216,7 +282,7 @@ export function AIChatbot() {
             </Button>
           </div>
           <p className="mt-2 text-center text-[10px] text-muted-foreground">
-            AI responses are for demonstration purposes
+            Automated responses for quick help
           </p>
         </div>
       </div>
