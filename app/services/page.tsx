@@ -71,7 +71,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Services Hero Video */}
-            <div className={cn("hidden lg:block transition-all duration-1000 delay-300", heroRef.isInView ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0")}>
+            <div className={cn("transition-all duration-1000 delay-300", heroRef.isInView ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0")}>
               <div className="relative mx-auto h-80 w-80 xl:h-96 xl:w-96">
                 <div className="absolute inset-0 animate-pulse-soft rounded-3xl bg-gradient-to-br from-primary/20 via-violet-500/10 to-emerald-400/20 blur-2xl" />
                 <div className="absolute -inset-4 animate-rotate-slow rounded-full border border-primary/10" style={{ animationDuration: "22s" }}>

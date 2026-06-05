@@ -404,7 +404,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className={cn("hidden lg:block transition-all duration-1000 delay-300", heroRef.isInView ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0")}>
+            <div className={cn("transition-all duration-1000 delay-300", heroRef.isInView ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0")}>
               <HeroVideoVisualization />
             </div>
           </div>

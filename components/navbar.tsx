@@ -58,11 +58,11 @@ export function Navbar() {
         >
           <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-emerald-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               alt="VelanDev logo"
               width={40}
               height={40}
-              className="h-10 w-10 object-contain"
+              className="h-10 w-10 object-contain rounded-lg"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

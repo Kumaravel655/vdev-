@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   description: 'VelanDev is a product and service based IT company delivering high-quality software solutions, AI-powered platforms and enterprise applications for startups and growing enterprises. Founded 2024 in Chennai, India.',
   keywords: 'software development, AI solutions, web development, mobile app development, DevOps, ERP, CRM, Chennai, India',
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
   },
 }
 

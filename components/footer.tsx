@@ -91,7 +91,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="group inline-flex items-center gap-3 transition-transform duration-300 hover:scale-105">
               <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-emerald-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
-                <Image src="/logo.png" alt="VelanDev logo" width={40} height={40} className="h-10 w-10 object-contain" />
+                <Image src="/logo.jpg" alt="VelanDev logo" width={40} height={40} className="h-10 w-10 object-contain rounded-lg" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-foreground">VelanDev</span>
