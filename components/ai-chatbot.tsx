@@ -162,7 +162,7 @@ export function AIChatbot() {
         
         <div className="relative flex items-center justify-center">
           <Bot className="h-7 w-7" />
-          <Sparkles className="absolute -right-1 -top-1 h-4 w-4 animate-bounce-soft text-cyan-300" />
+          <Sparkles className="absolute -right-1 -top-1 h-4 w-4 animate-bounce-soft text-emerald-300" />
         </div>
       </button>
 

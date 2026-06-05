@@ -61,6 +61,22 @@ const config: Config = {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        // Brand accent colors
+        emerald: {
+          DEFAULT: 'hsl(160 84% 39%)',
+          light: 'hsl(160 84% 50%)',
+          dark: 'hsl(160 84% 30%)',
+        },
+        violet: {
+          DEFAULT: 'hsl(270 60% 50%)',
+          light: 'hsl(270 60% 65%)',
+          dark: 'hsl(270 60% 35%)',
+        },
+        gold: {
+          DEFAULT: 'hsl(45 93% 58%)',
+          light: 'hsl(45 93% 70%)',
+          dark: 'hsl(45 93% 45%)',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -69,7 +85,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        display: ['var(--font-jakarta)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -121,8 +137,8 @@ const config: Config = {
           '50%': { transform: 'translateY(-8px)' },
         },
         'glow': {
-          '0%': { boxShadow: '0 0 20px hsl(199 89% 48% / 0.2)' },
-          '100%': { boxShadow: '0 0 40px hsl(199 89% 48% / 0.5)' },
+          '0%': { boxShadow: '0 0 20px hsl(160 84% 39% / 0.2)' },
+          '100%': { boxShadow: '0 0 40px hsl(160 84% 39% / 0.5)' },
         },
         'shimmer': {
           '0%': { backgroundPosition: '-200% 0' },
@@ -135,6 +151,20 @@ const config: Config = {
         'wave': {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
+        },
+        'aurora': {
+          '0%, 100%': { backgroundPosition: '0% 50%', opacity: '0.6' },
+          '25%': { backgroundPosition: '50% 0%', opacity: '0.8' },
+          '50%': { backgroundPosition: '100% 50%', opacity: '0.6' },
+          '75%': { backgroundPosition: '50% 100%', opacity: '0.8' },
+        },
+        'text-shimmer': {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        'marquee': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
       animation: {
@@ -154,6 +184,9 @@ const config: Config = {
         'shimmer': 'shimmer 2s linear infinite',
         'rotate-slow': 'rotate-slow 20s linear infinite',
         'wave': 'wave 1s ease-in-out infinite',
+        'aurora': 'aurora 12s ease-in-out infinite',
+        'text-shimmer': 'text-shimmer 3s ease-in-out infinite',
+        'marquee': 'marquee 30s linear infinite',
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

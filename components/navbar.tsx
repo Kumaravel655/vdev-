@@ -14,8 +14,11 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/services", label: "Services" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/ai-solutions", label: "AI Solutions" },
   { href: "/industries", label: "Industries" },
-  { href: "/about", label: "About Us" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ]
@@ -38,17 +41,22 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-500 ease-smooth",
         scrolled
-          ? "border-b bg-background/80 shadow-lg shadow-primary/5 backdrop-blur-xl"
+          ? "border-b border-primary/10 bg-background/80 shadow-lg shadow-primary/5 backdrop-blur-xl"
           : "bg-transparent"
       )}
     >
+      {/* Subtle bottom glow line when scrolled */}
+      {scrolled && (
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      )}
+
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         {/* Logo */}
         <Link
           href="/"
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-cyan-500 to-blue-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
+          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-emerald-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
             <Image
               src="/logo.png"
               alt="VelanDev logo"
@@ -70,14 +78,14 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0.5 xl:flex">
           {navLinks.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
               style={{ animationDelay: `${index * 50}ms` }}
               className={cn(
-                "group relative px-4 py-2 text-sm font-medium transition-all duration-300",
+                "group relative px-3 py-2 text-sm font-medium transition-all duration-300",
                 pathname === link.href
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
@@ -86,7 +94,7 @@ export function Navbar() {
               {link.label}
               <span
                 className={cn(
-                  "absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-primary transition-all duration-300 ease-out",
+                  "absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-emerald-400 transition-all duration-300 ease-out",
                   pathname === link.href
                     ? "w-1/2"
                     : "group-hover:w-1/3"
@@ -97,7 +105,7 @@ export function Navbar() {
         </nav>
 
         {/* Desktop Actions */}
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <ThemeToggle />
           <Button
             asChild
@@ -105,16 +113,16 @@ export function Navbar() {
           >
             <Link href="/contact">
               <span className="relative z-10 flex items-center gap-2">
-                Start AI Project
+                Get Started
                 <Sparkles className="h-4 w-4 animate-pulse transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-500 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-400 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-3 xl:hidden">
           <ThemeToggle />
           <Button
             variant="ghost"
@@ -141,8 +149,8 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "overflow-hidden border-t bg-background/95 backdrop-blur-xl transition-all duration-500 ease-out lg:hidden",
-          mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          "overflow-hidden border-t border-primary/10 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-out xl:hidden",
+          mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <nav className="container mx-auto flex flex-col px-4 py-4">
@@ -155,7 +163,7 @@ export function Navbar() {
                 transitionDelay: mobileMenuOpen ? `${index * 50}ms` : "0ms",
               }}
               className={cn(
-                "border-b border-border/50 py-4 text-sm font-medium transition-all duration-300",
+                "border-b border-border/50 py-3.5 text-sm font-medium transition-all duration-300",
                 mobileMenuOpen
                   ? "translate-x-0 opacity-100"
                   : "-translate-x-4 opacity-0",
@@ -183,7 +191,7 @@ export function Navbar() {
             <Button asChild className="w-full shadow-lg shadow-primary/20 ai-glow">
               <Link href="/contact">
                 <span className="flex items-center justify-center gap-2">
-                  Start AI Project
+                  Get Started
                   <Sparkles className="h-4 w-4 animate-pulse" />
                 </span>
               </Link>
