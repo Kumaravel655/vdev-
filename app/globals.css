@@ -17,7 +17,7 @@
     --card-foreground: 240 10% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 10%;
-    --primary: 160 84% 39%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
     --secondary: 240 10% 94%;
     --secondary-foreground: 240 10% 10%;
@@ -29,8 +29,8 @@
     --destructive-foreground: 0 0% 98%;
     --border: 230 15% 88%;
     --input: 230 15% 88%;
-    --ring: 160 84% 39%;
-    --chart-1: 160 84% 39%;
+    --ring: 262 83% 58%;
+    --chart-1: 262 83% 58%;
     --chart-2: 270 60% 50%;
     --chart-3: 45 93% 58%;
     --chart-4: 180 60% 45%;
@@ -38,12 +38,12 @@
     --radius: 0.75rem;
     --sidebar-background: 220 20% 97%;
     --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 270 60% 94%;
     --sidebar-accent-foreground: 270 60% 40%;
     --sidebar-border: 230 15% 88%;
-    --sidebar-ring: 160 84% 39%;
+    --sidebar-ring: 262 83% 58%;
   }
   .dark {
     /* Premium Dark Theme — Emerald / Violet / Gold */
@@ -53,7 +53,7 @@
     --card-foreground: 220 15% 95%;
     --popover: 240 12% 8%;
     --popover-foreground: 220 15% 95%;
-    --primary: 160 84% 39%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
     --secondary: 240 12% 14%;
     --secondary-foreground: 220 15% 95%;
@@ -65,7 +65,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 10% 16%;
     --input: 240 10% 16%;
-    --ring: 160 84% 39%;
+    --ring: 262 83% 58%;
     --chart-1: 160 84% 45%;
     --chart-2: 270 65% 60%;
     --chart-3: 45 93% 58%;
@@ -73,12 +73,12 @@
     --chart-5: 330 70% 60%;
     --sidebar-background: 240 12% 6%;
     --sidebar-foreground: 220 15% 95%;
-    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 270 40% 18%;
     --sidebar-accent-foreground: 270 70% 75%;
     --sidebar-border: 240 10% 16%;
-    --sidebar-ring: 160 84% 39%;
+    --sidebar-ring: 262 83% 58%;
   }
 }
 
@@ -242,8 +242,8 @@
 }
 
 @keyframes glow {
-  0% { box-shadow: 0 0 20px hsl(160 84% 39% / 0.3); }
-  100% { box-shadow: 0 0 40px hsl(160 84% 39% / 0.6); }
+  0% { box-shadow: 0 0 20px hsl(262 83% 58% / 0.3); }
+  100% { box-shadow: 0 0 40px hsl(262 83% 58% / 0.6); }
 }
 
 @keyframes rotate-slow {
@@ -320,10 +320,10 @@
 .animated-gradient {
   background: linear-gradient(
     135deg,
-    hsl(160 84% 39%) 0%,
+    hsl(262 83% 58%) 0%,
     hsl(270 60% 50%) 25%,
     hsl(200 80% 45%) 50%,
-    hsl(160 84% 39%) 75%,
+    hsl(262 83% 58%) 75%,
     hsl(45 93% 50%) 100%
   );
   background-size: 400% 400%;
@@ -331,7 +331,7 @@
 }
 
 .aurora-bg {
-  background: radial-gradient(ellipse at 20% 50%, hsl(160 84% 39% / 0.15) 0%, transparent 50%),
+  background: radial-gradient(ellipse at 20% 50%, hsl(262 83% 58% / 0.15) 0%, transparent 50%),
               radial-gradient(ellipse at 80% 20%, hsl(270 60% 50% / 0.12) 0%, transparent 50%),
               radial-gradient(ellipse at 50% 80%, hsl(45 93% 58% / 0.08) 0%, transparent 50%);
   animation: aurora 12s ease-in-out infinite;
@@ -341,8 +341,8 @@
 /* ===== GRID PATTERNS ===== */
 .neural-grid {
   background-image:
-    linear-gradient(hsl(160 84% 39% / 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(160 84% 39% / 0.08) 1px, transparent 1px);
+    linear-gradient(hsl(262 83% 58% / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(262 83% 58% / 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: grid-move 20s linear infinite;
 }
@@ -368,16 +368,16 @@
 /* ===== GLOW EFFECTS ===== */
 .ai-glow {
   box-shadow:
-    0 0 20px hsl(160 84% 39% / 0.25),
-    0 0 40px hsl(160 84% 39% / 0.15),
-    0 0 60px hsl(160 84% 39% / 0.08);
+    0 0 20px hsl(262 83% 58% / 0.25),
+    0 0 40px hsl(262 83% 58% / 0.15),
+    0 0 60px hsl(262 83% 58% / 0.08);
 }
 
 .ai-glow-intense {
   box-shadow:
-    0 0 30px hsl(160 84% 39% / 0.4),
+    0 0 30px hsl(262 83% 58% / 0.4),
     0 0 60px hsl(270 60% 50% / 0.2),
-    0 0 90px hsl(160 84% 39% / 0.15);
+    0 0 90px hsl(262 83% 58% / 0.15);
 }
 
 .gold-glow {
@@ -394,7 +394,7 @@
 
 /* ===== LINE EFFECTS ===== */
 .cyber-line {
-  background: linear-gradient(90deg, transparent, hsl(160 84% 39%), transparent);
+  background: linear-gradient(90deg, transparent, hsl(262 83% 58%), transparent);
   height: 1px;
 }
 
@@ -407,12 +407,12 @@
 .chatbot-container {
   box-shadow:
     0 25px 50px -12px rgba(0, 0, 0, 0.25),
-    0 0 30px hsl(160 84% 39% / 0.15);
+    0 0 30px hsl(262 83% 58% / 0.15);
 }
 
 .chatbot-message-ai {
-  background: linear-gradient(135deg, hsl(160 84% 39% / 0.1), hsl(270 60% 50% / 0.08));
-  border-left: 3px solid hsl(160 84% 39%);
+  background: linear-gradient(135deg, hsl(262 83% 58% / 0.1), hsl(270 60% 50% / 0.08));
+  border-left: 3px solid hsl(262 83% 58%);
 }
 
 .chatbot-message-user {

@@ -39,18 +39,17 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-500 ease-smooth",
-        scrolled
-          ? "border-b border-primary/10 bg-background/80 shadow-lg shadow-primary/5 backdrop-blur-xl"
-          : "bg-transparent"
+        "fixed top-4 left-0 right-0 z-50 mx-auto w-[calc(100%-2rem)] max-w-7xl transition-all duration-500 ease-smooth",
+        mobileMenuOpen ? "rounded-3xl" : "rounded-full",
+        "border border-primary/10 bg-white dark:bg-background shadow-lg shadow-primary/5"
       )}
     >
       {/* Subtle bottom glow line when scrolled */}
-      {scrolled && (
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      {(scrolled || mobileMenuOpen) && (
+        <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       )}
 
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 sm:h-20 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link
           href="/"
@@ -149,8 +148,9 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "overflow-hidden border-t border-primary/10 bg-background/95 backdrop-blur-xl transition-all duration-500 ease-out xl:hidden",
-          mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          "overflow-hidden border-t border-primary/10 bg-white dark:bg-background transition-all duration-500 ease-out xl:hidden",
+          mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0",
+          "rounded-b-3xl"
         )}
       >
         <nav className="container mx-auto flex flex-col px-4 py-4">
