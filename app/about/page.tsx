@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
 import {
   ArrowRight,
   Target,
@@ -13,11 +12,6 @@ import {
   Globe,
   Calendar,
   MapPin,
-  BrainCircuit,
-  Code2,
-  Palette,
-  Server,
-  Briefcase,
   Sparkles,
 } from "lucide-react"
 
@@ -25,19 +19,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { useInView } from "@/hooks/use-in-view"
+import { cardClass, reveal, trackSpotlight } from "@/components/page-sections"
 
-function useInView() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isInView, setIsInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsInView(true)
-    }, { threshold: 0.1 })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-  return { ref, isInView }
-}
 
 const values = [
   { title: "Innovation", description: "We embrace new technologies and methodologies to deliver cutting-edge solutions.", icon: Zap },
@@ -56,13 +40,31 @@ const stats = [
 ]
 
 const team = [
-  { name: "Velan", role: "Founder & CEO", description: "Full-stack developer, AI enthusiast, and visionary leader driving VelanDev's mission.", icon: BrainCircuit },
-  { name: "Priya", role: "Lead Developer", description: "React & Next.js specialist with 5+ years building enterprise web applications.", icon: Code2 },
-  { name: "Karthik", role: "AI Engineer", description: "Machine learning, NLP, and LangChain expert building intelligent systems.", icon: BrainCircuit },
-  { name: "Divya", role: "UI/UX Designer", description: "User experience design specialist creating beautiful, intuitive interfaces.", icon: Palette },
-  { name: "Ravi", role: "DevOps Engineer", description: "Docker, AWS, CI/CD, and Linux administration expert ensuring reliable deployments.", icon: Server },
-  { name: "Anitha", role: "Project Manager", description: "Agile methodology practitioner ensuring smooth client communication and delivery.", icon: Briefcase },
+  {
+    group: "Leadership",
+    members: [
+      { name: "Santhosh Kumar P", role: "Chief Executive Officer" },
+      { name: "Kumaravel V", role: "CTO & Tech Lead" },
+      { name: "Durga Devi P", role: "AI Lead" },
+      { name: "Santhosh Kumar", role: "Marketing Lead" },
+    ],
+  },
+  {
+    group: "Engineering & Design",
+    members: [
+      { name: "Kumaran B", role: "Full Stack Engineer" },
+      { name: "Loghul M", role: "Software Engineer & UI/UX Designer" },
+      { name: "Dinesh Kumar V", role: "Software Engineer" },
+      { name: "Malarvizhi", role: "Software Engineer" },
+    ],
+  },
 ]
+
+/** "Santhosh Kumar P" → "SP": first letter of the first and last word. */
+const initials = (name: string) => {
+  const parts = name.split(" ")
+  return (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : "")).toUpperCase()
+}
 
 const timeline = [
   { date: "May 2024", title: "Founded", description: "VelanDev established in Chennai, India" },
@@ -84,7 +86,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background py-16 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 aurora-bg" />
         <div className="pointer-events-none absolute inset-0 neural-grid opacity-20" />
         <div ref={heroRef.ref} className="container relative mx-auto px-4">
@@ -95,7 +97,7 @@ export default function AboutPage() {
             </Badge>
             <h1 className={cn("text-balance text-4xl font-bold tracking-tight text-foreground transition-all duration-700 delay-150 sm:text-5xl", heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")}>
               Pioneering{" "}
-              <span className="bg-gradient-to-r from-primary via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                 AI-Driven
               </span>{" "}
               Innovation
@@ -118,20 +120,20 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              <div className={cn("transition-all duration-700", storyRef.isInView ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0")}>
+              <div className={cn("transition-all duration-700", storyRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")}>
                 <h2 className="text-3xl font-bold text-foreground">Our Story</h2>
-                <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-emerald-400" />
+                <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-purple-400" />
                 <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p className="leading-relaxed">VelanDev is a product and service based IT company focused on delivering modern digital products and enterprise software solutions. We help organizations transform their operations through custom software, automation platforms and AI driven systems.</p>
                   <p className="leading-relaxed">Our team combines strong engineering practices, modern frameworks and cloud technologies to build secure, scalable and future-ready software that drives real business value.</p>
                   <p className="leading-relaxed">From startups to enterprises, we partner with organizations across industries to turn their ideas into reliable, high-performing software products.</p>
                 </div>
               </div>
-              <div className={cn("grid grid-cols-2 gap-6 transition-all duration-700 delay-200", storyRef.isInView ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0")}>
+              <div className={cn("grid grid-cols-2 gap-3 sm:gap-6 transition-all duration-700 delay-200", storyRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")}>
                 {stats.map((stat, i) => (
                   <Card key={stat.label} className="group border-0 bg-card text-center shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/10" style={{ transitionDelay: `${300 + i * 100}ms` }}>
                     <CardContent className="pt-6">
-                      <div className="text-3xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">{stat.value}</div>
+                      <div className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">{stat.value}</div>
                       <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
                     </CardContent>
                   </Card>
@@ -148,7 +150,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
               <h2 className={cn("text-3xl font-bold text-foreground transition-all duration-700", timelineRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")}>Our Journey</h2>
-              <div className={cn("mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-emerald-400 transition-all duration-700 delay-150", timelineRef.isInView ? "scale-x-100" : "scale-x-0")} />
+              <div className={cn("mx-auto mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-700 delay-150", timelineRef.isInView ? "scale-x-100" : "scale-x-0")} />
             </div>
             <div className="relative mt-12">
               {/* Center line */}
@@ -181,20 +183,32 @@ export default function AboutPage() {
                 Our Team
               </div>
               <h2 className={cn("text-3xl font-bold text-foreground transition-all duration-700 sm:text-4xl", teamRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")}>Meet the People Behind VelanDev</h2>
-              <div className={cn("mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-emerald-400 to-violet-400 transition-all duration-700 delay-150", teamRef.isInView ? "scale-x-100" : "scale-x-0")} />
+              <div className={cn("mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-primary via-purple-400 to-violet-400 transition-all duration-700 delay-150", teamRef.isInView ? "scale-x-100" : "scale-x-0")} />
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {team.map((member, i) => (
-                <Card key={member.name} className={cn("group border-0 bg-card shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-primary/10", teamRef.isInView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0")} style={{ transitionDelay: `${300 + i * 100}ms` }}>
-                  <CardContent className="pt-8 pb-6 text-center">
-                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-violet-500/20 transition-all duration-500 group-hover:scale-110 group-hover:from-primary group-hover:to-violet-500 group-hover:shadow-xl group-hover:shadow-primary/20">
-                      <member.icon className="h-8 w-8 text-primary transition-colors duration-300 group-hover:text-white" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-                    <p className="text-sm font-medium text-primary">{member.role}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">{member.description}</p>
-                  </CardContent>
-                </Card>
+            <div className="mt-12 space-y-12">
+              {team.map((section, groupIndex) => (
+                <div key={section.group}>
+                  <h3 className={cn("text-center text-sm font-semibold uppercase text-primary transition-all duration-700", teamRef.isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>{section.group}</h3>
+                  <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {section.members.map((member, i) => (
+                      <li
+                        key={member.name}
+                        onPointerMove={trackSpotlight}
+                        className={cn(cardClass, "items-center p-6 text-center sm:p-6", reveal(teamRef.isInView))}
+                        style={{ transitionDelay: `${(groupIndex * 4 + i) * 60}ms` }}
+                      >
+                        <div
+                          aria-hidden
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/25 to-violet-500/25 text-lg font-bold text-primary ring-1 ring-primary/30 transition-all duration-500 group-hover:from-primary group-hover:to-violet-600 group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/30"
+                        >
+                          {initials(member.name)}
+                        </div>
+                        <p className="mt-4 text-lg font-semibold text-foreground">{member.name}</p>
+                        <p className="mt-1 text-sm font-medium text-muted-foreground">{member.role}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>

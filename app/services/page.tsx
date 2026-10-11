@@ -1,232 +1,174 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
-import { ArrowRight, Code2, Globe, Brain, Cloud, Palette, Link2, Wrench, CheckCircle2, Sparkles } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { ArrowRight, Code2, Globe, Brain, Cloud, Palette, Link2, Check, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { useInView } from "@/hooks/use-in-view"
+import { HeroMedia } from "@/components/hero-media"
 
-function useInView(threshold = 0.1) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isInView, setIsInView] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsInView(true)
-    }, { threshold })
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [threshold])
-  return { ref, isInView }
-}
+type Service = { slug: string; title: string; description: string; icon: LucideIcon; highlights: string[] }
 
-const services = [
-  { 
-    title: "Custom Software Development", 
-    description: "We architect and build bespoke software solutions that map precisely to your enterprise workflows. Our agile squads deliver maintainable, highly-scalable code.", 
-    icon: Code2, 
-    highlights: ["Enterprise architecture", "Agile delivery", "QA automation"] 
+const services: Service[] = [
+  {
+    slug: "custom-software",
+    title: "Custom Software Development",
+    description: "Software built around how your team already works. We map the workflow, build in short cycles and hand over code your team can maintain.",
+    icon: Code2,
+    highlights: ["Enterprise architecture", "Agile delivery", "QA automation"],
   },
-  { 
-    title: "Web & Mobile Applications", 
-    description: "Native and cross-platform applications that deliver frictionless user experiences. Built on modern stacks to ensure peak performance and seamless scaling.", 
-    icon: Globe, 
-    highlights: ["Progressive Web Apps", "iOS & Android Native", "React Native / Flutter"] 
+  {
+    slug: "web-mobile",
+    title: "Web & Mobile Applications",
+    description: "Web apps and native or cross-platform mobile apps that load fast on everyday phones and keep up as your users grow.",
+    icon: Globe,
+    highlights: ["Progressive web apps", "iOS & Android native", "React Native / Flutter"],
   },
-  { 
-    title: "AI & Data Solutions", 
-    description: "Transform raw data into strategic assets. We integrate predictive models, machine learning, and NLP to automate complex decision-making processes.", 
-    icon: Brain, 
-    highlights: ["Predictive Analytics", "NLP Integration", "Custom ML Models"] 
+  {
+    slug: "ai-data",
+    title: "AI & Data Solutions",
+    description: "Put your data to work with predictive models, machine learning and language processing that take repetitive decisions off your team.",
+    icon: Brain,
+    highlights: ["Predictive analytics", "NLP integration", "Custom ML models"],
   },
-  { 
-    title: "Cloud & Infrastructure", 
-    description: "Future-proof your operations with resilient cloud architectures. We migrate, optimize, and secure your environments across AWS, Azure, and GCP.", 
-    icon: Cloud, 
-    highlights: ["Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"] 
+  {
+    slug: "cloud",
+    title: "Cloud & Infrastructure",
+    description: "Move to the cloud, or tidy up what already runs there. We migrate, optimise and secure workloads on AWS, Azure and GCP.",
+    icon: Cloud,
+    highlights: ["Cloud migration", "DevOps & CI/CD", "Infrastructure as code"],
   },
-  { 
-    title: "UI/UX & Product Design", 
-    description: "Data-driven design that prioritizes user conversion. We craft intuitive interfaces rooted in rigorous user research and behavioral psychology.", 
-    icon: Palette, 
-    highlights: ["Behavioral Research", "Rapid Prototyping", "Design Systems"] 
+  {
+    slug: "design",
+    title: "UI/UX & Product Design",
+    description: "Interfaces shaped by user research, so people find what they need and finish what they started.",
+    icon: Palette,
+    highlights: ["User research", "Rapid prototyping", "Design systems"],
   },
-  { 
-    title: "System Integration", 
-    description: "Break down data silos. We build robust middleware and API layers to seamlessly connect your disparate enterprise systems and third-party tools.", 
-    icon: Link2, 
-    highlights: ["API Development", "Legacy Modernization", "Middleware Logic"] 
+  {
+    slug: "integration",
+    title: "System Integration",
+    description: "Connect the tools you already use. We build APIs and middleware so data moves between systems without re-typing.",
+    icon: Link2,
+    highlights: ["API development", "Legacy modernisation", "Middleware"],
   },
 ]
 
 export default function ServicesPage() {
   const heroRef = useInView()
+  const gridRef = useInView()
   const ctaRef = useInView()
 
+  const reveal = (inView: boolean) => (inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")
+
   return (
-    <div className="flex flex-col bg-background selection:bg-primary/30">
-      {/* Editorial Hero */}
-      <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
-        {/* Subtle video background overlay */}
-        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.07] mix-blend-luminosity grayscale">
-          <video src="/services-hero.mp4" autoPlay loop muted playsInline className="h-full w-full object-cover" />
+    <div className="flex flex-col">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
+        <div className="pointer-events-none absolute inset-0 aurora-bg" />
+        <div ref={heroRef.ref} className="container relative mx-auto px-4">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+            <div className="text-center lg:text-left">
+              <Badge variant="secondary" className={cn("mb-4 border border-primary/30 bg-primary/10 text-primary transition-all duration-700", heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
+                <Layers className="mr-2 h-3.5 w-3.5" aria-hidden />
+                Services
+              </Badge>
+              <h1 className={cn("text-balance text-4xl font-bold tracking-tight text-foreground transition-all duration-700 delay-150 sm:text-5xl lg:text-6xl", reveal(heroRef.isInView))}>
+                Software services, <span className="text-primary">end to end</span>
+              </h1>
+              <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-300 sm:text-lg lg:mx-0", reveal(heroRef.isInView))}>
+                Custom software, apps, AI, cloud, design and integration. One team takes your project from scoping to launch and keeps supporting it after.
+              </p>
+              <div className={cn("mt-8 flex flex-col justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row lg:justify-start", reveal(heroRef.isInView))}>
+                <Button size="lg" asChild>
+                  <Link href="/contact">Discuss your project <ArrowRight className="ml-2 h-4 w-4" aria-hidden /></Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="bg-transparent">
+                  <Link href="#services">See all services</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className={cn("transition-all duration-1000 delay-300", reveal(heroRef.isInView))}>
+              <HeroMedia src="/services-hero.mp4" label="Animated code panels" />
+            </div>
+          </div>
         </div>
-        
-        <div ref={heroRef.ref} className="container relative z-10 mx-auto px-4 sm:px-6">
-          <div className="max-w-5xl">
-            <h1 
-              className={cn(
-                "font-extrabold tracking-tighter text-foreground transition-all duration-1000 ease-out",
-                "text-[clamp(3rem,8vw,7rem)] leading-[0.9]",
-                heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-              )}
-            >
-              Enterprise<br />
-              <span className="text-muted-foreground">Capabilities.</span>
-            </h1>
-            
-            <p 
-              className={cn(
-                "mt-10 max-w-2xl text-xl md:text-2xl font-medium leading-relaxed text-foreground/80 transition-all duration-1000 delay-300",
-                heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              )}
-            >
-              We engineer intelligent systems, robust architectures, and digital experiences that define industry leaders.
+      </section>
+
+      {/* Services grid */}
+      <section id="services" ref={gridRef.ref} className="scroll-mt-28 py-20 lg:py-28">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl">
+            <div className={cn("mx-auto max-w-2xl text-center transition-all duration-700", reveal(gridRef.isInView))}>
+              <p className="text-sm font-semibold uppercase text-primary">What we do</p>
+              <h2 className="mt-3 text-balance text-3xl font-bold text-foreground sm:text-4xl">Six services, one team</h2>
+              <p className="mt-4 text-pretty text-muted-foreground">Pick one, or combine them. Most projects use two or three.</p>
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {services.map((service, index) => (
+                <article
+                  key={service.slug}
+                  id={service.slug}
+                  className={cn(
+                    "group flex scroll-mt-28 flex-col rounded-2xl border border-border/60 bg-card p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 sm:p-7",
+                    reveal(gridRef.isInView)
+                  )}
+                  style={{ transitionDelay: `${index * 60}ms` }}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
+                      <service.icon className="h-6 w-6 text-primary transition-colors duration-300 group-hover:text-primary-foreground" aria-hidden />
+                    </div>
+                    <span className="text-sm font-semibold tabular-nums text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold text-foreground">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                  <ul className="mt-5 flex-1 space-y-2 border-t border-border/60 pt-5">
+                    {service.highlights.map((highlight) => (
+                      <li key={highlight} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                        <Check className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    Discuss this service
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA — same gradient panel as the home page */}
+      <section ref={ctaRef.ref} className="px-4 pb-20 lg:pb-28">
+        <div className={cn("relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-violet-700 to-purple-900 px-6 py-16 text-center sm:px-12 lg:py-20 transition-all duration-700", reveal(ctaRef.isInView))}>
+          <div aria-hidden className="absolute inset-0 circuit-pattern opacity-20" />
+          <div className="relative mx-auto max-w-2xl">
+            <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl lg:text-5xl">Ready to build?</h2>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85">
+              Tell us what you need. We&apos;ll come back with a scope, a timeline and the team to deliver it.
             </p>
-            
-            <div 
-              className={cn(
-                "mt-12 transition-all duration-1000 delay-500",
-                heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-              )}
-            >
-              <Button size="lg" asChild className="rounded-full px-8 py-7 text-lg font-bold shadow-2xl hover:-translate-y-1 transition-transform duration-300">
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button size="lg" variant="secondary" asChild className="group h-12 w-full px-7 text-base sm:w-auto">
                 <Link href="/contact">
-                  Discuss Your Project <ArrowRight className="ml-3 h-5 w-5" />
+                  Talk to our team
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                 </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="h-12 w-full border-white/40 bg-transparent px-7 text-base text-white hover:bg-white/10 hover:text-white sm:w-auto">
+                <Link href="/pricing">View pricing</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Services List - Alternating Bands with Exaggerated Typography */}
-      <section className="flex flex-col">
-        {services.map((service, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <ServiceBand 
-              key={service.title} 
-              service={service} 
-              index={index} 
-              isEven={isEven} 
-            />
-          );
-        })}
-      </section>
-
-      {/* Brutalist / High-Contrast CTA */}
-      <section ref={ctaRef.ref} className="bg-foreground text-background py-32 lg:py-48 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <h2 
-            className={cn(
-              "font-black tracking-tight text-[clamp(2.5rem,6vw,5.5rem)] leading-none transition-all duration-1000",
-              ctaRef.isInView ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-            )}
-          >
-            Ready to Build?
-          </h2>
-          <p 
-            className={cn(
-              "mx-auto mt-8 max-w-2xl text-xl text-background/70 transition-all duration-1000 delay-200",
-              ctaRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            )}
-          >
-            Partner with our engineering team to accelerate your digital transformation.
-          </p>
-          <div 
-            className={cn(
-              "mt-12 transition-all duration-1000 delay-400",
-              ctaRef.isInView ? "scale-100 opacity-100" : "scale-95 opacity-0"
-            )}
-          >
-            <Button size="lg" variant="outline" asChild className="rounded-full border-background bg-transparent text-background hover:bg-background hover:text-foreground px-10 py-8 text-xl font-bold transition-all duration-300">
-              <Link href="/contact">
-                Contact Sales
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
-function ServiceBand({ service, index, isEven }: { service: any, index: number, isEven: boolean }) {
-  const bandRef = useInView(0.2)
-  
-  return (
-    <div 
-      className={cn(
-        "relative py-24 lg:py-32 overflow-hidden border-t border-border/40",
-        isEven ? "bg-background" : "bg-muted/10"
-      )}
-    >
-      {/* Massive Background Number */}
-      <div 
-        className={cn(
-          "pointer-events-none absolute -top-10 -left-10 text-[20rem] font-black leading-none text-muted/20 select-none transition-all duration-1000",
-          bandRef.isInView ? "translate-x-0 opacity-100" : "-translate-x-24 opacity-0"
-        )}
-      >
-        0{index + 1}
-      </div>
-
-      <div ref={bandRef.ref} className="container relative z-10 mx-auto px-4 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] items-start">
-          
-          <div 
-            className={cn(
-              "transition-all duration-1000 delay-100",
-              bandRef.isInView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-            )}
-          >
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground mb-8 shadow-xl shadow-primary/20">
-              <service.icon className="h-8 w-8" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              {service.title}
-            </h2>
-          </div>
-
-          <div 
-            className={cn(
-              "lg:pt-2 transition-all duration-1000 delay-300",
-              bandRef.isInView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-            )}
-          >
-            <p className="text-xl leading-relaxed text-muted-foreground mb-10">
-              {service.description}
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              {service.highlights.map((highlight: string, i: number) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-6 w-6 shrink-0 text-primary mt-0.5" />
-                  <span className="text-lg font-medium text-foreground/80">{highlight}</span>
-                </div>
-              ))}
-            </div>
-
-            <Button variant="link" asChild className="mt-10 px-0 text-lg font-semibold text-primary hover:text-primary/80 group">
-              <Link href="/contact" className="flex items-center">
-                Learn more 
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" />
-              </Link>
-            </Button>
-          </div>
-
-        </div>
-      </div>
     </div>
   )
 }

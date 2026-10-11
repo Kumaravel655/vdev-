@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 const footerLinks = {
   company: [
     { href: "/about", label: "About Us" },
-    { href: "/portfolio", label: "Portfolio" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
   ],
@@ -18,9 +17,14 @@ const footerLinks = {
     { href: "/ai-solutions", label: "AI Solutions" },
     { href: "/industries", label: "Industries" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/website-design-cost", label: "Website Prices" },
+    { href: "/whatsapp-bot", label: "WhatsApp Bot" },
+    { href: "/billing-software", label: "Billing Software" },
+    { href: "/delivery-app-development", label: "Delivery App" },
+    { href: "/startup-offer", label: "Startup Offer" },
+    { href: "/offers", label: "Offers" },
   ],
   resources: [
-    { href: "/portfolio", label: "Case Studies" },
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
   ],
@@ -56,7 +60,7 @@ export function Footer() {
 
       <div className="container relative mx-auto px-4 py-16">
         {/* Newsletter */}
-        <div className="mb-16 rounded-2xl bg-gradient-to-r from-primary/10 via-violet-500/8 to-emerald-400/10 p-8 backdrop-blur-sm md:p-12 relative overflow-hidden">
+        <div className="mb-16 rounded-2xl bg-gradient-to-r from-primary/10 via-violet-500/8 to-purple-400/10 p-8 backdrop-blur-sm md:p-12 relative overflow-hidden">
           <div className="absolute inset-0 neural-grid opacity-15" />
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center relative">
             <div className="max-w-md">
@@ -75,7 +79,8 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 rounded-lg border border-border bg-background/80 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                aria-label="Email address"
+                className="min-w-0 flex-1 rounded-lg border border-border bg-background/80 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
               />
               <Button className="group shrink-0 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 ai-glow">
                 Subscribe
@@ -90,7 +95,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="group inline-flex items-center gap-3 transition-transform duration-300 hover:scale-105">
-              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-emerald-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
+              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-purple-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
                 <Image src="/logo.jpg" alt="VelanDev logo" width={40} height={40} className="h-10 w-10 object-contain rounded-lg" />
               </div>
               <div className="flex flex-col">

@@ -1,14 +1,15 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Terms of Service - VelanDev",
+  title: "Terms of Service",
+  alternates: { canonical: "/terms" },
   description: "VelanDev Terms of Service. Read our terms and conditions for using our software development services.",
 }
 
 export default function TermsPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-b from-accent/20 to-background py-16">
+      <section className="bg-gradient-to-b from-accent/20 to-background pb-16 pt-32 lg:pt-40">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground">Terms of Service</h1>

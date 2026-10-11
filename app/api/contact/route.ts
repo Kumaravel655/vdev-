@@ -1,18 +1,23 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
-const requiredFields = ["fullName", "email", "message"] as const
+const requiredFields = ["fullName", "message"] as const
 
 type ContactPayload = {
   fullName: string
-  email: string
+  email?: string
   phone?: string
   company?: string
+  service?: string // plan/offer tag from the form, e.g. "whatsapp-bot", "startup-offer"
   message: string
 }
 
-const getMissingFields = (payload: ContactPayload) =>
-  requiredFields.filter((field) => !payload[field]?.trim())
+// A lead needs a name, a message, and at least one way to reach them (many owners prefer WhatsApp to email).
+const getMissingFields = (payload: ContactPayload) => {
+  const missing: string[] = requiredFields.filter((field) => !payload[field]?.trim())
+  if (!payload.email?.trim() && !payload.phone?.trim()) missing.push("email or phone")
+  return missing
+}
 
 export async function POST(request: Request) {
   const smtpUser = process.env.SMTP_USER
@@ -54,9 +59,10 @@ export async function POST(request: Request) {
 
   const messageLines = [
     `Name: ${payload.fullName}`,
-    `Email: ${payload.email}`,
+    `Email: ${payload.email || "Not provided"}`,
     `Phone: ${payload.phone || "Not provided"}`,
     `Company: ${payload.company || "Not provided"}`,
+    `Interested in: ${payload.service || "Not selected"}`,
     "",
     "Message:",
     payload.message,
@@ -66,8 +72,8 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `VelanDev Website <${smtpUser}>`,
       to: contactTo,
-      replyTo: payload.email,
-      subject: `New Contact Request from ${payload.fullName}`,
+      replyTo: payload.email || undefined,
+      subject: `${payload.service ? `[${payload.service}] ` : ""}New lead from ${payload.fullName}`,
       text: messageLines.join("\n"),
     })
 

@@ -30,7 +30,8 @@ import { listJobs } from "@/lib/careers-db"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Careers - VelanDev",
+  title: "Careers — Software Jobs in Chennai",
+  alternates: { canonical: "/careers" },
   description: "Join VelanDev and work on real-world products and enterprise systems. We offer a collaborative environment focused on learning, innovation and career growth.",
 }
 
@@ -96,13 +97,13 @@ export default function CareersPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 lg:py-32">
+      <section className="relative overflow-hidden pb-20 pt-32 lg:pb-32 lg:pt-40">
         <div className="aurora-bg absolute inset-0" />
         <div className="neural-grid absolute inset-0 opacity-30" />
         <div className="container relative z-10 mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-4 flex items-center justify-center gap-3">
-              <Badge variant="secondary" className="border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+              <Badge variant="secondary" className="border-purple-500/30 bg-purple-500/10 text-purple-400">
                 Join Our Team
               </Badge>
               <Badge variant="secondary" className="border-violet-500/30 bg-violet-500/10 text-violet-400">
@@ -111,7 +112,7 @@ export default function CareersPage() {
               </Badge>
             </div>
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              <span className="bg-gradient-to-r from-primary via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                 Build Your Career
               </span>
               <br />
@@ -131,11 +132,11 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
-              <Badge variant="secondary" className="mb-4 border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+              <Badge variant="secondary" className="mb-4 border-purple-500/30 bg-purple-500/10 text-purple-400">
                 Why VelanDev
               </Badge>
               <h2 className="text-3xl font-bold">
-                <span className="bg-gradient-to-r from-primary via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                   Why Join VelanDev?
                 </span>
               </h2>
@@ -147,12 +148,12 @@ export default function CareersPage() {
               {benefits.map((benefit, index) => (
                 <Card
                   key={benefit.title}
-                  className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/5"
+                  className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/5"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
                   <CardContent className="relative flex items-start gap-4 pt-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/15 to-emerald-600/5 ring-1 ring-emerald-500/20 transition-all duration-300 group-hover:ring-emerald-400/40 group-hover:ai-glow">
-                      <benefit.icon className="h-6 w-6 text-emerald-400" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-purple-600/5 ring-1 ring-purple-500/20 transition-all duration-300 group-hover:ring-purple-400/40 group-hover:ai-glow">
+                      <benefit.icon className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">{benefit.title}</h3>
@@ -176,7 +177,7 @@ export default function CareersPage() {
                 Culture
               </Badge>
               <h2 className="text-3xl font-bold">
-                <span className="bg-gradient-to-r from-violet-400 via-emerald-400 to-primary bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-primary bg-clip-text text-transparent">
                   Life at VelanDev
                 </span>
               </h2>
@@ -187,8 +188,8 @@ export default function CareersPage() {
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
               {perks.map((perk, index) => (
                 <div key={perk.label} className="group flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-card transition-all duration-300 group-hover:border-emerald-500/30 group-hover:ai-glow">
-                    <perk.icon className="h-7 w-7 text-muted-foreground transition-colors group-hover:text-emerald-400" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-card transition-all duration-300 group-hover:border-purple-500/30 group-hover:ai-glow">
+                    <perk.icon className="h-7 w-7 text-muted-foreground transition-colors group-hover:text-purple-400" />
                   </div>
                   <span className="mt-3 text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                     {perk.label}
@@ -205,11 +206,11 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
-              <Badge variant="secondary" className="mb-4 border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+              <Badge variant="secondary" className="mb-4 border-purple-500/30 bg-purple-500/10 text-purple-400">
                 Open Roles
               </Badge>
               <h2 className="text-3xl font-bold">
-                <span className="bg-gradient-to-r from-primary via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                   Open Positions
                 </span>
               </h2>
@@ -221,7 +222,7 @@ export default function CareersPage() {
               {jobs.length === 0 ? (
                 <Card className="overflow-hidden rounded-2xl border border-border/50 bg-card">
                   <CardContent className="p-8 text-center text-sm text-muted-foreground">
-                    <Sparkles className="mx-auto mb-3 h-8 w-8 text-emerald-400/50" />
+                    <Sparkles className="mx-auto mb-3 h-8 w-8 text-purple-400/50" />
                     No roles are posted yet. Submit a general application below.
                   </CardContent>
                 </Card>
@@ -229,9 +230,9 @@ export default function CareersPage() {
                 jobs.map((job) => (
                   <Card
                     key={job.id}
-                    className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/5"
+                    className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/5"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
                     <CardContent className="relative p-6">
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div className="flex-1">
@@ -244,7 +245,7 @@ export default function CareersPage() {
                           <p className="mt-2 text-sm text-muted-foreground">{job.description}</p>
                           <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
                             <span className="flex items-center gap-1">
-                              <MapPin className="h-4 w-4 text-emerald-400" />
+                              <MapPin className="h-4 w-4 text-purple-400" />
                               {job.location}
                             </span>
                             <span className="flex items-center gap-1">
@@ -253,7 +254,7 @@ export default function CareersPage() {
                             </span>
                           </div>
                         </div>
-                        <Button asChild className="shrink-0 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-400 hover:to-emerald-500 shadow-lg shadow-emerald-500/20">
+                        <Button asChild className="shrink-0 bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:from-purple-400 hover:to-purple-500 shadow-lg shadow-purple-500/20">
                           <Link href="#apply">
                             Apply Now
                             <ArrowRight className="ml-2 h-4 w-4" />
@@ -271,7 +272,7 @@ export default function CareersPage() {
 
       {/* VelanDev Academy — Internships & Training */}
       <section className="relative py-16 lg:py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/[0.03] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.03] to-transparent" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
@@ -280,7 +281,7 @@ export default function CareersPage() {
                 VelanDev Academy
               </Badge>
               <h2 className="text-3xl font-bold">
-                <span className="bg-gradient-to-r from-primary via-emerald-400 to-violet-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                   Internships & Training Programs
                 </span>
               </h2>
@@ -292,13 +293,13 @@ export default function CareersPage() {
               {academyPrograms.map((program, index) => (
                 <Card
                   key={program.title}
-                  className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/5"
+                  className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/5"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
                   <CardContent className="relative pt-6">
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/15 to-violet-500/10 ring-1 ring-emerald-500/20 transition-all duration-300 group-hover:ring-emerald-400/40">
-                        <program.icon className="h-6 w-6 text-emerald-400" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-violet-500/10 ring-1 ring-purple-500/20 transition-all duration-300 group-hover:ring-purple-400/40">
+                        <program.icon className="h-6 w-6 text-purple-400" />
                       </div>
                       <Badge variant="outline" className="border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs">
                         {program.type}
@@ -306,11 +307,11 @@ export default function CareersPage() {
                     </div>
                     <h3 className="mt-4 font-semibold text-foreground">{program.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{program.description}</p>
-                    <div className="mt-4 flex items-center gap-1 text-xs text-emerald-400">
+                    <div className="mt-4 flex items-center gap-1 text-xs text-purple-400">
                       <Clock className="h-3 w-3" />
                       {program.duration}
                     </div>
-                    <Button variant="outline" size="sm" asChild className="mt-4 w-full border-emerald-500/30 bg-transparent text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300">
+                    <Button variant="outline" size="sm" asChild className="mt-4 w-full border-purple-500/30 bg-transparent text-purple-400 hover:bg-purple-500/10 hover:text-purple-300">
                       <Link href="#apply">
                         Apply Now
                         <ArrowRight className="ml-2 h-4 w-4" />

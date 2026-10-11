@@ -4,6 +4,7 @@ import * as React from "react"
 import { MessageCircle, X, Send, Bot, User, Sparkles, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { billingPlans, deliveryApp, inr, priceRanges, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
 
 interface Message {
   id: number
@@ -24,7 +25,33 @@ const quickTopics = ["services", "products", "industries", "pricing", "contact",
 const getBotReply = (input: string) => {
   const normalized = input.toLowerCase()
 
+  // Price answers come first: a visitor asking for a price is the warmest lead on the site.
   const keywordReplies: { keywords: string[]; reply: string }[] = [
+    {
+      keywords: ["new business", "startup", "just started", "discount"],
+      reply:
+        `New businesses (under 12 months old) get up to ${startupOffer.maxPct}% off setup and the first ${startupOffer.months} months of BotForge, Billing OS or CRM. Apply with your business details at /startup-offer.`,
+    },
+    {
+      keywords: ["billing", "pos system", "pos software", "point of sale", "invoice", "restaurant", "kot", "shop software"],
+      reply:
+        `Billing OS starts at ${inr(billingPlans[0].price)}/outlet/month: ${billingPlans.map((p) => `${p.name.replace("Billing OS ", "")} ${inr(p.price)}`).join(", ")} per outlet per month, plus ${inr(billingPlans[0].setupFee ?? 0)} setup (free on yearly). GST bills, thermal printing, KOT and WhatsApp bills. See /billing-software.`,
+    },
+    {
+      keywords: ["delivery app", "delivery", "rider", "swiggy", "zomato"],
+      reply:
+        `We build your own delivery app from ${inr(deliveryApp.from)} one-time: customer app, delivery partner app and admin panel with live tracking, published on Google Play. See /delivery-app-development.`,
+    },
+    {
+      keywords: ["whatsapp", "chatbot", "auto reply", "bot price"],
+      reply:
+        `Our BotForge WhatsApp bot starts at ${inr(whatsappPlans[0].price)}/month: ${whatsappPlans.map((p) => `${p.name} ${inr(p.price)}/month + ${inr(p.setupFee ?? 0)} setup`).join(", ")}. Pay yearly and the setup fee is waived. See all plans at /whatsapp-bot or tap the green WhatsApp button for a free demo.`,
+    },
+    {
+      keywords: ["website", "site cost", "web design"],
+      reply:
+        `Business websites start at ${inr(websitePlans[0].price)} one-time: ${websitePlans.map((p) => `${p.name} ${inr(p.price)}`).join(", ")}. Mobile-friendly, SEO-ready, with WhatsApp button and Google Maps. Full details at /website-design-cost.`,
+    },
     {
       keywords: ["hi", "hello", "hey", "good morning", "good evening"],
       reply:
@@ -48,7 +75,7 @@ const getBotReply = (input: string) => {
     {
       keywords: ["price", "pricing", "cost", "quote", "budget"],
       reply:
-        "Pricing depends on scope. Share a brief requirement and I can help you start a quote. You can also contact us at hello@velandev.in.",
+        `Websites start at ${inr(websitePlans[0].price)} one-time and WhatsApp bots at ${inr(whatsappPlans[0].price)}/month. E-commerce costs ${inr(priceRanges.ecommerce.from)}–${inr(priceRanges.ecommerce.to)}, CRM ${inr(priceRanges.crm.from)}–${inr(priceRanges.crm.to)}/month, custom software from ${inr(priceRanges.custom.from)}. See /pricing and current offers at /offers, or share your requirement for a quote.`,
     },
     {
       keywords: ["contact", "email", "mail", "phone", "call", "location", "address"],
@@ -162,7 +189,7 @@ export function AIChatbot() {
         
         <div className="relative flex items-center justify-center">
           <Bot className="h-7 w-7" />
-          <Sparkles className="absolute -right-1 -top-1 h-4 w-4 animate-bounce-soft text-emerald-300" />
+          <Sparkles className="absolute -right-1 -top-1 h-4 w-4 animate-bounce-soft text-purple-300" />
         </div>
       </button>
 

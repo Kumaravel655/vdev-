@@ -14,10 +14,10 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
   { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
   { href: "/ai-solutions", label: "AI Solutions" },
   { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/offers", label: "Offers" },
   { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
@@ -55,7 +55,7 @@ export function Navbar() {
           href="/"
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-emerald-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
+          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-purple-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
             <Image
               src="/logo.jpg"
               alt="VelanDev logo"
@@ -70,7 +70,7 @@ export function Navbar() {
             <span className="text-xl font-bold tracking-tight text-foreground">
               VelanDev
             </span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground xl:hidden 2xl:inline">
               AI-Powered Solutions
             </span>
           </div>
@@ -84,7 +84,7 @@ export function Navbar() {
               href={link.href}
               style={{ animationDelay: `${index * 50}ms` }}
               className={cn(
-                "group relative px-3 py-2 text-sm font-medium transition-all duration-300",
+                "group relative whitespace-nowrap px-2 py-2 text-sm font-medium transition-all duration-300 2xl:px-3",
                 pathname === link.href
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
@@ -93,7 +93,7 @@ export function Navbar() {
               {link.label}
               <span
                 className={cn(
-                  "absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-emerald-400 transition-all duration-300 ease-out",
+                  "absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-purple-400 transition-all duration-300 ease-out",
                   pathname === link.href
                     ? "w-1/2"
                     : "group-hover:w-1/3"
@@ -115,7 +115,7 @@ export function Navbar() {
                 Get Started
                 <Sparkles className="h-4 w-4 animate-pulse transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-400 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-400 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
           </Button>
         </div>

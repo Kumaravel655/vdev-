@@ -1,14 +1,15 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - VelanDev",
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
   description: "VelanDev Privacy Policy. Learn how we collect, use, and protect your personal information.",
 }
 
 export default function PrivacyPage() {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-b from-accent/20 to-background py-16">
+      <section className="bg-gradient-to-b from-accent/20 to-background pb-16 pt-32 lg:pt-40">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground">Privacy Policy</h1>

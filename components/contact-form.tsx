@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Mail, Building2, Send, CheckCircle2, MapPin, Phone, Clock, Globe } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { cn } from "@/lib/utils"
+import { cardClass, reveal, trackSpotlight } from "@/components/page-sections"
+import { billingPlans, deliveryApp, inr, websitePlans, whatsappPlans } from "@/lib/pricing"
 
 const contactInfo = [
   {
@@ -45,10 +48,17 @@ type ContactPayload = {
   message: string
 }
 
-export function ContactForm() {
+export function ContactForm({ inView = true }: { inView?: boolean }) {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const serviceRef = useRef<HTMLSelectElement>(null)
+
+  // Plan pages link here as /contact?service=whatsapp-bot so the lead arrives tagged.
+  useEffect(() => {
+    const service = new URLSearchParams(window.location.search).get("service")
+    if (service && serviceRef.current) serviceRef.current.value = service
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -91,17 +101,14 @@ export function ContactForm() {
   }
 
   return (
-    <section className="py-16 lg:py-24">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-12 lg:grid-cols-5">
+          <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-5">
             {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <Card className="border border-border/50 bg-card shadow-xl">
+            <div className={cn("transition-all duration-700 lg:col-span-3", reveal(inView))}>
+              <Card className="h-full rounded-2xl border border-border/60 bg-card shadow-xl shadow-primary/5">
                 <CardHeader>
-                  <CardTitle>Send us a Message</CardTitle>
+                  <CardTitle>Project details</CardTitle>
                   <CardDescription>
-                    Fill out the form below and {"we'll"} get back to you within 24 hours.
+                    Name, email and message are required.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -111,7 +118,7 @@ export function ContactForm() {
                         <CheckCircle2 className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="mt-4 text-xl font-semibold text-foreground">
-                        Message Sent!
+                        Message sent
                       </h3>
                       <p className="mt-2 text-muted-foreground">
                         {"Thank you for contacting us. We'll get back to you shortly."}
@@ -124,39 +131,45 @@ export function ContactForm() {
                           setErrorMessage(null)
                         }}
                       >
-                        Send Another Message
+                        Send another message
                       </Button>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid gap-6 sm:grid-cols-2">
                         <div className="space-y-2">
-                          <Label htmlFor="fullName">Full Name</Label>
-                          <Input id="fullName" name="fullName" placeholder="John Doe" required className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
+                          <Label htmlFor="fullName">Full name</Label>
+                          <Input id="fullName" name="fullName" placeholder="Your name" required className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
-                          <Input id="email" name="email" type="email" placeholder="john@company.com" required className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
+                          <Input id="email" name="email" type="email" placeholder="you@company.com" required className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
                         </div>
                       </div>
                       <div className="grid gap-6 sm:grid-cols-2">
                         <div className="space-y-2">
-                          <Label htmlFor="phone">Phone Number</Label>
-                          <Input id="phone" name="phone" type="tel" placeholder="+91 6369472659" className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
+                          <Label htmlFor="phone">Phone number</Label>
+                          <Input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="company">Company Name</Label>
+                          <Label htmlFor="company">Company name</Label>
                           <Input id="company" name="company" placeholder="Your Company" className="transition-all duration-300 focus:border-primary focus:ring-primary/20" />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="service">Service Interested In</Label>
+                        <Label htmlFor="service">What do you need?</Label>
                         <select
                           id="service"
                           name="service"
+                          ref={serviceRef}
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                         >
                           <option value="">Select a service</option>
+                          <option value="website-package">Website package (from {inr(websitePlans[0].price)})</option>
+                          <option value="whatsapp-bot">BotForge WhatsApp bot (from {inr(whatsappPlans[0].price)}/month)</option>
+                          <option value="billing-os">Billing OS (from {inr(billingPlans[0].price)}/outlet/month)</option>
+                          <option value="delivery-app">Delivery app (from {inr(deliveryApp.from)})</option>
+                          <option value="startup-offer">Startup offer (new business)</option>
                           <option value="web-development">Web Development</option>
                           <option value="mobile-app">Mobile App Development</option>
                           <option value="ai-solutions">AI Solutions</option>
@@ -171,24 +184,24 @@ export function ContactForm() {
                         <Textarea
                           id="message"
                           name="message"
-                          placeholder="Tell us about your project or inquiry..."
+                          placeholder="What are you building, who is it for, and when do you need it?"
                           rows={5}
                           required
                           className="transition-all duration-300 focus:border-primary focus:ring-primary/20"
                         />
                       </div>
-                      <Button type="submit" className="w-full ai-glow transition-all duration-300 hover:scale-[1.02]" disabled={isLoading}>
+                      <Button type="submit" className="w-full" disabled={isLoading}>
                         {isLoading ? (
                           "Sending..."
                         ) : (
                           <>
-                            Send Message
+                            Send message
                             <Send className="ml-2 h-4 w-4" />
                           </>
                         )}
                       </Button>
                       {errorMessage ? (
-                        <p className="text-sm text-destructive">{errorMessage}</p>
+                        <p role="alert" className="text-sm text-destructive">{errorMessage}</p>
                       ) : null}
                     </form>
                   )}
@@ -197,12 +210,12 @@ export function ContactForm() {
             </div>
 
             {/* Contact Info */}
-            <div className="lg:col-span-2">
-              <Card className="border-0 bg-gradient-to-br from-primary/5 via-card to-violet-500/5 shadow-xl">
+            <div className={cn("transition-all duration-700 delay-150 lg:col-span-2", reveal(inView))}>
+              <Card onPointerMove={trackSpotlight} className={cn(cardClass, "h-full p-0 sm:p-0 hover:translate-y-0")}>
                 <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
+                  <CardTitle>Other ways to reach us</CardTitle>
                   <CardDescription>
-                    Reach out through any of these channels.
+                    Prefer to talk? Call or email us directly.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -227,7 +240,7 @@ export function ContactForm() {
                   <div className="border-t border-border/50 pt-6">
                     <h4 className="font-medium text-foreground flex items-center gap-2">
                       <Clock className="h-4 w-4 text-primary" />
-                      Business Hours
+                      Business hours
                     </h4>
                     <p className="mt-2 text-sm text-muted-foreground">
                       Monday – Friday: 9:00 AM – 6:00 PM IST
@@ -239,17 +252,14 @@ export function ContactForm() {
 
                   {/* Free consultation CTA */}
                   <div className="rounded-xl border border-primary/20 bg-primary/5 p-4">
-                    <p className="text-sm font-semibold text-foreground">🎯 Free Consultation</p>
+                    <p className="text-sm font-semibold text-foreground">Free consultation</p>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      Get a free project estimation and AI readiness assessment for your business.
+                      Every enquiry gets a free project estimate. Ask for an AI readiness check too.
                     </p>
                   </div>
                 </CardContent>
               </Card>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
   )
 }
