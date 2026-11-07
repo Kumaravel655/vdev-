@@ -39,7 +39,7 @@ export const reveal = (inView: boolean) => (inView ? "translate-y-0 opacity-100"
 
 /** Card surface used by every grid; same as the Services cards plus the pointer spotlight. */
 export const cardClass =
-  "spotlight group flex flex-col rounded-2xl border border-border/60 bg-card p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 sm:p-7"
+  "surface-light spotlight group flex flex-col rounded-2xl bg-white p-6 shadow-lg shadow-black/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 sm:p-7"
 
 /** Moves the `.spotlight` glow to the pointer. */
 export function trackSpotlight(event: PointerEvent<HTMLElement>) {

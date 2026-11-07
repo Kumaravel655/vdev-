@@ -89,7 +89,7 @@ export function CareersApply({ jobs }: { jobs: CareersApplyJob[] }) {
     <section id="apply" className="py-16 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-4xl">
-          <Card className="border bg-card">
+          <Card className="surface-light border-0 bg-white shadow-xl shadow-black/30">
             <CardHeader>
               <CardTitle>Apply to VelanDev</CardTitle>
               <CardDescription>

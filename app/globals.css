@@ -7,9 +7,18 @@
    * Section glows: violet light blooming on the black page, mirrored section to section.
    * Each glow fades out well inside its section, so neighbouring sections meet on plain black.
    */
-  /* Light island on the dark site: the top menu bar stays white with dark text */
+  /* Light island on the dark site: the menu bar and selected white boxes, with dark text */
   .surface-light {
     color-scheme: light;
+    --background: 1 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.22 0.07 284;
+    --popover: 1 0 0;
+    --popover-foreground: 0.22 0.07 284;
+    --secondary: 0.95 0.02 292;
+    --secondary-foreground: 0.22 0.07 284;
+    --muted: 0.96 0.015 292;
+    --input: 0.86 0.03 292;
     --foreground: 0.22 0.07 284;
     --muted-foreground: 0.45 0.05 284;
     --primary: 0.47 0.22 288;
@@ -21,16 +30,15 @@
     color: oklch(var(--foreground));
   }
 
-  .glow-right {
-    background:
-      radial-gradient(55% 60% at 82% 45%, oklch(var(--glow) / 0.42), transparent 70%),
-      radial-gradient(40% 45% at 8% 72%, oklch(var(--glow-2) / 0.22), transparent 70%);
-  }
-  .glow-left {
-    background:
-      radial-gradient(55% 60% at 18% 50%, oklch(var(--glow) / 0.42), transparent 70%),
-      radial-gradient(40% 45% at 92% 28%, oklch(var(--glow-2) / 0.22), transparent 70%);
-  }
+  .glow-right { background-image: var(--glow-right-img); }
+  .glow-left { background-image: var(--glow-left-img); }
+
+  /*
+   * Every other page gets the same rhythm without per-page classes: sections alternate glows.
+   * :where() keeps this at zero specificity, so a section's own background or glow class wins.
+   */
+  :where(main section:not(.dark):nth-of-type(odd)) { background-image: var(--glow-right-img); }
+  :where(main section:not(.dark):nth-of-type(even)) { background-image: var(--glow-left-img); }
   .text-balance {
     text-wrap: balance;
   }
@@ -78,9 +86,15 @@
     --sidebar-border: 0.3 0.07 296;
     --sidebar-ring: 0.74 0.15 296;
 
-    /* Glow colours for .glow-left / .glow-right */
+    /* Section glows: each fades out well inside its section, so neighbours meet on plain black */
     --glow: 0.45 0.2 296;
     --glow-2: 0.4 0.16 312;
+    --glow-right-img:
+      radial-gradient(55% 60% at 82% 45%, oklch(var(--glow) / 0.42), transparent 70%),
+      radial-gradient(40% 45% at 8% 72%, oklch(var(--glow-2) / 0.22), transparent 70%);
+    --glow-left-img:
+      radial-gradient(55% 60% at 18% 50%, oklch(var(--glow) / 0.42), transparent 70%),
+      radial-gradient(40% 45% at 92% 28%, oklch(var(--glow-2) / 0.22), transparent 70%);
   }
 }
 

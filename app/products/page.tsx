@@ -13,7 +13,7 @@ function StatusBadge({ product }: { product: Product }) {
   return (
     <div className="flex flex-wrap items-center justify-end gap-2">
       <Badge variant="outline" className="text-xs font-medium">{product.category}</Badge>
-      <Badge variant="outline" className={cn("text-xs font-medium", statusStyles[product.status])}>{product.status}</Badge>
+      <Badge variant="outline" className={cn("text-xs font-medium", statusStyles[product.status], "dark:text-amber-800")}>{product.status}</Badge>
     </div>
   )
 }
@@ -60,7 +60,7 @@ export default function ProductsPage() {
                   key={product.slug}
                   id={product.slug}
                   className={cn(
-                    "group relative flex scroll-mt-28 flex-col overflow-hidden rounded-3xl border border-primary/20 bg-card p-6 shadow-xl shadow-primary/5 transition-all duration-500 hover:border-primary/40 sm:p-8",
+                    "surface-light group relative flex scroll-mt-28 flex-col overflow-hidden rounded-3xl bg-white p-6 shadow-2xl shadow-black/40 transition-all duration-500 sm:p-8",
                     latestRef.isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   )}
                   style={{ transitionDelay: `${i * 80}ms` }}

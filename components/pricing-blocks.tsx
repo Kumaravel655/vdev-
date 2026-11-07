@@ -30,8 +30,8 @@ export function PlanGrid({ plans, contactService }: { plans: Plan[]; contactServ
           key={plan.id}
           id={plan.id}
           className={cn(
-            "relative flex scroll-mt-28 flex-col rounded-3xl border bg-card p-6 sm:p-8",
-            plan.popular ? "border-primary shadow-2xl shadow-primary/15" : "border-border/60"
+            "surface-light relative flex scroll-mt-28 flex-col rounded-3xl border-2 bg-white p-6 shadow-xl shadow-black/30 sm:p-8",
+            plan.popular ? "border-primary" : "border-transparent"
           )}
         >
           {plan.popular && (
@@ -130,9 +130,9 @@ export function OfferGrid({ offers }: { offers: Offer[] }) {
           key={o.id}
           id={o.id}
           href={o.href}
-          className="group flex scroll-mt-28 flex-col rounded-2xl border border-gold/30 bg-card p-6 transition-colors hover:border-gold/60"
+          className="surface-light group flex scroll-mt-28 flex-col rounded-2xl border-t-4 border-gold bg-white p-6 shadow-lg shadow-black/30 transition-transform hover:-translate-y-1"
         >
-          <span className="w-fit rounded-md bg-gold/15 px-2 py-0.5 text-xs font-semibold text-amber-700 dark:text-gold">{o.tag}</span>
+          <span className="w-fit rounded-md bg-gold/15 px-2 py-0.5 text-xs font-semibold text-amber-800">{o.tag}</span>
           <h3 className="mt-4 text-lg font-semibold text-foreground">{o.title}</h3>
           <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{o.detail}</p>
           <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">

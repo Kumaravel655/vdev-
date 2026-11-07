@@ -104,7 +104,7 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
           <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-5">
             {/* Contact Form */}
             <div className={cn("transition-all duration-700 lg:col-span-3", reveal(inView))}>
-              <Card className="h-full rounded-2xl border border-border/60 bg-card shadow-xl shadow-primary/5">
+              <Card className="surface-light h-full rounded-2xl border-0 bg-white shadow-xl shadow-black/30">
                 <CardHeader>
                   <CardTitle>Project details</CardTitle>
                   <CardDescription>

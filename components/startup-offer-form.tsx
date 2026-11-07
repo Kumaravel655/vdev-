@@ -62,7 +62,7 @@ export function StartupOfferForm() {
 
   if (status === "sent") {
     return (
-      <div role="status" className="flex flex-col items-center rounded-3xl border border-primary/30 bg-card p-10 text-center">
+      <div role="status" className="surface-light flex flex-col items-center rounded-3xl bg-white p-10 text-center shadow-xl shadow-black/30">
         <CheckCircle2 className="h-12 w-12 text-primary" aria-hidden />
         <h3 className="mt-4 text-2xl font-bold text-foreground">Application received</h3>
         <p className="mt-2 max-w-md text-muted-foreground">We&apos;ll read about your idea and reply on WhatsApp within 1 working day to set up your idea review.</p>
@@ -71,7 +71,7 @@ export function StartupOfferForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-5 rounded-3xl border border-border/60 bg-card p-6 sm:grid-cols-2 sm:p-8">
+    <form onSubmit={onSubmit} className="surface-light grid gap-5 rounded-3xl bg-white p-6 shadow-xl shadow-black/30 sm:grid-cols-2 sm:p-8">
       <div className="space-y-2">
         <Label htmlFor="business">Idea or startup name</Label>
         <Input id="business" name="business" required placeholder="A working name is fine" />

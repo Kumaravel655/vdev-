@@ -87,7 +87,7 @@ export default function DeliveryAppPage() {
             {deliveryApps.map((app, i) => {
               const Icon = appIcons[i]
               return (
-                <article key={app.name} className="flex flex-col rounded-3xl border border-border/60 bg-card p-6 sm:p-8">
+                <article key={app.name} className="surface-light flex flex-col rounded-3xl bg-white p-6 shadow-xl shadow-black/30 sm:p-8">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                     <Icon className="h-6 w-6 text-primary" aria-hidden />
                   </div>

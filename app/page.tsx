@@ -481,7 +481,7 @@ export default function HomePage() {
                 <Link
                   key={product.slug}
                   href={product.href ?? `/products#${product.slug}`}
-                  className={cn("group relative flex flex-col overflow-hidden rounded-3xl border border-primary/25 bg-card p-6 shadow-xl shadow-primary/5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/50 sm:p-8", reveal(productsRef.isInView))}
+                  className={cn("surface-light group relative flex flex-col overflow-hidden rounded-3xl bg-white p-6 shadow-2xl shadow-black/40 transition-all duration-500 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 sm:p-8", reveal(productsRef.isInView))}
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
                   <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
@@ -489,7 +489,7 @@ export default function HomePage() {
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30">
                       <product.icon className="h-7 w-7" aria-hidden />
                     </div>
-                    <Badge variant="outline" className={cn("text-xs font-medium", statusStyles[product.status])}>{product.status}</Badge>
+                    <Badge variant="outline" className={cn("text-xs font-medium", statusStyles[product.status], "dark:text-amber-800")}>{product.status}</Badge>
                   </div>
                   <h3 className="relative mt-6 text-2xl font-bold text-foreground">{product.title}</h3>
                   <p className="relative mt-3 flex-1 leading-relaxed text-muted-foreground">{product.description}</p>
@@ -582,11 +582,11 @@ export default function HomePage() {
               title="Industries we serve"
               action={<ArrowLink href="/industries">See industry solutions</ArrowLink>}
             />
-            <ul className="mt-10 grid border-b border-border/60 sm:mt-12 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3">
+            <ul className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
               {industries.map((industry, index) => (
                 <li
                   key={industry.name}
-                  className={cn("flex items-start gap-4 border-t border-border/60 py-6 transition-all duration-500", reveal(industriesRef.isInView))}
+                  className={cn("surface-light flex items-start gap-4 rounded-2xl bg-white p-5 shadow-lg shadow-black/30 transition-all duration-500", reveal(industriesRef.isInView))}
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10">
@@ -611,11 +611,11 @@ export default function HomePage() {
                 <h2 className="mt-3 text-balance text-4xl font-bold text-foreground sm:text-5xl">What working with us is like</h2>
                 <p className="mt-4 max-w-sm text-pretty text-muted-foreground">Six things our clients can count on, whichever pillar their project falls under.</p>
               </div>
-              <ul className="grid gap-x-10 sm:grid-cols-2">
+              <ul className="grid gap-4 sm:grid-cols-2">
                 {whyChooseUs.map((item, index) => (
                   <li
                     key={item.title}
-                    className={cn("border-t border-border/60 py-6 transition-all duration-500", reveal(whyUsRef.isInView))}
+                    className={cn("surface-light rounded-2xl bg-white p-6 shadow-lg shadow-black/30 transition-all duration-500", reveal(whyUsRef.isInView))}
                     style={{ transitionDelay: `${index * 60}ms` }}
                   >
                     <h3 className="flex items-center gap-2 font-semibold text-foreground">
