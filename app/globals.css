@@ -496,3 +496,17 @@
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
+
+/* ===== CHAT ROBOT (components/robot-avatar.tsx) ===== */
+@keyframes robot-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.1); }
+}
+@keyframes robot-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6%); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .robot-blink { animation: robot-blink 4.2s ease-in-out infinite; transform-origin: center 60%; }
+  .robot-float { animation: robot-float 3.2s ease-in-out infinite; }
+}

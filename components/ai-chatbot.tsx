@@ -2,7 +2,8 @@
 
 import * as React from "react"
 import { addressLines, site } from "@/lib/site"
-import { BotMessageSquare, X, Send, User, Zap } from "lucide-react"
+import { X, Send, User, Zap } from "lucide-react"
+import { RobotAvatar } from "@/components/robot-avatar"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { deliveryApp, inr, priceRanges, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
@@ -172,15 +173,12 @@ export function AIChatbot() {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/40 ring-1 ring-white/10 transition-all duration-500 hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:bottom-6 sm:right-6",
+          "fixed bottom-5 right-5 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_25%,#8b5cf6,#4c1d95)] shadow-lg shadow-primary/40 ring-1 ring-white/15 transition-all duration-500 hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:bottom-6 sm:right-6",
           isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
         )}
         aria-label="Chat with VelanDev AI"
       >
-        {/* Animated Rings */}
-        <span className="absolute inset-0 rounded-full bg-primary/25 motion-safe:animate-pulse-ring" aria-hidden />
-        
-        <BotMessageSquare strokeWidth={1.75} className="relative h-8 w-8" />
+        <RobotAvatar size={52} animated />
       </button>
 
       {/* Chat Window */}
@@ -199,8 +197,8 @@ export function AIChatbot() {
           
           <div className="relative flex items-center gap-3">
             <div className="relative">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary">
-                <BotMessageSquare strokeWidth={1.75} className="h-7 w-7 text-primary-foreground" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[radial-gradient(circle_at_30%_25%,#8b5cf6,#4c1d95)]">
+                <RobotAvatar size={42} animated />
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-background bg-green-500" />
             </div>
@@ -237,9 +235,7 @@ export function AIChatbot() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {message.isAi && (
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                    <BotMessageSquare strokeWidth={1.75} className="h-5 w-5 text-primary" />
-                  </div>
+                  <RobotAvatar size={32} />
                 )}
                 <div
                   className={cn(
@@ -262,9 +258,7 @@ export function AIChatbot() {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex gap-3 animate-fade-in">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                  <BotMessageSquare strokeWidth={1.75} className="h-5 w-5 text-primary" />
-                </div>
+                <RobotAvatar size={32} />
                 <div className="chatbot-message-ai flex items-center gap-1.5 rounded-2xl rounded-tl-none px-4 py-3">
                   <div className="h-2 w-2 animate-bounce rounded-full bg-primary" style={{ animationDelay: "0ms" }} />
                   <div className="h-2 w-2 animate-bounce rounded-full bg-primary" style={{ animationDelay: "150ms" }} />
