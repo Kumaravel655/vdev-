@@ -12,31 +12,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { cardClass, reveal, trackSpotlight } from "@/components/page-sections"
 import { deliveryApp, inr, websitePlans, whatsappPlans } from "@/lib/pricing"
+import { addressLines, site } from "@/lib/site"
 
 const contactInfo = [
-  {
-    label: "Email",
-    value: "hello@velandev.in",
-    icon: Mail,
-    href: "mailto:hello@velandev.in",
-  },
-  {
-    label: "Phone",
-    value: "+91 9042655224",
-    icon: Phone,
-    href: "tel:+919042655224",
-  },
-  {
-    label: "Location",
-    value: "Sholinganallur, Chennai, Tamil Nadu, India",
-    icon: MapPin,
-  },
-  {
-    label: "Website",
-    value: "velandev.in",
-    icon: Globe,
-    href: "https://velandev.in",
-  },
+  { label: "Email", value: site.email, icon: Mail, href: `mailto:${site.email}` },
+  { label: "Phone", value: site.phoneDisplay, icon: Phone, href: `tel:${site.phone}` },
+  { label: "Address", value: addressLines.join("\n"), icon: MapPin },
+  { label: "Website", value: site.domain, icon: Globe, href: site.url },
+  { label: "GSTIN", value: site.gstin, icon: Building2 },
 ]
 
 type ContactPayload = {
@@ -230,7 +213,7 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-sm text-muted-foreground">{info.value}</p>
+                          <p className="whitespace-pre-line text-sm text-muted-foreground">{info.value}</p>
                         )}
                       </div>
                     </div>

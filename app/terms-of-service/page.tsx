@@ -45,7 +45,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-xl font-semibold text-foreground">Contact</h2>
             <p className="mt-2 leading-relaxed">
-              For legal questions about these terms, contact hello@velandev.in.
+              For legal questions about these terms, contact info@velandev.in.
             </p>
           </section>
         </div>

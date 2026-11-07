@@ -50,13 +50,13 @@ export default function PrivacyPage() {
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-foreground">6. Your Rights</h2>
-                <p className="mt-3 leading-relaxed">You have the right to access, correct, or delete your personal information. You may also object to or restrict certain processing of your data. To exercise these rights, please contact us at hello@velandev.in.</p>
+                <p className="mt-3 leading-relaxed">You have the right to access, correct, or delete your personal information. You may also object to or restrict certain processing of your data. To exercise these rights, please contact us at info@velandev.in.</p>
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-foreground">7. Contact Us</h2>
                 <p className="mt-3 leading-relaxed">If you have any questions about this Privacy Policy, please contact us:</p>
-                <p className="mt-2"><strong className="text-foreground">Email:</strong> hello@velandev.in</p>
-                <p><strong className="text-foreground">Address:</strong> Sholinganallur, Chennai, Tamil Nadu, India</p>
+                <p className="mt-2"><strong className="text-foreground">Email:</strong> info@velandev.in</p>
+                <p><strong className="text-foreground">Address:</strong> No 7, 1st Floor, Sathyabama Research Park, Sholinganallur, Rajiv Gandhi Salai (OMR), Chennai, Tamil Nadu 603103</p>
               </div>
             </div>
           </div>

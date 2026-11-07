@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { addressLines, site } from "@/lib/site"
 import { BotMessageSquare, X, Send, User, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -14,9 +15,9 @@ interface Message {
 }
 
 const contactDetails = {
-  email: "hello@velandev.in",
-  phone: "9042655224",
-  location: "Sholinganallur, Chennai, Tamil Nadu, India",
+  email: site.email,
+  phone: site.phoneDisplay,
+  location: addressLines.join(", "),
   hours: "Monday - Friday: 9:00 AM - 6:00 PM IST",
 }
 

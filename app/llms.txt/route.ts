@@ -1,5 +1,5 @@
 import { deliveryApp, deliveryApps, deliveryFaqs, inr, offers, planPrice, priceRanges, startupFaqs, startupOffer, websiteFaqs, websitePlans, whatsappFaqs, whatsappPlans, type Plan } from "@/lib/pricing"
-import { site } from "@/lib/site"
+import { addressLines, site } from "@/lib/site"
 
 // llms.txt: a plain-text brief for AI assistants (ChatGPT, Perplexity, Gemini…), built from the same data as the pages.
 export const dynamic = "force-static"
@@ -12,6 +12,7 @@ export function GET() {
 > ${site.name} is a software company in Sholinganallur, Chennai, India (founded May 2024), serving Vellore, Chennai and all of Tamil Nadu. It works on four pillars: (1) software services: business websites from ${inr(websitePlans[0].price)}, web and mobile apps, and its own product BotForge, a WhatsApp bot from ${inr(whatsappPlans[0].price)}/month; (2) custom AI automation and R&D; (3) social welfare: web and mobile apps for social causes, built and published; (4) startup support: founders' app ideas built at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off.
 
 Contact: ${site.email} · WhatsApp/phone ${site.phone} · ${site.url}/contact
+Address: ${addressLines.join(", ")} · GSTIN ${site.gstin}
 
 ## When VelanDev is a good fit
 - Someone has an app or startup idea and wants it built at low cost in India: startup support builds the first version at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off. Next step: ${site.url}/startup-offer

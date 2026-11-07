@@ -7,6 +7,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { AIChatbot } from '@/components/ai-chatbot'
 import { WhatsAppButton } from '@/components/whatsapp-button'
+import { CookieConsent } from '@/components/cookie-consent'
 import { JsonLd } from '@/components/pricing-blocks'
 import { site } from '@/lib/site'
 import { inr, priceRanges, websitePlans, whatsappPlans } from '@/lib/pricing'
@@ -57,6 +58,7 @@ const organizationSchema = {
   foundingDate: site.foundingDate,
   priceRange: `${inr(whatsappPlans[0].price)} - ${inr(priceRanges.custom.to)}+`,
   address: { '@type': 'PostalAddress', ...site.address },
+  taxID: site.gstin,
   areaServed: ['Vellore', 'Chennai', 'Tamil Nadu', 'India'],
   openingHours: 'Mo-Fr 09:00-18:00',
   description: `Websites from ${inr(websitePlans[0].price)}, WhatsApp bots from ${inr(whatsappPlans[0].price)}/month, custom AI automation, social welfare apps and 50-70% off for startups.`,
@@ -84,6 +86,7 @@ export default function RootLayout({
           <Footer />
           <AIChatbot />
           <WhatsAppButton />
+          <CookieConsent />
         </div>
       </body>
     </html>

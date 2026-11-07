@@ -55,7 +55,7 @@ export default function TermsPage() {
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-foreground">9. Contact</h2>
-                <p className="mt-3 leading-relaxed">For questions about these Terms of Service, please contact us at hello@velandev.in.</p>
+                <p className="mt-3 leading-relaxed">For questions about these Terms of Service, please contact us at info@velandev.in.</p>
               </div>
             </div>
           </div>

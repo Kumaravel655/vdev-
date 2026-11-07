@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Linkedin, Twitter, Github, Facebook, ArrowUpRight, Mail, MapPin, Phone, Sparkles, Shield, Clock, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { addressLines, site } from "@/lib/site"
+import { openCookieSettings } from "@/components/cookie-consent"
 
 const footerLinks = {
   company: [
@@ -37,9 +39,9 @@ const socialLinks = [
 ]
 
 const contactInfo = [
-  { icon: Mail, text: "hello@velandev.in" },
-  { icon: Phone, text: "9042655224" },
-  { icon: MapPin, text: "Sholinganallur, Chennai, Tamil Nadu, India" },
+  { icon: Mail, text: site.email },
+  { icon: Phone, text: site.phoneDisplay },
+  { icon: MapPin, text: addressLines.join("\n") },
 ]
 
 const trustBadges = [
@@ -111,11 +113,11 @@ export function Footer() {
             {/* Contact Info */}
             <div className="mt-6 space-y-3">
               {contactInfo.map((item) => (
-                <div key={item.text} className="group flex items-center gap-3 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
+                <div key={item.text} className="group flex items-start gap-3 text-sm text-muted-foreground transition-colors duration-300 hover:text-foreground">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
                     <item.icon className="h-4 w-4 text-primary" />
                   </div>
-                  {item.text}
+                  <span className="whitespace-pre-line">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -201,7 +203,7 @@ export function Footer() {
         <div className="mt-16 border-t border-border/50 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} VelanDev. All rights reserved.
+              © {new Date().getFullYear()} VelanDev. All rights reserved. GSTIN {site.gstin}
             </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary">
@@ -210,6 +212,9 @@ export function Footer() {
               <Link href="/terms" className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary">
                 Terms of Service
               </Link>
+              <button type="button" onClick={openCookieSettings} className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary">
+                Cookie settings
+              </button>
             </div>
           </div>
         </div>

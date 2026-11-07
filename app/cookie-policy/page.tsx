@@ -29,23 +29,26 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="text-xl font-semibold text-foreground">How We Use Cookies</h2>
             <p className="mt-2 leading-relaxed">
-              We may use cookies for site functionality, performance insights, and user
-              experience improvements. We do not use cookies to sell personal data.
+              Essential cookies keep the site working, for example keeping staff signed in to
+              the admin area. Optional cookies, such as analytics, are only set if you choose
+              &quot;Accept all&quot;. We do not use cookies to sell personal data.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground">Managing Cookies</h2>
             <p className="mt-2 leading-relaxed">
-              You can manage or disable cookies through your browser settings. Disabling
-              cookies may affect the functionality of some parts of the site.
+              When you first visit, we ask whether to allow optional cookies. You can change
+              your choice at any time with &quot;Cookie settings&quot; at the bottom of every page,
+              or block cookies in your browser settings. Blocking essential cookies may stop
+              parts of the site from working.
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground">Contact</h2>
             <p className="mt-2 leading-relaxed">
-              For questions regarding this Cookie Policy, contact hello@velandev.in.
+              For questions regarding this Cookie Policy, contact info@velandev.in.
             </p>
           </section>
         </div>
