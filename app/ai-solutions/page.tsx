@@ -62,6 +62,7 @@ export default function AISolutionsPage() {
   return (
     <div className="flex flex-col">
       <PageHero
+        image="ai-hero"
         eyebrow="AI Solutions"
         icon={BrainCircuit}
         title="AI that takes on the"

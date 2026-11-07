@@ -3,82 +3,84 @@
 @tailwind utilities;
 
 @layer utilities {
+  /*
+   * Section glows: violet light blooming on the black page, mirrored section to section.
+   * Each glow fades out well inside its section, so neighbouring sections meet on plain black.
+   */
+  /* Light island on the dark site: the top menu bar stays white with dark text */
+  .surface-light {
+    color-scheme: light;
+    --foreground: 0.22 0.07 284;
+    --muted-foreground: 0.45 0.05 284;
+    --primary: 0.47 0.22 288;
+    --primary-foreground: 0.99 0.005 292;
+    --accent: 0.94 0.03 292;
+    --accent-foreground: 0.38 0.17 288;
+    --border: 0.9 0.025 292;
+    --ring: 0.47 0.22 288;
+    color: oklch(var(--foreground));
+  }
+
+  .glow-right {
+    background:
+      radial-gradient(55% 60% at 82% 45%, oklch(var(--glow) / 0.42), transparent 70%),
+      radial-gradient(40% 45% at 8% 72%, oklch(var(--glow-2) / 0.22), transparent 70%);
+  }
+  .glow-left {
+    background:
+      radial-gradient(55% 60% at 18% 50%, oklch(var(--glow) / 0.42), transparent 70%),
+      radial-gradient(40% 45% at 92% 28%, oklch(var(--glow-2) / 0.22), transparent 70%);
+  }
   .text-balance {
     text-wrap: balance;
   }
 }
 
 @layer base {
+  /*
+   * One theme only: near-black page with violet glows, light lilac text, soft violet brand.
+   * Values are oklch "L C H" triplets so Tailwind can add alpha (bg-primary/10).
+   * <html> carries the `dark` class so every dark: variant in the components applies.
+   */
   :root {
-    /* Premium Emerald Light Theme */
-    --background: 220 20% 97%;
-    --foreground: 240 10% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 10% 94%;
-    --secondary-foreground: 240 10% 10%;
-    --muted: 230 15% 95%;
-    --muted-foreground: 240 5% 46%;
-    --accent: 270 60% 94%;
-    --accent-foreground: 270 60% 40%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 230 15% 88%;
-    --input: 230 15% 88%;
-    --ring: 262 83% 58%;
-    --chart-1: 262 83% 58%;
-    --chart-2: 270 60% 50%;
-    --chart-3: 45 93% 58%;
-    --chart-4: 180 60% 45%;
-    --chart-5: 330 65% 55%;
+    color-scheme: dark;
+    --background: 0.13 0.03 295;
+    --foreground: 0.97 0.015 296;
+    --card: 0.2 0.06 296;
+    --card-foreground: 0.97 0.015 296;
+    --popover: 0.2 0.06 296;
+    --popover-foreground: 0.97 0.015 296;
+    --primary: 0.74 0.15 296;
+    --primary-foreground: 0.2 0.08 294;
+    --secondary: 0.24 0.07 296;
+    --secondary-foreground: 0.97 0.015 296;
+    --muted: 0.24 0.07 296;
+    --muted-foreground: 0.82 0.05 296;
+    --accent: 0.27 0.09 296;
+    --accent-foreground: 0.88 0.08 296;
+    --destructive: 0.62 0.2 25;
+    --destructive-foreground: 0.99 0.005 296;
+    --border: 0.3 0.07 296;
+    --input: 0.3 0.07 296;
+    --ring: 0.74 0.15 296;
+    --chart-1: 0.74 0.15 296;
+    --chart-2: 0.7 0.16 330;
+    --chart-3: 0.84 0.15 85;
+    --chart-4: 0.75 0.11 195;
+    --chart-5: 0.7 0.18 350;
     --radius: 0.75rem;
-    --sidebar-background: 220 20% 97%;
-    --sidebar-foreground: 240 10% 10%;
-    --sidebar-primary: 262 83% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 60% 94%;
-    --sidebar-accent-foreground: 270 60% 40%;
-    --sidebar-border: 230 15% 88%;
-    --sidebar-ring: 262 83% 58%;
-  }
-  .dark {
-    /* Premium Dark Theme — Emerald / Violet / Gold */
-    --background: 240 15% 4%;
-    --foreground: 220 15% 95%;
-    --card: 240 12% 8%;
-    --card-foreground: 220 15% 95%;
-    --popover: 240 12% 8%;
-    --popover-foreground: 220 15% 95%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 12% 14%;
-    --secondary-foreground: 220 15% 95%;
-    --muted: 240 10% 14%;
-    --muted-foreground: 220 10% 55%;
-    --accent: 270 40% 18%;
-    --accent-foreground: 270 70% 75%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 16%;
-    --input: 240 10% 16%;
-    --ring: 262 83% 58%;
-    --chart-1: 160 84% 45%;
-    --chart-2: 270 65% 60%;
-    --chart-3: 45 93% 58%;
-    --chart-4: 180 60% 50%;
-    --chart-5: 330 70% 60%;
-    --sidebar-background: 240 12% 6%;
-    --sidebar-foreground: 220 15% 95%;
-    --sidebar-primary: 262 83% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 40% 18%;
-    --sidebar-accent-foreground: 270 70% 75%;
-    --sidebar-border: 240 10% 16%;
-    --sidebar-ring: 262 83% 58%;
+    --sidebar-background: 0.13 0.03 295;
+    --sidebar-foreground: 0.97 0.015 296;
+    --sidebar-primary: 0.74 0.15 296;
+    --sidebar-primary-foreground: 0.2 0.08 294;
+    --sidebar-accent: 0.27 0.09 296;
+    --sidebar-accent-foreground: 0.88 0.08 296;
+    --sidebar-border: 0.3 0.07 296;
+    --sidebar-ring: 0.74 0.15 296;
+
+    /* Glow colours for .glow-left / .glow-right */
+    --glow: 0.45 0.2 296;
+    --glow-2: 0.4 0.16 312;
   }
 }
 
@@ -149,7 +151,7 @@
   a:focus-visible,
   button:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid hsl(var(--ring));
+    outline: 2px solid oklch(var(--ring));
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -384,16 +386,16 @@
 
 /* ===== GLASS EFFECTS ===== */
 .glass {
-  background: hsl(var(--background) / 0.7);
+  background: oklch(var(--background) / 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-card {
-  background: hsl(var(--card) / 0.6);
+  background: oklch(var(--card) / 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid hsl(var(--border) / 0.5);
+  border: 1px solid oklch(var(--border) / 0.5);
 }
 
 /* ===== GLOW EFFECTS ===== */
@@ -447,8 +449,8 @@
 }
 
 .chatbot-message-user {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
+  background: oklch(var(--primary));
+  color: oklch(var(--primary-foreground));
 }
 
 /* ===== SPOTLIGHT CARD — glow follows the pointer (see trackSpotlight) ===== */
@@ -463,7 +465,7 @@
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: radial-gradient(360px circle at var(--x, 50%) var(--y, 0%), hsl(var(--primary) / 0.14), transparent 65%);
+  background: radial-gradient(360px circle at var(--x, 50%) var(--y, 0%), oklch(var(--primary) / 0.14), transparent 65%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;

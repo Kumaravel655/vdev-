@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { HeroBackdrop } from "@/components/page-sections"
 import type { LucideIcon } from "lucide-react"
 import { ArrowRight, Code2, Globe, Brain, Cloud, Palette, Link2, Check, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -65,8 +66,8 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
-        <div className="pointer-events-none absolute inset-0 aurora-bg" />
+      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-24 lg:pt-40">
+        <HeroBackdrop name="services-hero" position="65% center" />
         <div ref={heroRef.ref} className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl">
             <div className="text-center">

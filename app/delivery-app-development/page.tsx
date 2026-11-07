@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { HeroBackdrop } from "@/components/page-sections"
 import { ArrowRight, BadgeCheck, Bike, Check, LayoutDashboard, MessageCircle, Smartphone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FaqList, JsonLd, SectionTitle, breadcrumbSchema, faqSchema } from "@/components/pricing-blocks"
@@ -46,8 +47,9 @@ export default function DeliveryAppPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Delivery App Development", path: PATH }])} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
-        <div className="container mx-auto max-w-4xl px-4 text-center">
+      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-24 lg:pt-40">
+        <HeroBackdrop name="delivery-hero" position="40% center" />
+        <div className="container relative mx-auto max-w-4xl px-4 text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
             <Bike className="h-4 w-4" aria-hidden />
             Delivery app development

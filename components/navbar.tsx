@@ -8,7 +8,6 @@ import { Menu, X, Sparkles } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -41,7 +40,7 @@ export function Navbar() {
       className={cn(
         "fixed top-4 left-0 right-0 z-50 mx-auto w-[calc(100%-2rem)] max-w-7xl transition-all duration-500 ease-smooth",
         mobileMenuOpen ? "rounded-3xl" : "rounded-full",
-        "border border-primary/10 bg-white dark:bg-background shadow-lg shadow-primary/5"
+        "surface-light border border-white/60 bg-white/95 backdrop-blur-xl shadow-lg shadow-black/20"
       )}
     >
       {/* Subtle bottom glow line when scrolled */}
@@ -105,7 +104,6 @@ export function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden items-center gap-3 xl:flex">
-          <ThemeToggle />
           <Button
             asChild
             className="group relative overflow-hidden px-6 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 ai-glow"
@@ -122,7 +120,6 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-3 xl:hidden">
-          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
@@ -148,7 +145,7 @@ export function Navbar() {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "overflow-hidden border-t border-primary/10 bg-white dark:bg-background transition-all duration-500 ease-out xl:hidden",
+          "overflow-hidden border-t border-primary/10 bg-white transition-all duration-500 ease-out xl:hidden",
           mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0",
           "rounded-b-3xl"
         )}

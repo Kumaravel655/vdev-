@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { BadgeCheck, ClipboardList, Lightbulb, Rocket, Smartphone } from "lucide-react"
 import { FaqList, JsonLd, SectionTitle, breadcrumbSchema, faqSchema } from "@/components/pricing-blocks"
+import { HeroBackdrop } from "@/components/page-sections"
 import { StartupOfferForm } from "@/components/startup-offer-form"
 import { startupFaqs, startupOffer } from "@/lib/pricing"
 import { site } from "@/lib/site"
@@ -41,8 +42,9 @@ export default function StartupOfferPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Offers", path: "/offers" }, { name: "Startup support", path: PATH }])} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-20 lg:pt-40">
-        <div className="container mx-auto max-w-6xl px-4">
+      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-20 lg:pt-40">
+        <HeroBackdrop name="startup-hero" position="center 35%" overlay="bg-black/65 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/55 lg:to-black/25" />
+        <div className="container relative mx-auto max-w-6xl px-4">
           <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
             <div className="text-center lg:text-left">
               <p className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 text-sm font-medium text-amber-700 dark:text-gold">

@@ -8,6 +8,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       <PageHero
+        image="contact-hero"
         eyebrow="Contact"
         icon={Mail}
         title="Tell us what"

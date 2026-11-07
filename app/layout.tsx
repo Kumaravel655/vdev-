@@ -5,7 +5,6 @@ import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { ThemeProvider } from '@/components/theme-provider'
 import { AIChatbot } from '@/components/ai-chatbot'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { JsonLd } from '@/components/pricing-blocks'
@@ -74,23 +73,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body className={`${inter.variable} ${jakarta.variable} font-sans antialiased`}>
         <JsonLd data={organizationSchema} />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <AIChatbot />
-            <WhatsAppButton />
-          </div>
-        </ThemeProvider>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <AIChatbot />
+          <WhatsAppButton />
+        </div>
       </body>
     </html>
   )

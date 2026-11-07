@@ -11,6 +11,28 @@ import { useInView } from "@/hooks/use-in-view"
 
 /** Shared building blocks for inner pages, matching the Services page layout. */
 
+/**
+ * Full-bleed photo behind a hero. Decorative, so alt is empty. Put `dark` on the section
+ * so text tokens switch to their light-on-dark values. Phones get the 960px file.
+ */
+export function HeroBackdrop({ name, position = "center", overlay = "bg-[radial-gradient(ellipse_at_center,rgb(0_0_0/0.85),rgb(0_0_0/0.55))]" }: { name: string; position?: string; overlay?: string }) {
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element -- images are unoptimized; srcSet does the responsive work */}
+      <img
+        src={`/images/${name}.webp`}
+        srcSet={`/images/${name}-sm.webp 960w, /images/${name}.webp 1920w`}
+        sizes="100vw"
+        alt=""
+        fetchPriority="high"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        style={{ objectPosition: position }}
+      />
+      <div aria-hidden className={cn("pointer-events-none absolute inset-0", overlay)} />
+    </>
+  )
+}
+
 type LinkAction = { href: string; label: string }
 
 export const reveal = (inView: boolean) => (inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0")
@@ -35,6 +57,7 @@ export function PageHero({
   description,
   primary,
   secondary,
+  image,
 }: {
   eyebrow: string
   icon: LucideIcon
@@ -43,13 +66,21 @@ export function PageHero({
   description: string
   primary: LinkAction
   secondary: LinkAction
+  /** Name of a /public/images photo to show behind the hero. */
+  image?: string
 }) {
   const { ref, isInView } = useInView()
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
-      <div className="pointer-events-none absolute inset-0 aurora-bg" />
-      <div className="pointer-events-none absolute inset-0 neural-grid opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+    <section className={cn("relative overflow-hidden pb-16 pt-32 lg:pb-24 lg:pt-40", image ? "dark bg-black" : "bg-gradient-to-b from-accent/30 via-muted/20 to-background")}>
+      {image ? (
+        <HeroBackdrop name={image} />
+      ) : (
+        <>
+          <div className="pointer-events-none absolute inset-0 aurora-bg" />
+          <div className="pointer-events-none absolute inset-0 neural-grid opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        </>
+      )}
       <div ref={ref} className="container relative mx-auto px-4">
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
