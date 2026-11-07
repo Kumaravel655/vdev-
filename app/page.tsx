@@ -266,7 +266,6 @@ export default function HomePage() {
         <div aria-hidden className="pointer-events-none absolute inset-0 neural-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         {/* Glow behind the price card so the glass has something to blur */}
         <div aria-hidden className="pointer-events-none absolute -right-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-primary/30 blur-3xl lg:right-[8%] lg:top-1/3" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
         <div className="relative w-full">
         <div ref={heroRef.ref} className="container mx-auto px-4 pb-14 pt-24 sm:pt-28 lg:pt-32">
           <div className="mx-auto grid max-w-6xl items-end gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
