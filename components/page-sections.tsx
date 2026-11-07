@@ -72,7 +72,7 @@ export function PageHero({
   const { ref, isInView } = useInView()
 
   return (
-    <section className={cn("relative overflow-hidden pb-16 pt-32 lg:pb-24 lg:pt-40", image ? "dark bg-black" : "bg-gradient-to-b from-accent/30 via-muted/20 to-background")}>
+    <section className={cn("relative overflow-hidden pb-16 pt-32 lg:pb-24 lg:pt-40", image ? "dark bg-background" : "bg-gradient-to-b from-accent/30 via-muted/20 to-background")}>
       {image ? (
         <HeroBackdrop name={image} />
       ) : (
@@ -109,11 +109,10 @@ export function PageHero({
   )
 }
 
-export function SectionHeading({ eyebrow, title, description, inView }: { eyebrow: string; title: string; description?: string; inView: boolean }) {
+export function SectionHeading({ title, description, inView }: { title: string; description?: string; inView: boolean }) {
   return (
     <div className={cn("mx-auto max-w-2xl text-center transition-all duration-700", reveal(inView))}>
-      <p className="text-sm font-semibold uppercase text-primary">{eyebrow}</p>
-      <h2 className="mt-3 text-balance text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
+      <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
       {description && <p className="mt-4 text-pretty text-muted-foreground">{description}</p>}
     </div>
   )
@@ -122,14 +121,12 @@ export function SectionHeading({ eyebrow, title, description, inView }: { eyebro
 /** Centred content section with a heading; children render below it. */
 export function Section({
   id,
-  eyebrow,
   title,
   description,
   muted,
   children,
 }: {
   id?: string
-  eyebrow: string
   title: string
   description?: string
   muted?: boolean
@@ -141,7 +138,7 @@ export function Section({
     <section id={id} ref={ref} className={cn("scroll-mt-28 py-20 lg:py-28", muted && "bg-muted/20")}>
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow={eyebrow} title={title} description={description} inView={isInView} />
+          <SectionHeading title={title} description={description} inView={isInView} />
           <div className="mt-12">{children(isInView)}</div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og"
 import { websitePlans, whatsappPlans } from "@/lib/pricing"
 
 // Preview card shown when the site is shared on WhatsApp, LinkedIn or X.
-export const alt = "VelanDev — websites and WhatsApp bots for small businesses"
+export const alt = "VelanDev - websites and WhatsApp bots for small businesses"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 

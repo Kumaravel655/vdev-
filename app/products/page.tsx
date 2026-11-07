@@ -99,7 +99,7 @@ export default function ProductsPage() {
           <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-3xl border border-primary/20 bg-card p-8 sm:p-10 md:flex-row md:items-center">
             <div className="max-w-xl">
               <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Need something BotForge doesn&apos;t cover?</h2>
-              <p className="mt-3 text-muted-foreground">We build websites, apps and custom AI automation around your process, and back founders at 50–70% off. Tell us what you need.</p>
+              <p className="mt-3 text-muted-foreground">We build websites, apps and custom AI automation around your process, and back founders at 50-70% off. Tell us what you need.</p>
             </div>
             <Button size="lg" asChild className="shrink-0">
               <Link href="/contact">Discuss your requirements <ArrowRight className="ml-2 h-4 w-4" aria-hidden /></Link>

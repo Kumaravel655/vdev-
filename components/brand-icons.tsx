@@ -10,17 +10,3 @@ export function WhatsAppIcon(props: IconProps) {
     </svg>
   )
 }
-
-/** VelanDev assistant mark: a chat-bubble head with eyes and an antenna spark. */
-export function AiBotIcon(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
-      <path d="M12 2.5v3" />
-      <path d="M12 1.2l.45.9.9.45-.9.45-.45.9-.45-.9-.9-.45.9-.45z" fill="currentColor" strokeWidth={0.8} />
-      <path d="M7 5.5h10a4 4 0 0 1 4 4v5.5a4 4 0 0 1-4 4h-5.5L7 22v-3.1A4 4 0 0 1 3 15V9.5a4 4 0 0 1 4-4z" />
-      <circle cx="9" cy="11.6" r="1.3" fill="currentColor" stroke="none" />
-      <circle cx="15" cy="11.6" r="1.3" fill="currentColor" stroke="none" />
-      <path d="M9.6 15.2c1.3.9 3.5.9 4.8 0" />
-    </svg>
-  )
-}

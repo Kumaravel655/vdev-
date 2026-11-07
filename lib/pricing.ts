@@ -1,3 +1,4 @@
+import { site } from "./site"
 /**
  * Every price, plan and offer on the site lives here. Pages, structured data (JSON-LD), the chatbot and llms.txt
  * read from this file, so search engines and AI answers always quote the same numbers the visitor sees.
@@ -241,6 +242,14 @@ export const startupFaqs: Faq[] = [
     a: "Founders with an idea for a mobile app, web platform or marketplace, for example an app that lets people order building materials from local suppliers. You can be at the idea stage with nothing built yet.",
   },
   {
+    q: "How much does it cost to build my app idea in India?",
+    a: `At VelanDev, custom apps normally cost ${inr(priceRanges.custom.from)} to ${inr(priceRanges.custom.to)}+ depending on scope. Startups pay ${startupOffer.minPct}% to ${startupOffer.maxPct}% less, so a first version normally priced at ${inr(100000)} costs ${inr(100000 * (1 - startupOffer.maxPct / 100))} to ${inr(100000 * (1 - startupOffer.minPct / 100))}. Share your idea at ${site.url}/startup-offer or WhatsApp ${site.phone} for a free idea review.`,
+  },
+  {
+    q: "What is the cheapest way to build an MVP for my startup idea?",
+    a: `Build only the core feature first, then add the rest after real users try it. VelanDev's startup support builds that first version (Android, iPhone or web) at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off, and you own the app and code. Apply at ${site.url}/startup-offer.`,
+  },
+  {
     q: "What does the 50% to 70% discount cover?",
     a: `The build of your first version: design, development and publishing on Google Play and the web. You pay ${startupOffer.minPct}% to ${startupOffer.maxPct}% less than our normal price for the same scope.`,
   },
@@ -264,7 +273,7 @@ export const startupFaqs: Faq[] = [
 export const offers: Offer[] = [
   {
     id: "startup",
-    tag: `${startupOffer.minPct}–${startupOffer.maxPct}% off`,
+    tag: `${startupOffer.minPct}-${startupOffer.maxPct}% off`,
     title: "Startup support: build your idea for less",
     detail: `Have an idea for a mobile app or platform? We build your first version at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off, with the exact discount set after we review your idea.`,
     href: "/startup-offer",

@@ -66,7 +66,7 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-24 lg:pt-40">
+      <section className="dark relative overflow-hidden bg-background pb-16 pt-32 lg:pb-24 lg:pt-40">
         <HeroBackdrop name="services-hero" position="65% center" />
         <div ref={heroRef.ref} className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl">
@@ -99,8 +99,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-6xl">
             <div className={cn("mx-auto max-w-2xl text-center transition-all duration-700", reveal(gridRef.isInView))}>
-              <p className="text-sm font-semibold uppercase text-primary">What we do</p>
-              <h2 className="mt-3 text-balance text-3xl font-bold text-foreground sm:text-4xl">Six services, one team</h2>
+              <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">Six services, one team</h2>
               <p className="mt-4 text-pretty text-muted-foreground">Pick one, or combine them. Most projects use two or three.</p>
             </div>
 
@@ -142,7 +141,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA — same gradient panel as the home page */}
+      {/* CTA - same gradient panel as the home page */}
       <section ref={ctaRef.ref} className="px-4 pb-20 lg:pb-28">
         <div className={cn("relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-violet-700 to-purple-900 px-6 py-16 text-center sm:px-12 lg:py-20 transition-all duration-700", reveal(ctaRef.isInView))}>
           <div aria-hidden className="absolute inset-0 circuit-pattern opacity-20" />

@@ -7,10 +7,10 @@ import { startupFaqs, startupOffer } from "@/lib/pricing"
 import { site } from "@/lib/site"
 
 const PATH = "/startup-offer"
-const range = `${startupOffer.minPct}–${startupOffer.maxPct}%`
+const range = `${startupOffer.minPct}-${startupOffer.maxPct}%`
 
 export const metadata: Metadata = {
-  title: `Startup Support — ${range} Off Building Your App Idea`,
+  title: `Startup Support - ${range} Off Building Your App Idea`,
   description: `Have an idea for a mobile app or platform? VelanDev builds your first version at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off: design, development and Play Store launch. Apply with your idea.`,
   keywords: ["startup support", "app development for startups", "startup app discount", "build my app idea", "mvp development chennai", "startup mobile app tamil nadu"],
   alternates: { canonical: PATH },
@@ -42,7 +42,7 @@ export default function StartupOfferPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Offers", path: "/offers" }, { name: "Startup support", path: PATH }])} />
 
       {/* Hero */}
-      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-20 lg:pt-40">
+      <section className="dark relative overflow-hidden bg-background pb-16 pt-32 lg:pb-20 lg:pt-40">
         <HeroBackdrop name="startup-hero" position="center 35%" overlay="bg-black/65 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/55 lg:to-black/25" />
         <div className="container relative mx-auto max-w-6xl px-4">
           <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
@@ -86,7 +86,7 @@ export default function StartupOfferPage() {
       {/* How it works */}
       <section className="py-16 lg:py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="How it works" title="From idea to launched app" />
+          <SectionTitle title="From idea to launched app" />
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <li key={s.title} className="rounded-2xl border border-border/60 bg-card p-6">
@@ -105,7 +105,7 @@ export default function StartupOfferPage() {
       {/* Terms: published so the range is honest */}
       <section className="bg-muted/20 py-16 lg:py-20">
         <div className="container mx-auto max-w-3xl px-4">
-          <SectionTitle eyebrow="Terms" title="Who qualifies and what's included" />
+          <SectionTitle title="Who qualifies and what's included" />
           <ul className="space-y-3 rounded-2xl border border-border/60 bg-card p-6 sm:p-8">
             {[
               "Founders with an idea for a mobile app, web platform or marketplace. Nothing needs to be built yet.",
@@ -127,14 +127,14 @@ export default function StartupOfferPage() {
       {/* Application */}
       <section id="apply" className="scroll-mt-24 py-16 lg:py-20">
         <div className="container mx-auto max-w-4xl px-4">
-          <SectionTitle eyebrow="Apply" title="Tell us about your idea" intro="We reply on WhatsApp within 1 working day." />
+          <SectionTitle title="Tell us about your idea" intro="We reply on WhatsApp within 1 working day." />
           <StartupOfferForm />
         </div>
       </section>
 
       <section className="pb-20 lg:pb-28">
         <div className="container mx-auto max-w-3xl px-4">
-          <SectionTitle eyebrow="FAQ" title="Startup support questions" />
+          <SectionTitle title="Startup support questions" />
           <FaqList faqs={startupFaqs} />
         </div>
       </section>

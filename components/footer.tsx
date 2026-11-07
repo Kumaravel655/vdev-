@@ -64,7 +64,7 @@ export function Footer() {
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center relative">
             <div className="max-w-md">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
-                <Sparkles className="h-3 w-3 animate-pulse" />
+                <Sparkles className="h-3 w-3" />
                 Newsletter
               </div>
               <h3 className="text-2xl font-bold text-foreground">
@@ -81,7 +81,7 @@ export function Footer() {
                 aria-label="Email address"
                 className="min-w-0 flex-1 rounded-lg border border-border bg-background/80 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-300"
               />
-              <Button className="group shrink-0 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 ai-glow">
+              <Button className="group shrink-0 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30">
                 Subscribe
                 <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Button>
@@ -94,8 +94,8 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="group inline-flex items-center gap-3 transition-transform duration-300 hover:scale-105">
-              <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-purple-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
-                <Image src="/logo.jpg" alt="VelanDev logo" width={40} height={40} className="h-10 w-10 object-contain rounded-lg" />
+              <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white shadow-md shadow-primary/25 ring-1 ring-primary/15 transition-shadow duration-300 group-hover:shadow-lg group-hover:shadow-primary/35">
+                <Image src="/logo.jpg" alt="VelanDev logo" width={40} height={40} className="h-9 w-9 rounded-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-foreground">VelanDev</span>
@@ -125,7 +125,7 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
                 <Clock className="h-4 w-4 text-primary" />
               </div>
-              Mon–Fri: 9:00 AM – 6:00 PM IST
+              Mon-Fri: 9:00 AM - 6:00 PM IST
             </div>
 
             {/* Social Links */}

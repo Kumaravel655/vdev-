@@ -11,7 +11,7 @@ const PATH = "/delivery-app-development"
 const from = inr(deliveryApp.from)
 
 export const metadata: Metadata = {
-  title: `Delivery App Development from ${from} — Vellore & Chennai`,
+  title: `Delivery App Development from ${from} - Vellore & Chennai`,
   description: `Get your own delivery app from ${from}: customer app, delivery partner app and admin panel with live tracking, UPI payments and Play Store launch. For restaurants, grocery, pharmacy and building-material businesses in Vellore, Chennai and India.`,
   keywords: ["delivery app development", "delivery app cost india", "food delivery app development", "grocery delivery app", "delivery app chennai", "delivery app vellore", "own delivery app for restaurant"],
   alternates: { canonical: PATH },
@@ -47,7 +47,7 @@ export default function DeliveryAppPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Delivery App Development", path: PATH }])} />
 
       {/* Hero */}
-      <section className="dark relative overflow-hidden bg-black pb-16 pt-32 lg:pb-24 lg:pt-40">
+      <section className="dark relative overflow-hidden bg-background pb-16 pt-32 lg:pb-24 lg:pt-40">
         <HeroBackdrop name="delivery-hero" position="40% center" />
         <div className="container relative mx-auto max-w-4xl px-4 text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
@@ -82,7 +82,7 @@ export default function DeliveryAppPage() {
       {/* Three apps */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="What you get" title="Three apps, one delivery system" />
+          <SectionTitle title="Three apps, one delivery system" />
           <div className="grid gap-6 md:grid-cols-3">
             {deliveryApps.map((app, i) => {
               const Icon = appIcons[i]
@@ -110,7 +110,7 @@ export default function DeliveryAppPage() {
       {/* Use cases */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Who it's for" title="Delivery apps for local businesses" />
+          <SectionTitle title="Delivery apps for local businesses" />
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-3">
             {useCases.map((u) => (
               <li key={u} className="rounded-2xl border border-border/60 bg-card px-5 py-4 text-sm font-medium text-foreground">{u}</li>
@@ -122,7 +122,7 @@ export default function DeliveryAppPage() {
       {/* Process */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Process" title="From idea to Play Store in about 6–10 weeks" />
+          <SectionTitle title="From idea to Play Store in about 6-10 weeks" />
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {process.map((p, i) => (
               <li key={p.title} className="rounded-2xl border border-border/60 bg-card p-5">
@@ -138,7 +138,7 @@ export default function DeliveryAppPage() {
       {/* FAQ */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-3xl px-4">
-          <SectionTitle eyebrow="FAQ" title="Delivery app questions, answered" />
+          <SectionTitle title="Delivery app questions, answered" />
           <FaqList faqs={deliveryFaqs} />
         </div>
       </section>

@@ -30,7 +30,7 @@ import { listJobs } from "@/lib/careers-db"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Careers — Software Jobs in Chennai",
+  title: "Careers - Software Jobs in Chennai",
   alternates: { canonical: "/careers" },
   description: "Join VelanDev and work on real-world products and enterprise systems. We offer a collaborative environment focused on learning, innovation and career growth.",
 }
@@ -103,9 +103,6 @@ export default function CareersPage() {
         <div className="container relative z-10 mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-4 flex items-center justify-center gap-3">
-              <Badge variant="secondary" className="border-purple-500/30 bg-purple-500/10 text-purple-400">
-                Join Our Team
-              </Badge>
               <Badge variant="secondary" className="border-violet-500/30 bg-violet-500/10 text-violet-400">
                 <Wifi className="mr-1 h-3 w-3" />
                 Remote Opportunities Available
@@ -132,9 +129,6 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
-              <Badge variant="secondary" className="mb-4 border-purple-500/30 bg-purple-500/10 text-purple-400">
-                Why VelanDev
-              </Badge>
               <h2 className="text-3xl font-bold">
                 <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                   Why Join VelanDev?
@@ -152,7 +146,7 @@ export default function CareersPage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-violet-500/5 opacity-0 transition-opacity group-hover:opacity-100" />
                   <CardContent className="relative flex items-start gap-4 pt-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-purple-600/5 ring-1 ring-purple-500/20 transition-all duration-300 group-hover:ring-purple-400/40 group-hover:ai-glow">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-purple-600/5 ring-1 ring-purple-500/20 transition-all duration-300 group-hover:ring-purple-400/40">
                       <benefit.icon className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
@@ -167,28 +161,25 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Life at VelanDev — Perks */}
+      {/* Life at VelanDev - Perks */}
       <section className="relative py-16 lg:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/[0.03] to-transparent" />
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
-              <Badge variant="secondary" className="mb-4 border-violet-500/30 bg-violet-500/10 text-violet-400">
-                Culture
-              </Badge>
               <h2 className="text-3xl font-bold">
                 <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-primary bg-clip-text text-transparent">
                   Life at VelanDev
                 </span>
               </h2>
               <p className="mt-4 text-muted-foreground">
-                More than just a workplace — a community where creativity and growth thrive.
+                More than just a workplace - a community where creativity and growth thrive.
               </p>
             </div>
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
               {perks.map((perk, index) => (
                 <div key={perk.label} className="group flex flex-col items-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-card transition-all duration-300 group-hover:border-purple-500/30 group-hover:ai-glow">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-card transition-all duration-300 group-hover:border-purple-500/30">
                     <perk.icon className="h-7 w-7 text-muted-foreground transition-colors group-hover:text-purple-400" />
                   </div>
                   <span className="mt-3 text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
@@ -206,9 +197,6 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl">
             <div className="text-center">
-              <Badge variant="secondary" className="mb-4 border-purple-500/30 bg-purple-500/10 text-purple-400">
-                Open Roles
-              </Badge>
               <h2 className="text-3xl font-bold">
                 <span className="bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent">
                   Open Positions
@@ -270,7 +258,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* VelanDev Academy — Internships & Training */}
+      {/* VelanDev Academy - Internships & Training */}
       <section className="relative py-16 lg:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.03] to-transparent" />
         <div className="container relative mx-auto px-4">

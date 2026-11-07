@@ -114,7 +114,7 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
                 <CardContent>
                   {isSubmitted ? (
                     <div className="flex flex-col items-center justify-center py-12 text-center">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 ai-glow">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                         <CheckCircle2 className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="mt-4 text-xl font-semibold text-foreground">
@@ -168,7 +168,7 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
                           <option value="website-package">Website package (from {inr(websitePlans[0].price)})</option>
                           <option value="whatsapp-bot">BotForge WhatsApp bot (from {inr(whatsappPlans[0].price)}/month)</option>
                           <option value="delivery-app">Delivery app (from {inr(deliveryApp.from)})</option>
-                          <option value="startup-offer">Startup support (50–70% off your idea)</option>
+                          <option value="startup-offer">Startup support (50-70% off your idea)</option>
                           <option value="web-development">Web Development</option>
                           <option value="mobile-app">Mobile App Development</option>
                           <option value="ai-solutions">AI automation & R&amp;D</option>
@@ -242,10 +242,10 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
                       Business hours
                     </h4>
                     <p className="mt-2 text-sm text-muted-foreground">
-                      Monday – Friday: 9:00 AM – 6:00 PM IST
+                      Monday - Friday: 9:00 AM - 6:00 PM IST
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Saturday – Sunday: Closed
+                      Saturday - Sunday: Closed
                     </p>
                   </div>
 

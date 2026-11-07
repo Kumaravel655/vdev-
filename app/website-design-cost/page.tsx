@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: `Professional business websites from ${inr(lowest)} to ${inr(highest)} one-time. Mobile-friendly, SEO-ready, WhatsApp button and Google Maps included. For small businesses in Vellore, Chennai and across Tamil Nadu.`,
   keywords: ["website design cost", "low cost website design", "affordable website design chennai", "website price in india", "cheap website for small business", "website design 6000", "business website chennai", "website developer tamil nadu"],
   alternates: { canonical: PATH },
-  openGraph: { title: `Websites from ${inr(lowest)} — VelanDev`, description: "Mobile-friendly, SEO-ready business websites with WhatsApp button. One-time price, no hidden fees.", url: PATH, type: "website" },
+  openGraph: { title: `Websites from ${inr(lowest)} - VelanDev`, description: "Mobile-friendly, SEO-ready business websites with WhatsApp button. One-time price, no hidden fees.", url: PATH, type: "website" },
 }
 
 const included = [
@@ -90,7 +90,7 @@ export default function WebsiteCostPage() {
       {/* Plans */}
       <section id="plans" className="scroll-mt-24 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Plans" title="Website design packages" intro="Pick a plan, share your content, and we build it. Upgrade anytime and what you paid counts towards the bigger plan." />
+          <SectionTitle title="Website design packages" intro="Pick a plan, share your content, and we build it. Upgrade anytime and what you paid counts towards the bigger plan." />
           <PlanGrid plans={websitePlans} contactService="website-package" />
           <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground">
             Prices exclude GST. Hosting, domain and maintenance are billed yearly, separately; we quote them before you pay. Need an online store? E-commerce websites cost {inr(priceRanges.ecommerce.from)} to {inr(priceRanges.ecommerce.to)}.
@@ -101,7 +101,7 @@ export default function WebsiteCostPage() {
       {/* Included */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Every plan" title="Included in every website" />
+          <SectionTitle title="Included in every website" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {included.map((u) => (
               <div key={u.title} className="rounded-2xl border border-border/60 bg-card p-6">
@@ -117,7 +117,7 @@ export default function WebsiteCostPage() {
       {/* Comparison table */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-4xl px-4">
-          <SectionTitle eyebrow="Compare" title="Website prices at a glance" />
+          <SectionTitle title="Website prices at a glance" />
           <PlanTable plans={websitePlans} caption="VelanDev website design plans and one-time prices" />
         </div>
       </section>
@@ -125,7 +125,7 @@ export default function WebsiteCostPage() {
       {/* Offers */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Offers" title="Current offers" />
+          <SectionTitle title="Current offers" />
           <OfferGrid offers={featuredOffers} />
           <p className="mt-8 text-center">
             <Link href="/offers" className="text-sm font-semibold text-primary">See all offers →</Link>
@@ -136,7 +136,7 @@ export default function WebsiteCostPage() {
       {/* FAQ */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-3xl px-4">
-          <SectionTitle eyebrow="FAQ" title="Website cost questions, answered" />
+          <SectionTitle title="Website cost questions, answered" />
           <FaqList faqs={websiteFaqs} />
         </div>
       </section>

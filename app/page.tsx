@@ -90,7 +90,7 @@ const heroPhrases = ["earns, automates and gives back.", "grows your business.",
 const startingPrices = [
   { href: "/website-design-cost", label: "Business website", price: inr(websitePlans[0].price), unit: "one-time", note: `Starter, Business & Pro, up to ${inr(websitePlans[2].price)}` },
   { href: "/whatsapp-bot", label: "WhatsApp bot", price: inr(whatsappPlans[0].price), unit: "per month", note: "BotForge · setup free on yearly plans" },
-  { href: "/startup-offer", label: "Startup app build", price: `${startupOffer.minPct}–${startupOffer.maxPct}%`, unit: "off your first version", note: "Your app idea, built for less" },
+  { href: "/startup-offer", label: "Startup app build", price: `${startupOffer.minPct}-${startupOffer.maxPct}%`, unit: "off your first version", note: "Your app idea, built for less" },
 ]
 
 /** The four pillars VelanDev is positioned on. Services fund the other three. */
@@ -197,9 +197,9 @@ function SectionHeading({ eyebrow, title, description, action, inView, invert = 
   )
 }
 
-/** Left-aligned heading with the description on the right on desktop. */
+/** Left-aligned heading, description stacked under it (one message per section). */
 function SplitHeading({ eyebrow, title, description, action, inView, id }: {
-  eyebrow: string
+  eyebrow?: string
   title: string
   description?: string
   action?: ReactNode
@@ -207,17 +207,11 @@ function SplitHeading({ eyebrow, title, description, action, inView, id }: {
   id?: string
 }) {
   return (
-    <div className={cn("grid gap-4 transition-all duration-700 lg:grid-cols-2 lg:items-end lg:gap-16", inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0")}>
-      <div>
-        <p className="text-sm font-semibold uppercase text-primary">{eyebrow}</p>
-        <h2 id={id} className="mt-3 text-balance text-4xl font-bold text-foreground sm:text-5xl">{title}</h2>
-      </div>
-      {(description || action) && (
-        <div className="max-w-md lg:justify-self-end">
-          {description && <p className="text-pretty text-muted-foreground">{description}</p>}
-          {action && <div className={cn(description && "mt-4")}>{action}</div>}
-        </div>
-      )}
+    <div className={cn("max-w-2xl transition-all duration-700", inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0")}>
+      {eyebrow && <p className="mb-3 text-sm font-semibold uppercase text-primary">{eyebrow}</p>}
+      <h2 id={id} className="text-balance text-4xl font-bold text-foreground sm:text-5xl">{title}</h2>
+      {description && <p className="mt-4 text-pretty text-lg text-muted-foreground">{description}</p>}
+      {action && <div className="mt-5">{action}</div>}
     </div>
   )
 }
@@ -265,11 +259,11 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* ===== HERO ===== */}
-      <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-black">
+      <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-background">
         {/* City lights sit on the right, behind the glass price card; the left stays dark for the headline */}
         <HeroBackdrop name="home-hero" position="70% center" overlay="bg-gradient-to-t from-black via-black/75 to-black/45 lg:bg-gradient-to-r lg:from-black lg:via-black/55 lg:to-black/10" />
         <div className="relative w-full">
-        <div ref={heroRef.ref} className="container mx-auto px-4 pb-14 pt-24 sm:pt-28 lg:pt-32">
+        <div ref={heroRef.ref} className="container mx-auto px-4 pb-14 pt-24">
           <div className="mx-auto grid max-w-6xl items-end gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
             <div>
               <p className={cn("flex items-center gap-2 text-xs font-semibold uppercase text-purple-200 transition-all duration-700", reveal(heroRef.isInView))}>
@@ -287,7 +281,7 @@ export default function HomePage() {
               </h1>
 
               <p className={cn("mt-5 max-w-lg text-pretty text-base leading-relaxed text-white/85 transition-all duration-700 delay-300 sm:text-lg", reveal(heroRef.isInView))}>
-                Software services and custom AI automation for businesses, apps for social causes, and {startupOffer.minPct}–{startupOffer.maxPct}% off for founders building their first product.
+                Software services and AI automation for businesses, apps for social causes, and <span className="whitespace-nowrap">{startupOffer.minPct}-{startupOffer.maxPct}%</span> off for first-time founders.
               </p>
 
               <div className={cn("mt-7 flex gap-3 transition-all duration-700 delay-500 sm:mt-9", reveal(heroRef.isInView))}>
@@ -302,9 +296,6 @@ export default function HomePage() {
                 </Button>
               </div>
 
-              <p className={cn("mt-5 hidden text-sm text-white/70 transition-all duration-700 delay-500 sm:block", reveal(heroRef.isInView))}>
-                {facts[0].value} projects delivered since {founded}
-              </p>
             </div>
 
             {/* Signature element: the starting prices people search for, on a glass rate card */}
@@ -343,7 +334,6 @@ export default function HomePage() {
           <Panel>
             <SplitHeading
               inView={pillarsRef.isInView}
-              eyebrow="What we do"
               title="Four pillars, one team"
               description="Our software services pay the bills. They also let us run AI research, build apps for social causes and back new founders."
             />
@@ -406,7 +396,7 @@ export default function HomePage() {
                       {pillar.name}
                     </p>
                     <h3 className="mt-3 font-display text-5xl font-extrabold tabular-nums text-foreground sm:text-6xl">
-                      {startupOffer.minPct}–{startupOffer.maxPct}% <span className="block text-2xl font-bold sm:text-3xl">off building your app idea</span>
+                      {startupOffer.minPct}-{startupOffer.maxPct}% <span className="block text-2xl font-bold sm:text-3xl">off building your app idea</span>
                     </h3>
                     <p className="mt-4 max-w-lg text-pretty leading-relaxed text-muted-foreground">{pillar.summary}</p>
                     <ul className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -436,13 +426,9 @@ export default function HomePage() {
           <Panel>
             <div className={cn("grid gap-10 transition-all duration-700 lg:grid-cols-[1fr_1.5fr] lg:items-center lg:gap-16", reveal(statsRef.isInView))}>
               <div>
-                <p className="flex items-center gap-2 text-sm font-semibold uppercase text-primary">
-                  <MapPin className="h-4 w-4" aria-hidden />
-                  Chennai · since {founded}
-                </p>
-                <h2 id="facts-title" className="mt-3 text-balance text-3xl font-bold text-foreground sm:text-4xl">Small team, steady delivery</h2>
+                <h2 id="facts-title" className="text-balance text-3xl font-bold text-foreground sm:text-4xl">Small team, steady delivery</h2>
                 <p className="mt-3 max-w-sm text-pretty text-muted-foreground">
-                  One team in Sholinganallur designs, builds and supports everything we ship, in Tamil and English.
+                  One team in Sholinganallur, Chennai, since {founded}. We design, build and support everything we ship, in Tamil and English.
                 </p>
               </div>
 
@@ -509,7 +495,6 @@ export default function HomePage() {
           <Panel>
             <SplitHeading
               inView={techRef.isInView}
-              eyebrow="Technology stack"
               title="Tools we use every day"
               description="Widely used, well-supported technology, so what we build stays easy to maintain and hire for."
             />
@@ -553,7 +538,7 @@ export default function HomePage() {
         {/* Process: one connected timeline, vertical on phones */}
         <section ref={processRef.ref} className="glow-right px-4 py-16 sm:py-20 lg:py-28">
           <Panel>
-            <SplitHeading inView={processRef.isInView} eyebrow="Our process" title="How we work" description="Six steps from the first call to long-term support." />
+            <SplitHeading inView={processRef.isInView} title="How we work" description="Six steps from the first call to long-term support." />
             <ol className="relative mt-10 grid gap-8 sm:mt-12 lg:grid-cols-6 lg:gap-6">
               <span aria-hidden className="absolute bottom-5 left-5 top-5 w-px bg-border lg:bottom-auto lg:left-5 lg:right-5 lg:top-5 lg:h-px lg:w-auto" />
               {processSteps.map((step, index) => (
@@ -578,7 +563,6 @@ export default function HomePage() {
           <Panel>
             <SplitHeading
               inView={industriesRef.isInView}
-              eyebrow="Industries"
               title="Industries we serve"
               action={<ArrowLink href="/industries">See industry solutions</ArrowLink>}
             />
@@ -607,8 +591,7 @@ export default function HomePage() {
           <Panel>
             <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
               <div className={cn("transition-all duration-700 lg:sticky lg:top-28 lg:self-start", reveal(whyUsRef.isInView))}>
-                <p className="text-sm font-semibold uppercase text-primary">Why VelanDev</p>
-                <h2 className="mt-3 text-balance text-4xl font-bold text-foreground sm:text-5xl">What working with us is like</h2>
+                <h2 className="text-balance text-4xl font-bold text-foreground sm:text-5xl">What working with us is like</h2>
                 <p className="mt-4 max-w-sm text-pretty text-muted-foreground">Six things our clients can count on, whichever pillar their project falls under.</p>
               </div>
               <ul className="grid gap-4 sm:grid-cols-2">

@@ -12,11 +12,10 @@ export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />
 }
 
-export function SectionTitle({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
+export function SectionTitle({ title, intro }: { title: string; intro?: string }) {
   return (
     <div className="mx-auto mb-10 max-w-2xl text-center">
-      <p className="text-sm font-semibold uppercase text-primary">{eyebrow}</p>
-      <h2 className="mt-3 text-balance text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
+      <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">{title}</h2>
       {intro && <p className="mt-4 text-pretty text-muted-foreground">{intro}</p>}
     </div>
   )

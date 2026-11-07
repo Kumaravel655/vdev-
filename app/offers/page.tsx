@@ -59,7 +59,7 @@ export default function OffersPage() {
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2">
           <div>
-            <SectionTitle eyebrow="Websites" title="Website prices" />
+            <SectionTitle title="Website prices" />
             <PlanTable plans={websitePlans} caption="Website plans and one-time prices" />
             <p className="mt-6 text-center">
               <Link href="/website-design-cost" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
@@ -68,7 +68,7 @@ export default function OffersPage() {
             </p>
           </div>
           <div>
-            <SectionTitle eyebrow="WhatsApp" title="WhatsApp bot prices" />
+            <SectionTitle title="WhatsApp bot prices" />
             <PlanTable plans={whatsappPlans} caption="WhatsApp bot plans and monthly prices" />
             <p className="mt-6 text-center">
               <Link href="/whatsapp-bot" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">

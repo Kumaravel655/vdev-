@@ -8,11 +8,11 @@ import { CtaPanel, PageHero, Section, cardClass, reveal, trackSpotlight } from "
 
 const r = priceRanges
 const tiers = [
-  { title: "Business Website", price: inr(websitePlans[0].price), period: `– ${inr(websitePlans[2].price)} one-time`, icon: Globe, popular: true, href: "/website-design-cost", features: ["5 to 10 pages", "Mobile-friendly & SEO-ready", "Contact form & WhatsApp button", "Google Maps & Business Profile", "Hosting & maintenance billed yearly"] },
-  { title: "E-Commerce Website", price: inr(r.ecommerce.from), period: `– ${inr(r.ecommerce.to)} one-time`, icon: ShoppingCart, popular: false, features: ["Product catalogue", "Cart & checkout", "Payment gateway integration", "Admin panel & order management", "Hosting & maintenance billed yearly"] },
-  { title: "WhatsApp Bot (BotForge)", price: inr(whatsappPlans[0].price), period: `– ${inr(whatsappPlans[2].price)}/month`, icon: MessageCircle, popular: false, href: "/whatsapp-bot", features: ["Instant 24/7 auto-replies", "Enquiry capture & lead management", "Broadcasts & basic automation", `Setup ${inr(whatsappPlans[0].setupFee ?? 0)} – ${inr(whatsappPlans[2].setupFee ?? 0)}, free on yearly`, "Meta messaging charges at cost"] },
-  { title: "Startup Support", price: `${startupOffer.minPct}–${startupOffer.maxPct}%`, period: "off your first version", icon: Rocket, popular: false, href: "/startup-offer", features: ["For founders with an app or platform idea", "Design, development & Play Store launch", "Discount set in writing after an idea review", "You own the app and the code"] },
-  { title: "Custom Software & Delivery Apps", price: inr(r.custom.from), period: `– ${inr(r.custom.to)}+`, icon: Code2, popular: false, href: "/delivery-app-development", features: [`Delivery apps from ${inr(deliveryApp.from)}`, "Tailored software & dashboards", "Mobile apps", "Custom AI automation & R&D", "Fixed quote after scoping"] },
+  { title: "Business Website", price: inr(websitePlans[0].price), period: `- ${inr(websitePlans[2].price)} one-time`, icon: Globe, popular: true, href: "/website-design-cost", features: ["5 to 10 pages", "Mobile-friendly & SEO-ready", "Contact form & WhatsApp button", "Google Maps & Business Profile", "Hosting & maintenance billed yearly"] },
+  { title: "E-Commerce Website", price: inr(r.ecommerce.from), period: `- ${inr(r.ecommerce.to)} one-time`, icon: ShoppingCart, popular: false, features: ["Product catalogue", "Cart & checkout", "Payment gateway integration", "Admin panel & order management", "Hosting & maintenance billed yearly"] },
+  { title: "WhatsApp Bot (BotForge)", price: inr(whatsappPlans[0].price), period: `- ${inr(whatsappPlans[2].price)}/month`, icon: MessageCircle, popular: false, href: "/whatsapp-bot", features: ["Instant 24/7 auto-replies", "Enquiry capture & lead management", "Broadcasts & basic automation", `Setup ${inr(whatsappPlans[0].setupFee ?? 0)} - ${inr(whatsappPlans[2].setupFee ?? 0)}, free on yearly`, "Meta messaging charges at cost"] },
+  { title: "Startup Support", price: `${startupOffer.minPct}-${startupOffer.maxPct}%`, period: "off your first version", icon: Rocket, popular: false, href: "/startup-offer", features: ["For founders with an app or platform idea", "Design, development & Play Store launch", "Discount set in writing after an idea review", "You own the app and the code"] },
+  { title: "Custom Software & Delivery Apps", price: inr(r.custom.from), period: `- ${inr(r.custom.to)}+`, icon: Code2, popular: false, href: "/delivery-app-development", features: [`Delivery apps from ${inr(deliveryApp.from)}`, "Tailored software & dashboards", "Mobile apps", "Custom AI automation & R&D", "Fixed quote after scoping"] },
 ]
 
 const faqs = [
@@ -36,7 +36,7 @@ export default function PricingPage() {
         secondary={{ href: "#plans", label: "See plans" }}
       />
 
-      <Section id="plans" eyebrow="Plans" title="Starting prices by product" description="All prices in Indian rupees. Your final quote depends on scope.">
+      <Section id="plans" title="Starting prices by product" description="All prices in Indian rupees. Your final quote depends on scope.">
         {(inView) => (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {tiers.map((tier, index) => (
@@ -79,7 +79,7 @@ export default function PricingPage() {
         )}
       </Section>
 
-      <Section muted eyebrow="FAQ" title="Questions about pricing">
+      <Section muted title="Questions about pricing">
         {(inView) => (
           <div className="mx-auto max-w-3xl space-y-3">
             {faqs.map((faq, index) => (

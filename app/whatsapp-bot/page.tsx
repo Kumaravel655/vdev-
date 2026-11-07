@@ -10,7 +10,7 @@ const PATH = "/whatsapp-bot"
 const lowest = whatsappPlans[0].price
 
 export const metadata: Metadata = {
-  title: `WhatsApp Bot from ${inr(lowest)}/month — Low-Cost Chatbot India`,
+  title: `WhatsApp Bot from ${inr(lowest)}/month - Low-Cost Chatbot India`,
   description: `Automate WhatsApp replies, leads, broadcasts and orders from ${inr(lowest)}/month on the official WhatsApp Business API, setup free on yearly plans. BotForge plans for shops, clinics and small businesses in Vellore, Chennai and across India.`,
   keywords: ["whatsapp bot", "whatsapp bot price", "cheapest whatsapp bot india", "whatsapp chatbot for business", "whatsapp automation", "whatsapp business api chennai", "whatsapp auto reply bot"],
   alternates: { canonical: PATH },
@@ -28,7 +28,7 @@ const useCases = [
 
 const chat = [
   { from: "customer", text: "Hi, what are your timings?" },
-  { from: "bot", text: "Hello! 👋 We're open 9 AM – 9 PM, Monday to Saturday.\n\n1️⃣ Price list\n2️⃣ Book a visit\n3️⃣ Talk to our team" },
+  { from: "bot", text: "Hello! 👋 We're open 9 AM - 9 PM, Monday to Saturday.\n\n1️⃣ Price list\n2️⃣ Book a visit\n3️⃣ Talk to our team" },
   { from: "customer", text: "1" },
   { from: "bot", text: "Here's our latest price list 📄. Want me to book a visit for you?" },
 ]
@@ -106,7 +106,7 @@ export default function WhatsappBotPage() {
       {/* Plans */}
       <section id="plans" className="scroll-mt-24 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Plans" title="WhatsApp bot pricing" intro="Monthly plans with a one-time setup fee. Pay yearly and setup is free." />
+          <SectionTitle title="WhatsApp bot pricing" intro="Monthly plans with a one-time setup fee. Pay yearly and setup is free." />
           <PlanGrid plans={whatsappPlans} contactService="whatsapp-bot" />
           <p className="mx-auto mt-6 max-w-2xl text-center text-xs text-muted-foreground">
             Prices exclude GST. Messages your business starts (broadcasts, reminders) are charged by Meta at official rates and billed at cost. Replies to customer messages are free.
@@ -117,7 +117,7 @@ export default function WhatsappBotPage() {
       {/* Use cases */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="What it does" title="What a WhatsApp bot does for your business" />
+          <SectionTitle title="What a WhatsApp bot does for your business" />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {useCases.map((u) => (
               <div key={u.title} className="rounded-2xl border border-border/60 bg-card p-6">
@@ -133,7 +133,7 @@ export default function WhatsappBotPage() {
       {/* Comparison table */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-4xl px-4">
-          <SectionTitle eyebrow="Compare" title="WhatsApp bot plans at a glance" />
+          <SectionTitle title="WhatsApp bot plans at a glance" />
           <PlanTable plans={whatsappPlans} caption="VelanDev WhatsApp bot plans and monthly prices" />
         </div>
       </section>
@@ -141,7 +141,7 @@ export default function WhatsappBotPage() {
       {/* Offers */}
       <section className="bg-muted/20 py-20 lg:py-24">
         <div className="container mx-auto max-w-6xl px-4">
-          <SectionTitle eyebrow="Offers" title="Current offers" />
+          <SectionTitle title="Current offers" />
           <OfferGrid offers={featuredOffers} />
           <p className="mt-8 text-center">
             <Link href="/offers" className="text-sm font-semibold text-primary">See all offers →</Link>
@@ -152,7 +152,7 @@ export default function WhatsappBotPage() {
       {/* FAQ */}
       <section className="py-20 lg:py-24">
         <div className="container mx-auto max-w-3xl px-4">
-          <SectionTitle eyebrow="FAQ" title="WhatsApp bot questions, answered" />
+          <SectionTitle title="WhatsApp bot questions, answered" />
           <FaqList faqs={whatsappFaqs} />
         </div>
       </section>

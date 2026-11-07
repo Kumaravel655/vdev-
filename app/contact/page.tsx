@@ -13,12 +13,12 @@ export default function ContactPage() {
         icon={Mail}
         title="Tell us what"
         accent="you're building"
-        description="Send a message, call or email — whichever suits you. We reply within 24 hours on working days with a clear next step and a free estimate."
+        description="Send a message, call or email - whichever suits you. We reply within 24 hours on working days with a clear next step and a free estimate."
         primary={{ href: "#message", label: "Send a message" }}
         secondary={{ href: "tel:+919042655224", label: "Call +91 90426 55224" }}
       />
 
-      <Section id="message" eyebrow="Get in touch" title="Send us a message" description="Share a few details about your project. The more you tell us, the more accurate our first estimate.">
+      <Section id="message" title="Send us a message" description="Share a few details about your project. The more you tell us, the more accurate our first estimate.">
         {(inView) => <ContactForm inView={inView} />}
       </Section>
 

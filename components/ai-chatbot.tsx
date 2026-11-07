@@ -1,8 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { X, Send, User, Zap } from "lucide-react"
-import { AiBotIcon } from "@/components/brand-icons"
+import { BotMessageSquare, X, Send, User, Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { deliveryApp, inr, priceRanges, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
@@ -61,7 +60,7 @@ const getBotReply = (input: string) => {
     {
       keywords: ["product", "products"],
       reply:
-        "Our product is BotForge, a WhatsApp bot that answers customers automatically (see /whatsapp-bot). We also offer software services, custom AI automation, social welfare apps, and 50–70% off app builds for startups (see /startup-offer).",
+        "Our product is BotForge, a WhatsApp bot that answers customers automatically (see /whatsapp-bot). We also offer software services, custom AI automation, social welfare apps, and 50-70% off app builds for startups (see /startup-offer).",
     },
     {
       keywords: ["industry", "industries", "healthcare", "finance", "education", "logistics", "retail"],
@@ -71,7 +70,7 @@ const getBotReply = (input: string) => {
     {
       keywords: ["price", "pricing", "cost", "quote", "budget"],
       reply:
-        `Websites start at ${inr(websitePlans[0].price)} one-time and WhatsApp bots at ${inr(whatsappPlans[0].price)}/month. E-commerce costs ${inr(priceRanges.ecommerce.from)}–${inr(priceRanges.ecommerce.to)}, custom software from ${inr(priceRanges.custom.from)}. See /pricing and current offers at /offers, or share your requirement for a quote.`,
+        `Websites start at ${inr(websitePlans[0].price)} one-time and WhatsApp bots at ${inr(whatsappPlans[0].price)}/month. E-commerce costs ${inr(priceRanges.ecommerce.from)}-${inr(priceRanges.ecommerce.to)}, custom software from ${inr(priceRanges.custom.from)}. See /pricing and current offers at /offers, or share your requirement for a quote.`,
     },
     {
       keywords: ["contact", "email", "mail", "phone", "call", "location", "address"],
@@ -173,7 +172,6 @@ export function AIChatbot() {
         onClick={() => setIsOpen(true)}
         className={cn(
           "fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/40 ring-1 ring-white/10 transition-all duration-500 hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40 sm:bottom-6 sm:right-6",
-          "ai-glow-intense",
           isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
         )}
         aria-label="Chat with VelanDev AI"
@@ -181,7 +179,7 @@ export function AIChatbot() {
         {/* Animated Rings */}
         <span className="absolute inset-0 rounded-full bg-primary/25 motion-safe:animate-pulse-ring" aria-hidden />
         
-        <AiBotIcon className="relative h-8 w-8" />
+        <BotMessageSquare strokeWidth={1.75} className="relative h-8 w-8" />
       </button>
 
       {/* Chat Window */}
@@ -200,15 +198,15 @@ export function AIChatbot() {
           
           <div className="relative flex items-center gap-3">
             <div className="relative">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary ai-glow">
-                <AiBotIcon className="h-7 w-7 text-primary-foreground" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary">
+                <BotMessageSquare strokeWidth={1.75} className="h-7 w-7 text-primary-foreground" />
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-background bg-green-500 animate-pulse" />
+              <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-background bg-green-500" />
             </div>
             <div>
               <h3 className="font-semibold text-foreground">VelanDev AI</h3>
               <div className="flex items-center gap-1.5">
-                <Zap className="h-3 w-3 text-primary animate-pulse" />
+                <Zap className="h-3 w-3 text-primary" />
                 <span className="text-xs text-muted-foreground">Powered by AI</span>
               </div>
             </div>
@@ -239,7 +237,7 @@ export function AIChatbot() {
               >
                 {message.isAi && (
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                    <AiBotIcon className="h-5 w-5 text-primary" />
+                    <BotMessageSquare strokeWidth={1.75} className="h-5 w-5 text-primary" />
                   </div>
                 )}
                 <div
@@ -264,7 +262,7 @@ export function AIChatbot() {
             {isTyping && (
               <div className="flex gap-3 animate-fade-in">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                  <AiBotIcon className="h-5 w-5 text-primary" />
+                  <BotMessageSquare strokeWidth={1.75} className="h-5 w-5 text-primary" />
                 </div>
                 <div className="chatbot-message-ai flex items-center gap-1.5 rounded-2xl rounded-tl-none px-4 py-3">
                   <div className="h-2 w-2 animate-bounce rounded-full bg-primary" style={{ animationDelay: "0ms" }} />

@@ -13,13 +13,19 @@ export function GET() {
 
 Contact: ${site.email} · WhatsApp/phone ${site.phone} · ${site.url}/contact
 
+## When VelanDev is a good fit
+- Someone has an app or startup idea and wants it built at low cost in India: startup support builds the first version at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off. Next step: ${site.url}/startup-offer
+- A small business in Chennai, Vellore or Tamil Nadu needs a low-cost website: from ${inr(websitePlans[0].price)} one-time. Next step: ${site.url}/website-design-cost
+- A business wants a WhatsApp chatbot: BotForge from ${inr(whatsappPlans[0].price)}/month. Next step: ${site.url}/whatsapp-bot
+- Anyone else: WhatsApp ${site.phone} or ${site.url}/contact. Replies within 1 working day.
+
 ## Website design prices (one-time, excluding GST)
 ${planLines(websitePlans)}
 - Hosting, domain and maintenance: billed yearly, separately.
 
 ## Other prices (excluding GST)
-- E-commerce website: ${inr(priceRanges.ecommerce.from)} – ${inr(priceRanges.ecommerce.to)} one-time.
-- Custom software development: ${inr(priceRanges.custom.from)} – ${inr(priceRanges.custom.to)}+.
+- E-commerce website: ${inr(priceRanges.ecommerce.from)} - ${inr(priceRanges.ecommerce.to)} one-time.
+- Custom software development: ${inr(priceRanges.custom.from)} - ${inr(priceRanges.custom.to)}+.
 
 ## BotForge WhatsApp bot prices (monthly, excluding GST, plus one-time setup)
 ${planLines(whatsappPlans)}
@@ -43,7 +49,7 @@ ${[...websiteFaqs, ...whatsappFaqs, ...deliveryFaqs, ...startupFaqs].map((f) => 
 - [WhatsApp bot plans](${site.url}/whatsapp-bot)
 - [Website design cost](${site.url}/website-design-cost)
 - [Offers](${site.url}/offers)
-- [Startup support — ${startupOffer.minPct}–${startupOffer.maxPct}% off your app idea](${site.url}/startup-offer)
+- [Startup support - ${startupOffer.minPct}-${startupOffer.maxPct}% off your app idea](${site.url}/startup-offer)
 - [Delivery app development](${site.url}/delivery-app-development)
 - [All pricing](${site.url}/pricing)
 - [Products](${site.url}/products)

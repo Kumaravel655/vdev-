@@ -9,7 +9,7 @@ import { CtaPanel, PageHero, Section, cardClass, reveal, trackSpotlight } from "
 type Industry = { title: string; description: string; icon: LucideIcon; solutions: string[] }
 
 const industries: Industry[] = [
-  { title: "Education", description: "Schools, colleges and coaching centres — admissions, classes, fees and exams in one system.", icon: GraduationCap, solutions: ["Learning management", "Student information system", "Online examinations", "Fee management"] },
+  { title: "Education", description: "Schools, colleges and coaching centres - admissions, classes, fees and exams in one system.", icon: GraduationCap, solutions: ["Learning management", "Student information system", "Online examinations", "Fee management"] },
   { title: "Logistics & Import-Export", description: "Track every shipment, warehouse and customs document from a single dashboard.", icon: Truck, solutions: ["Warehouse management", "Shipment tracking", "Customs documentation", "Supply chain analytics"] },
   { title: "Healthcare", description: "Hospital and clinic software that keeps patient records, appointments and billing together.", icon: HeartPulse, solutions: ["Hospital management", "Electronic health records", "Telemedicine", "Patient portals"] },
   { title: "Manufacturing", description: "Plan production, track quality and see stock levels from the shop floor to the office.", icon: Factory, solutions: ["Production planning", "Quality management", "Equipment monitoring", "Inventory control"] },
@@ -28,12 +28,12 @@ export default function IndustriesPage() {
         icon={Building}
         title="Software for the way"
         accent="your industry works"
-        description="From schools and hospitals to warehouses and building sites, we build the systems each sector actually runs on — not a generic template bent to fit."
+        description="From schools and hospitals to warehouses and building sites, we build the systems each sector actually runs on - not a generic template bent to fit."
         primary={{ href: "/contact", label: "Discuss your industry" }}
         secondary={{ href: "#industries", label: "See all industries" }}
       />
 
-      <Section id="industries" eyebrow="Who we work with" title="Nine industries, one team" description="Find your sector and the systems we typically build for it.">
+      <Section id="industries" title="Nine industries, one team" description="Find your sector and the systems we typically build for it.">
         {(inView) => (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (

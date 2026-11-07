@@ -4,7 +4,7 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Sparkles } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -25,15 +25,6 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-  const [scrolled, setScrolled] = React.useState(false)
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   return (
     <header
@@ -43,8 +34,8 @@ export function Navbar() {
         "surface-light border border-white/60 bg-white/95 backdrop-blur-xl shadow-lg shadow-black/20"
       )}
     >
-      {/* Subtle bottom glow line when scrolled */}
-      {(scrolled || mobileMenuOpen) && (
+      {/* Divider under the bar while the mobile menu is open */}
+      {mobileMenuOpen && (
         <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       )}
 
@@ -52,27 +43,25 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="group flex items-center gap-3 transition-transform duration-300 hover:scale-105"
+          className="group flex items-center gap-2.5 sm:gap-3"
         >
-          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary via-purple-400 to-violet-500 shadow-lg shadow-primary/30 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-primary/40 ai-glow">
-            <Image
-              src="/logo.jpg"
-              alt="VelanDev logo"
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain rounded-lg"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-tight text-foreground">
-              VelanDev
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground xl:hidden 2xl:inline">
-              AI-Powered Solutions
-            </span>
-          </div>
+          {/* Brand: peacock mark + the wordmark cut from the official logo file */}
+          <Image
+            src="/icon-round.png"
+            alt=""
+            width={44}
+            height={44}
+            className="h-10 w-10 shrink-0 rounded-full shadow-md shadow-primary/25 ring-1 ring-primary/15 sm:h-11 sm:w-11"
+            priority
+          />
+          <Image
+            src="/wordmark.png"
+            alt="VelanDev Solutions Pvt Ltd"
+            width={417}
+            height={70}
+            className="h-6 w-auto sm:h-7 xl:h-6 2xl:h-7"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -106,12 +95,12 @@ export function Navbar() {
         <div className="hidden items-center gap-3 xl:flex">
           <Button
             asChild
-            className="group relative overflow-hidden px-6 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 ai-glow"
+            className="group relative overflow-hidden px-6 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30"
           >
             <Link href="/contact">
               <span className="relative z-10 flex items-center gap-2">
-                Get Started
-                <Sparkles className="h-4 w-4 animate-pulse transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                Start your project
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-400 to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
@@ -185,11 +174,11 @@ export function Navbar() {
                 : "0ms",
             }}
           >
-            <Button asChild className="w-full shadow-lg shadow-primary/20 ai-glow">
+            <Button asChild className="w-full shadow-lg shadow-primary/20">
               <Link href="/contact">
                 <span className="flex items-center justify-center gap-2">
-                  Get Started
-                  <Sparkles className="h-4 w-4 animate-pulse" />
+                  Start your project
+                  <ArrowRight className="h-4 w-4" aria-hidden />
                 </span>
               </Link>
             </Button>

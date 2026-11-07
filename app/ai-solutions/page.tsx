@@ -11,7 +11,7 @@ type Solution = { title: string; description: string; icon: LucideIcon; highligh
 const solutions: Solution[] = [
   {
     title: "AI Agents",
-    description: "Agents that plan and finish multi-step tasks on their own, using your tools through MCP — look up an order, update the CRM, send the follow-up.",
+    description: "Agents that plan and finish multi-step tasks on their own, using your tools through MCP - look up an order, update the CRM, send the follow-up.",
     icon: Bot,
     highlights: ["Multi-step task execution", "Tool access via MCP", "Human approval where it matters"],
   },
@@ -29,7 +29,7 @@ const solutions: Solution[] = [
   },
   {
     title: "Workflow Automation",
-    description: "Take repetitive steps — data entry, routing, approvals — off your team's plate and catch errors before they reach a customer.",
+    description: "Take repetitive steps - data entry, routing, approvals - off your team's plate and catch errors before they reach a customer.",
     icon: Workflow,
     highlights: ["Automatic routing and approvals", "Error checks on every entry", "Connects to the apps you use"],
   },
@@ -72,7 +72,7 @@ export default function AISolutionsPage() {
         secondary={{ href: "#solutions", label: "See what we build" }}
       />
 
-      <Section id="solutions" eyebrow="What we build" title="Six ways to put AI to work" description="Each one connects to tools you already use — WhatsApp, your CRM, your database.">
+      <Section id="solutions" title="Six ways to put AI to work" description="Each one connects to tools you already use - WhatsApp, your CRM, your database.">
         {(inView) => (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map((solution, index) => (
@@ -100,7 +100,7 @@ export default function AISolutionsPage() {
         )}
       </Section>
 
-      <Section muted eyebrow="Why it pays off" title="What changes for your team" description="AI isn't only for large companies. You can start with a single workflow.">
+      <Section muted title="What changes for your team" description="AI isn't only for large companies. You can start with a single workflow.">
         {(inView) => (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {outcomes.map((outcome, index) => (
@@ -116,7 +116,7 @@ export default function AISolutionsPage() {
         )}
       </Section>
 
-      <Section eyebrow="Technology" title="The stack behind it" description="Proven, well-supported tools — so what we build keeps working after launch.">
+      <Section title="The stack behind it" description="Proven, well-supported tools - so what we build keeps working after launch.">
         {(inView) => (
           <ul className="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
             {techStack.map((tech, index) => (
