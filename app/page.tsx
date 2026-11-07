@@ -22,9 +22,8 @@ import {
   Cpu,
   Network,
   BrainCircuit,
+  HeartHandshake,
   Bot,
-  Star,
-  Quote,
   Calendar,
   MapPin,
   Layers,
@@ -42,9 +41,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useInView } from "@/hooks/use-in-view"
-import { ScrollFrames } from "@/components/scroll-frames"
 import { products, statusStyles } from "@/lib/products"
-import { billingPlans, inr, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
+import { inr, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
 
 /* ===== DATA ===== */
 
@@ -91,15 +89,6 @@ const techStack = {
 }
 
 
-const services = [
-  { name: "AI & Machine Learning", icon: Brain },
-  { name: "Custom Software Development", icon: Code2 },
-  { name: "Web Application Development", icon: Globe },
-  { name: "Mobile App Development", icon: Zap },
-  { name: "Cloud & DevOps Services", icon: Cloud },
-  { name: "UI/UX Design", icon: Palette },
-]
-
 const industries = [
   { name: "Education", icon: GraduationCap },
   { name: "Logistics", icon: Truck },
@@ -107,27 +96,6 @@ const industries = [
   { name: "Manufacturing", icon: Factory },
   { name: "E-Commerce", icon: ShoppingCart },
   { name: "Finance", icon: Landmark },
-]
-
-const testimonials = [
-  {
-    name: "Arun Kumar",
-    company: "TechStart Solutions",
-    text: "VelanDev transformed our business operations with a custom ERP solution. Their team's expertise in AI integration gave us a competitive edge we never thought possible.",
-    rating: 5,
-  },
-  {
-    name: "Priya Sharma",
-    company: "EduConnect Academy",
-    text: "The college management system VelanDev built for us is outstanding. Student enrollment, attendance, and exam management are now completely automated.",
-    rating: 5,
-  },
-  {
-    name: "Rajesh Nair",
-    company: "GreenLogix",
-    text: "Their supply chain platform reduced our operational costs by 35%. The real-time tracking and AI predictions are game-changers for our logistics business.",
-    rating: 5,
-  },
 ]
 
 const processSteps = [
@@ -148,53 +116,51 @@ const whyChooseUs = [
   "Continuous learning systems",
 ]
 
+const startingPrices = [
+  { href: "/website-design-cost", label: "Business website", price: inr(websitePlans[0].price), unit: "one-time", note: `Starter, Business & Pro, up to ${inr(websitePlans[2].price)}` },
+  { href: "/whatsapp-bot", label: "WhatsApp bot", price: inr(whatsappPlans[0].price), unit: "per month", note: "BotForge · setup free on yearly plans" },
+  { href: "/startup-offer", label: "Startup app build", price: `${startupOffer.minPct}–${startupOffer.maxPct}%`, unit: "off your first version", note: "Your app idea, built for less" },
+]
+
+/** The four pillars VelanDev is positioned on. Services fund the other three. */
+const pillars = [
+  {
+    name: "Software services",
+    icon: Code2,
+    summary: "Websites, web and mobile apps, and BotForge WhatsApp automation for businesses, at published starting prices.",
+    points: [`Business websites from ${inr(websitePlans[0].price)}`, "Web & mobile apps built around your workflow", `BotForge WhatsApp bot from ${inr(whatsappPlans[0].price)}/month`],
+    href: "/services",
+    cta: "See our services",
+  },
+  {
+    name: "AI automation",
+    icon: BrainCircuit,
+    summary: "Custom AI automation and R&D. When an off-the-shelf tool doesn't fit your work, we research it and build it.",
+    points: ["Custom AI agents & workflows", "Assistants trained on your own data", "R&D, prototypes & proofs of concept"],
+    href: "/ai-solutions",
+    cta: "See AI automation",
+  },
+  {
+    name: "Social welfare",
+    icon: HeartHandshake,
+    summary: "Web and mobile apps for social causes. We design them, build them and publish them.",
+    points: ["Apps for NGOs, trusts & community groups", "Web and mobile, from idea to launch", "Published on Google Play & the web"],
+    href: "/contact?service=social-welfare",
+    cta: "Discuss a social project",
+  },
+  {
+    name: "Startup support",
+    icon: Rocket,
+    summary: "Have an idea for an app, like a marketplace for building materials? We build your first version for much less.",
+    points: ["Design, development & Play Store launch", "Discount set in writing after an idea review", "You own the app and the code"],
+    href: "/startup-offer",
+    cta: "Apply with your idea",
+    featured: true,
+  },
+]
+
 /* ===== HOOKS ===== */
 
-
-function TypewriterEffect({ words }: { words: string[] }) {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [currentText, setCurrentText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setCurrentText(words[0])
-      return
-    }
-    const word = words[currentWordIndex]
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setCurrentText(word.substring(0, currentText.length + 1))
-        if (currentText.length === word.length) {
-          setTimeout(() => setIsDeleting(true), 1500)
-        }
-      } else {
-        setCurrentText(word.substring(0, currentText.length - 1))
-        if (currentText.length === 0) {
-          setIsDeleting(false)
-          setCurrentWordIndex((prev) => (prev + 1) % words.length)
-        }
-      }
-    }, isDeleting ? 75 : 40) // Typed slightly slower, deleted faster for corporate feel
-
-    return () => clearTimeout(timeout)
-  }, [currentText, isDeleting, currentWordIndex, words])
-
-  const longest = words.reduce((a, b) => (b.length > a.length ? b : a))
-
-  // Invisible longest word reserves the final height so the hero never jumps while typing.
-  return (
-    <span className="grid">
-      <span className="sr-only">{words.join(", ")}</span>
-      <span aria-hidden className="invisible col-start-1 row-start-1">{longest}</span>
-      <span aria-hidden className="col-start-1 row-start-1 text-purple-300">
-        {currentText}
-        <span className="ml-[2px] inline-block h-[0.9em] w-[3px] animate-pulse bg-white align-middle" />
-      </span>
-    </span>
-  )
-}
 
 function AnimatedCounter({ value }: { value: string }) {
   const [displayValue, setDisplayValue] = useState("0")
@@ -278,17 +244,14 @@ function ArrowLink({ href, children, invert = false }: { href: string; children:
 
 /* ===== PAGE ===== */
 
-const featuredProducts = products.filter((p) => p.status === "New")
-const moreProducts = products.filter((p) => p.status !== "New").slice(0, 4)
 
 export default function HomePage() {
   const heroRef = useInView()
+  const pillarsRef = useInView()
   const statsRef = useInView()
   const techRef = useInView()
   const productsRef = useInView()
-  const servicesRef = useInView()
   const industriesRef = useInView()
-  const testimonialsRef = useInView()
   const processRef = useInView()
   const whyUsRef = useInView()
   const ctaRef = useInView()
@@ -298,84 +261,128 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* ===== HERO ===== */}
-      <ScrollFrames
-        overlay={
-          <>
-            {/* Scrim keeps headline contrast readable over any frame */}
-            <div aria-hidden className="absolute inset-0 bg-black/60" />
-            <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
-          </>
-        }
-      >
-        <div ref={heroRef.ref} className="container mx-auto px-4 pb-16 pt-28 lg:pt-32">
-          <div className="mx-auto max-w-6xl">
-            <div className="mx-auto max-w-4xl text-center">
-                <Badge variant="outline" className={cn("mb-6 border-white/25 bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-700", heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
-                  <BrainCircuit className="mr-2 h-4 w-4 text-purple-300" aria-hidden />
-                  AI-powered software · Chennai
-                </Badge>
+      <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-black">
+        <div aria-hidden className="pointer-events-none absolute inset-0 aurora-bg" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 neural-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        {/* Glow behind the price card so the glass has something to blur */}
+        <div aria-hidden className="pointer-events-none absolute -right-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-primary/30 blur-3xl lg:right-[8%] lg:top-1/3" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+        <div className="relative w-full">
+        <div ref={heroRef.ref} className="container mx-auto px-4 pb-14 pt-24 sm:pt-28 lg:pt-32">
+          <div className="mx-auto grid max-w-6xl items-end gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+            <div>
+              <p className={cn("flex items-center gap-2 text-xs font-semibold uppercase text-purple-200 transition-all duration-700", reveal(heroRef.isInView))}>
+                <MapPin className="h-4 w-4" aria-hidden />
+                Chennai · Support in Tamil &amp; English
+              </p>
 
-                <h1 className={cn("text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white transition-all duration-700 delay-150 sm:text-6xl lg:text-7xl", reveal(heroRef.isInView))}>
-                  Building the future with
-                  <TypewriterEffect words={["Artificial Intelligence.", "Machine Learning.", "Automation.", "Intelligent Systems."]} />
-                </h1>
+              <h1 className={cn("mt-4 text-balance text-[2.5rem] font-extrabold leading-[1.02] text-white transition-all duration-700 delay-150 sm:text-6xl lg:text-7xl", reveal(heroRef.isInView))}>
+                Software that earns, automates <span className="text-purple-300">and gives back.</span>
+              </h1>
 
-                <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/85 transition-all duration-700 delay-300", reveal(heroRef.isInView))}>
-                  VelanDev builds software products and custom platforms with AI and automation built in, for businesses ready to move off spreadsheets and manual work.
-                </p>
+              <p className={cn("mt-5 max-w-lg text-pretty text-base leading-relaxed text-white/85 transition-all duration-700 delay-300 sm:text-lg", reveal(heroRef.isInView))}>
+                Software services and custom AI automation for businesses, apps for social causes, and {startupOffer.minPct}–{startupOffer.maxPct}% off for founders building their first product.
+              </p>
 
-                <div className={cn("mt-10 flex flex-col items-center justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row", reveal(heroRef.isInView))}>
-                  <Button size="lg" asChild className="group h-12 w-full px-7 text-base shadow-xl shadow-primary/30 active:scale-[0.98] sm:w-auto">
-                    <Link href="/contact">
-                      Start your project
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              <div className={cn("mt-7 flex gap-3 transition-all duration-700 delay-500 sm:mt-9", reveal(heroRef.isInView))}>
+                <Button size="lg" asChild className="group h-12 flex-1 px-6 text-base shadow-xl shadow-primary/30 active:scale-[0.98] sm:flex-none">
+                  <Link href="/contact">
+                    Start your project
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="h-12 flex-1 border-white/40 bg-white/5 px-6 text-base text-white hover:bg-white/15 hover:text-white active:scale-[0.98] sm:flex-none">
+                  <Link href="/products">Products</Link>
+                </Button>
+              </div>
+
+              <p className={cn("mt-5 hidden text-sm text-white/70 transition-all duration-700 delay-500 sm:block", reveal(heroRef.isInView))}>
+                {trustIndicators[0].value} projects delivered since {companyStats[0].value}
+              </p>
+            </div>
+
+            {/* Signature element: the starting prices people search for, on a glass rate card */}
+            <div className={cn("rounded-3xl border border-white/15 bg-black/70 p-2 shadow-2xl shadow-black/40 transition-all duration-700 delay-700 supports-[backdrop-filter]:bg-white/10 supports-[backdrop-filter]:backdrop-blur-xl", reveal(heroRef.isInView))}>
+              <p id="hero-prices" className="px-4 pb-1 pt-3 text-xs font-semibold uppercase text-white/70">Starting prices</p>
+              {/* Phones: compact 3-across strip so the pinned stage fits one screen. Desktop: stacked rows with notes. */}
+              <ul aria-labelledby="hero-prices" className="grid grid-cols-3 divide-x divide-white/10 lg:grid-cols-1 lg:divide-x-0 lg:divide-y">
+                {startingPrices.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="group flex h-full flex-col gap-1 rounded-2xl px-3 py-3 outline-none transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-purple-300 lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:px-4 lg:py-4">
+                      <span className="min-w-0">
+                        <span className="block text-xs font-medium text-white/80 sm:text-sm">{item.label}</span>
+                        <span className="mt-0.5 hidden truncate text-xs text-white/60 lg:block">{item.note}</span>
+                      </span>
+                      <span className="flex shrink-0 items-center gap-3">
+                        <span className="lg:text-right">
+                          <span className="block font-display text-xl font-bold tabular-nums text-white sm:text-2xl lg:text-3xl">{item.price}</span>
+                          <span className="block text-xs text-white/60">{item.unit}</span>
+                        </span>
+                        <ArrowRight className="hidden h-4 w-4 text-purple-300 transition-transform duration-300 group-hover:translate-x-1 lg:block" aria-hidden />
+                      </span>
                     </Link>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild className="h-12 w-full border-white/40 bg-white/5 px-7 sm:w-auto text-base text-white backdrop-blur-sm hover:bg-white/15 hover:text-white active:scale-[0.98]">
-                    <Link href="/products">See our products</Link>
-                  </Button>
-                </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-      </ScrollFrames>
+        </div>
+      </section>
 
       {/* ===== SECTIONS ===== */}
       <div className="container mx-auto flex flex-col gap-20 px-4 py-16 sm:gap-24 lg:gap-32 lg:py-24">
-        {/* Price band + startup strip: the starting prices people search for, straight after the hero */}
-        <div className="flex flex-col gap-4">
-          <section aria-label="Starting prices" className="mx-auto grid w-full max-w-6xl gap-4 lg:grid-cols-3">
-            {[
-              { href: "/website-design-cost", label: "Business websites", price: inr(websitePlans[0].price), unit: "one-time", note: `Starter, Business & Pro plans up to ${inr(websitePlans[2].price)}` },
-              { href: "/whatsapp-bot", label: "WhatsApp bot", price: inr(whatsappPlans[0].price), unit: "/month", note: "BotForge · setup free on yearly plans" },
-              { href: "/billing-software", label: "Billing software", price: inr(billingPlans[0].price), unit: "/outlet/month", note: "Billing OS · restaurants, shops & more" },
-            ].map((item) => (
-              <Link key={item.href} href={item.href} className="group flex items-center justify-between gap-4 rounded-3xl border border-primary/25 bg-card p-6 transition-colors hover:border-primary/60 sm:p-8">
-                <span>
-                  <span className="block text-sm font-semibold uppercase text-primary">{item.label} from</span>
-                  <span className="mt-1 block text-4xl font-bold tabular-nums text-foreground">
-                    {item.price}<span className="text-base font-medium text-muted-foreground"> {item.unit}</span>
-                  </span>
-                  <span className="mt-2 block text-sm text-muted-foreground">{item.note}</span>
-                </span>
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:translate-x-1">
-                  <ArrowRight className="h-5 w-5" aria-hidden />
-                  <span className="sr-only">See {item.label.toLowerCase()} plans</span>
-                </span>
-              </Link>
-            ))}
-          </section>
+        {/* Four pillars: the positioning, straight after the hero */}
+        <section ref={pillarsRef.ref} id="pillars" className="scroll-mt-28">
+          <Panel>
+            <SectionHeading
+              inView={pillarsRef.isInView}
+              eyebrow="What we do"
+              title="Four pillars, one team"
+              description="Our software services pay the bills. They also let us run AI research, build apps for social causes and back new founders."
+            />
 
-          {/* Startup offer strip */}
-          <Link href="/startup-offer" className="group mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-3 rounded-2xl border border-gold/40 bg-gold/10 px-6 py-4 transition-colors hover:border-gold/70 sm:flex-row sm:items-center">
-            <span className="text-sm text-foreground sm:text-base">
-              <span className="font-semibold text-amber-700 dark:text-gold">Just started your business?</span> Get up to {startupOffer.maxPct}% off setup and your first {startupOffer.months} months.
-            </span>
-            <span className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary">
-              Check my discount <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-            </span>
-          </Link>
-        </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
+              {pillars.map((pillar, index) => (
+                <Link
+                  key={pillar.name}
+                  href={pillar.href}
+                  className={cn(
+                    "group relative flex flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-500 hover:-translate-y-1 sm:p-8",
+                    pillar.featured ? "border-gold/50 bg-gold/10 hover:border-gold" : "border-border/60 bg-card hover:border-primary/40",
+                    reveal(pillarsRef.isInView),
+                  )}
+                  style={{ transitionDelay: `${index * 70}ms` }}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className={cn("flex h-12 w-12 items-center justify-center rounded-2xl", pillar.featured ? "bg-gold text-black" : "bg-primary/10 text-primary")}>
+                      <pillar.icon className="h-6 w-6" aria-hidden />
+                    </div>
+                    {pillar.featured && (
+                      <span className="text-right font-display text-3xl font-extrabold tabular-nums text-amber-700 dark:text-gold sm:text-4xl">
+                        {startupOffer.minPct}–{startupOffer.maxPct}%<span className="block text-xs font-semibold uppercase">off your build</span>
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-6 text-2xl font-bold text-foreground">{pillar.name}</h3>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{pillar.summary}</p>
+                  <ul className="mt-5 flex-1 space-y-2">
+                    {pillar.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2 text-sm text-foreground">
+                        <CheckCircle2 className={cn("mt-0.5 h-4 w-4 shrink-0", pillar.featured ? "text-amber-700 dark:text-gold" : "text-primary")} aria-hidden />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    {pillar.cta}
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </Panel>
+        </section>
 
         {/* Company stats */}
         <section ref={statsRef.ref} aria-label="Company facts">
@@ -412,14 +419,13 @@ export default function HomePage() {
           <Panel>
             <SectionHeading
               inView={productsRef.isInView}
-              eyebrow="Products"
-              title="Ready-to-run platforms"
-              description="Our newest releases, plus the systems already running in schools, warehouses and offices."
-              action={<ArrowLink href="/products">View all products</ArrowLink>}
+              eyebrow="Our product"
+              title="BotForge, our WhatsApp automation"
+              action={<ArrowLink href="/whatsapp-bot">See BotForge plans</ArrowLink>}
             />
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredProducts.map((product, index) => (
+            <div className="mx-auto mt-12 max-w-2xl">
+              {products.map((product, index) => (
                 <Link
                   key={product.slug}
                   href={product.href ?? `/products#${product.slug}`}
@@ -443,22 +449,6 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {moreProducts.map((product, index) => (
-                <Link
-                  key={product.slug}
-                  href={product.href ?? `/products#${product.slug}`}
-                  className={cn("group flex flex-col rounded-2xl border border-border/60 bg-card p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5", reveal(productsRef.isInView))}
-                  style={{ transitionDelay: `${160 + index * 60}ms` }}
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
-                    <product.icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-primary-foreground" aria-hidden />
-                  </div>
-                  <h3 className="mt-5 font-semibold text-foreground">{product.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                </Link>
-              ))}
-            </div>
           </Panel>
         </section>
 
@@ -493,34 +483,6 @@ export default function HomePage() {
           </Panel>
         </section>
 
-        {/* Services */}
-        <section ref={servicesRef.ref}>
-          <Panel>
-            <SectionHeading
-              inView={servicesRef.isInView}
-              eyebrow="Services"
-              title="Technology services"
-              action={<ArrowLink href="/services">Explore all services</ArrowLink>}
-            />
-
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, index) => (
-                <Link
-                  key={service.name}
-                  href="/services"
-                  className={cn("group flex items-center gap-4 rounded-2xl border border-border/60 bg-card/60 p-5 transition-all duration-500 hover:border-primary/40 hover:bg-primary/5", reveal(servicesRef.isInView))}
-                  style={{ transitionDelay: `${index * 60}ms` }}
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-300 group-hover:bg-primary">
-                    <service.icon className="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-primary-foreground" aria-hidden />
-                  </div>
-                  <span className="font-medium text-foreground">{service.name}</span>
-                </Link>
-              ))}
-            </div>
-          </Panel>
-        </section>
-
         {/* Process */}
         <section ref={processRef.ref}>
           <Panel>
@@ -538,31 +500,6 @@ export default function HomePage() {
                 </li>
               ))}
             </ol>
-          </Panel>
-        </section>
-
-        {/* Testimonials */}
-        <section ref={testimonialsRef.ref}>
-          <Panel>
-            <SectionHeading inView={testimonialsRef.isInView} eyebrow="Testimonials" title="What our clients say" />
-
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {testimonials.map((testimonial, index) => (
-                <figure key={testimonial.name} className={cn("flex flex-col rounded-2xl border border-border/60 bg-card p-6 transition-all duration-500", reveal(testimonialsRef.isInView))} style={{ transitionDelay: `${index * 80}ms` }}>
-                  <Quote className="mb-4 h-7 w-7 text-primary/40" aria-hidden />
-                  <blockquote className="flex-1 text-sm leading-relaxed text-muted-foreground">{testimonial.text}</blockquote>
-                  <div className="mt-6 flex items-center gap-1" aria-label={`${testimonial.rating} out of 5 stars`}>
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-gold text-gold" aria-hidden />
-                    ))}
-                  </div>
-                  <figcaption className="mt-4 border-t border-border/50 pt-4">
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.company}</div>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
           </Panel>
         </section>
 

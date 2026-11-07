@@ -69,7 +69,6 @@ export default function AISolutionsPage() {
         description="Agents, chatbots, document processing and voice bots trained on your own data. We start with one workflow, show it working, then scale it across the business."
         primary={{ href: "/contact", label: "Get a free AI assessment" }}
         secondary={{ href: "#solutions", label: "See what we build" }}
-        media={{ src: "/ai-brain.mp4", label: "Animated AI visual" }}
       />
 
       <Section id="solutions" eyebrow="What we build" title="Six ways to put AI to work" description="Each one connects to tools you already use — WhatsApp, your CRM, your database.">

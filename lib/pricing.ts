@@ -80,8 +80,6 @@ export const websitePlans: Plan[] = [
 /** Other one-time and recurring price ranges, shown on /pricing and quoted in answers. */
 export const priceRanges = {
   ecommerce: { from: 14999, to: 39999 },
-  crm: { from: 999, to: 4999 }, // per month
-  school: { from: 15, to: 50 }, // per student per month, minimum annual contract
   custom: { from: 25000, to: 200000 },
 } as const
 
@@ -190,97 +188,6 @@ export const whatsappFaqs: Faq[] = [
   },
 ]
 
-/* ===== BILLING OS ===== */
-
-export const billingPlans: Plan[] = [
-  {
-    id: "billing-starter",
-    name: "Billing OS Starter",
-    price: 499,
-    period: "month",
-    unit: "outlet",
-    setupFee: 1999,
-    tagline: "Fast GST billing for a single counter.",
-    features: [
-      "Quick billing with item search",
-      "GST invoices",
-      "Thermal printer & barcode scanner",
-      "UPI QR code on every bill",
-      "Daily sales report",
-    ],
-  },
-  {
-    id: "billing-pro",
-    name: "Billing OS Pro",
-    price: 999,
-    period: "month",
-    unit: "outlet",
-    setupFee: 1999,
-    popular: true,
-    tagline: "Stock, kitchen orders and repeat customers.",
-    features: [
-      "Everything in Starter",
-      "Inventory & low-stock alerts",
-      "KOT & table management (restaurants)",
-      "Customer list & loyalty points",
-      "Send bills on WhatsApp",
-      "Staff logins with permissions",
-    ],
-  },
-  {
-    id: "billing-premium",
-    name: "Billing OS Premium",
-    price: 1499,
-    period: "month",
-    unit: "outlet",
-    setupFee: 1999,
-    tagline: "Run several outlets from one dashboard.",
-    features: [
-      "Everything in Pro",
-      "Multi-outlet dashboard",
-      "Purchase & supplier management",
-      "Online orders from your own website or app",
-      "Advanced reports & Excel export",
-    ],
-  },
-]
-
-export const billingIndustries = [
-  { name: "Restaurants & cafés", points: ["KOT & table management", "Dine-in, takeaway & delivery bills"] },
-  { name: "Retail & supermarkets", points: ["Barcode billing", "Stock & reorder alerts"] },
-  { name: "Pharmacies", points: ["Batch & expiry tracking", "GST invoices"] },
-  { name: "Salons & spas", points: ["Service & package billing", "Customer history & loyalty"] },
-  { name: "Bakeries & sweet shops", points: ["Weight-based billing", "Daily production & sales"] },
-  { name: "Hardware & building supply", points: ["Credit customers & dues", "Supplier purchases"] },
-]
-
-export const billingFaqs: Faq[] = [
-  {
-    q: "How much does restaurant billing software cost?",
-    a: `VelanDev Billing OS costs ${inr(499)} to ${inr(1499)} per outlet per month, plus a one-time ${inr(1999)} setup that is free on yearly plans. The Pro plan (${inr(999)}/outlet/month) adds KOT, table management, inventory and WhatsApp bills for restaurants.`,
-  },
-  {
-    q: "What is the best billing software for small shops in Chennai and Vellore?",
-    a: `For small shops, VelanDev Billing OS Starter (${inr(499)}/outlet/month) covers fast GST billing, thermal printing, barcode scanning and a UPI QR on every bill. We set it up for you and support you in Tamil and English.`,
-  },
-  {
-    q: "Does Billing OS create GST invoices?",
-    a: "Yes. Every plan creates GST-compliant invoices with your GSTIN, HSN/SAC codes and tax breakup, and gives you daily and monthly sales reports for filing.",
-  },
-  {
-    q: "Does it work with thermal printers and barcode scanners?",
-    a: "Yes. Billing OS works with standard 2-inch and 3-inch thermal printers and USB barcode scanners.",
-  },
-  {
-    q: "Can I send bills to customers on WhatsApp?",
-    a: "Yes, on the Pro and Premium plans. Customers get their bill on WhatsApp instead of paper, and you build a customer list for offers.",
-  },
-  {
-    q: "Which businesses can use Billing OS?",
-    a: "Restaurants, cafés, retail shops, supermarkets, pharmacies, salons, bakeries, sweet shops, and hardware and building-supply stores.",
-  },
-]
-
 /* ===== DELIVERY APP (custom build) ===== */
 
 export const deliveryApp = { from: 49999 } as const
@@ -323,34 +230,31 @@ export const deliveryFaqs: Faq[] = [
   },
 ]
 
-/* ===== STARTUP OFFER ===== */
-// Honest "up to": the tiers are published, verified from the business start date before billing.
+/* ===== STARTUP SUPPORT (pillar 4) ===== */
+// Honest range: the exact percentage is set after we review the idea, never promised up front.
 
-export const startupOffer = {
-  maxPct: 50,
-  months: 3,
-  tiers: [
-    { maxMonths: 3, pct: 50, label: "Started less than 3 months ago" },
-    { maxMonths: 12, pct: 30, label: "Started 3 to 12 months ago" },
-  ],
-} as const
+export const startupOffer = { minPct: 50, maxPct: 70 } as const
 
 export const startupFaqs: Faq[] = [
   {
-    q: "Who qualifies for the startup offer?",
-    a: "Any business started or registered in the last 12 months. We check the start date from your GST, Udyam or shop licence, or another proof of start date if you are not registered yet.",
+    q: "Who is VelanDev's startup support for?",
+    a: "Founders with an idea for a mobile app, web platform or marketplace, for example an app that lets people order building materials from local suppliers. You can be at the idea stage with nothing built yet.",
   },
   {
-    q: "What does the startup discount apply to?",
-    a: `Setup fees and the first ${startupOffer.months} months of any subscription: BotForge WhatsApp bot, Billing OS and CRM. Businesses under 3 months old get 50% off; businesses 3 to 12 months old get 30% off. One-time builds such as websites stay at their normal price.`,
+    q: "What does the 50% to 70% discount cover?",
+    a: `The build of your first version: design, development and publishing on Google Play and the web. You pay ${startupOffer.minPct}% to ${startupOffer.maxPct}% less than our normal price for the same scope.`,
   },
   {
-    q: "Can I combine the startup offer with other offers?",
-    a: "No. The startup offer is one per business and can't be combined with other offers. We apply whichever saves you more.",
+    q: "How do you decide between 50% and 70% off?",
+    a: "We review your idea first: the problem it solves, how ready you are to launch, and the scope of the first version. We tell you the exact discount, in writing, before any work starts.",
+  },
+  {
+    q: "Who owns the app?",
+    a: "You do. The app is published under your startup's name, and the code is handed over to you.",
   },
   {
     q: "How do I apply?",
-    a: "Fill in the short form with your business details. We confirm your discount and reply on WhatsApp within 1 working day.",
+    a: "Fill in the short form about your idea. We reply on WhatsApp within 1 working day to set up an idea review call.",
   },
 ]
 
@@ -360,16 +264,16 @@ export const startupFaqs: Faq[] = [
 export const offers: Offer[] = [
   {
     id: "startup",
-    tag: `Up to ${startupOffer.maxPct}% off`,
-    title: "Just started? Startup offer",
-    detail: `Businesses under 12 months old get up to ${startupOffer.maxPct}% off setup and the first ${startupOffer.months} months of BotForge, Billing OS or CRM. Apply with your business details.`,
+    tag: `${startupOffer.minPct}–${startupOffer.maxPct}% off`,
+    title: "Startup support: build your idea for less",
+    detail: `Have an idea for a mobile app or platform? We build your first version at ${startupOffer.minPct}% to ${startupOffer.maxPct}% off, with the exact discount set after we review your idea.`,
     href: "/startup-offer",
   },
   {
     id: "yearly",
     tag: "Setup free",
     title: "Pay yearly, skip the setup fee",
-    detail: `Choose yearly billing on any BotForge or Billing OS plan and the one-time setup fee is waived. Save up to ${inr(4999)}.`,
+    detail: `Choose yearly billing on any BotForge plan and the one-time setup fee is waived. Save up to ${inr(4999)}.`,
     href: "/whatsapp-bot#plans",
   },
   {

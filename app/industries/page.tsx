@@ -31,7 +31,6 @@ export default function IndustriesPage() {
         description="From schools and hospitals to warehouses and building sites, we build the systems each sector actually runs on — not a generic template bent to fit."
         primary={{ href: "/contact", label: "Discuss your industry" }}
         secondary={{ href: "#industries", label: "See all industries" }}
-        media={{ src: "/industries-hero.mp4", label: "Industry solutions preview" }}
       />
 
       <Section id="industries" eyebrow="Who we work with" title="Nine industries, one team" description="Find your sector and the systems we typically build for it.">

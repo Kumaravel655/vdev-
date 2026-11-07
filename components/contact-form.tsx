@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { cardClass, reveal, trackSpotlight } from "@/components/page-sections"
-import { billingPlans, deliveryApp, inr, websitePlans, whatsappPlans } from "@/lib/pricing"
+import { deliveryApp, inr, websitePlans, whatsappPlans } from "@/lib/pricing"
 
 const contactInfo = [
   {
@@ -22,9 +22,9 @@ const contactInfo = [
   },
   {
     label: "Phone",
-    value: "+91 6369472659",
+    value: "+91 9042655224",
     icon: Phone,
-    href: "tel:+916369472659",
+    href: "tel:+919042655224",
   },
   {
     label: "Location",
@@ -167,13 +167,12 @@ export function ContactForm({ inView = true }: { inView?: boolean }) {
                           <option value="">Select a service</option>
                           <option value="website-package">Website package (from {inr(websitePlans[0].price)})</option>
                           <option value="whatsapp-bot">BotForge WhatsApp bot (from {inr(whatsappPlans[0].price)}/month)</option>
-                          <option value="billing-os">Billing OS (from {inr(billingPlans[0].price)}/outlet/month)</option>
                           <option value="delivery-app">Delivery app (from {inr(deliveryApp.from)})</option>
-                          <option value="startup-offer">Startup offer (new business)</option>
+                          <option value="startup-offer">Startup support (50–70% off your idea)</option>
                           <option value="web-development">Web Development</option>
                           <option value="mobile-app">Mobile App Development</option>
-                          <option value="ai-solutions">AI Solutions</option>
-                          <option value="erp-crm">ERP / CRM Development</option>
+                          <option value="ai-solutions">AI automation & R&amp;D</option>
+                          <option value="social-welfare">Social welfare app</option>
                           <option value="cloud-devops">Cloud & DevOps</option>
                           <option value="ui-ux">UI/UX Design</option>
                           <option value="other">Other</option>

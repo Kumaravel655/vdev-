@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Check, ChevronDown, Code2, Globe, GraduationCap, MessageCircle, Receipt, ShoppingCart, Star, Tag } from "lucide-react"
-import { billingPlans, deliveryApp, inr, priceRanges, websitePlans, whatsappPlans } from "@/lib/pricing"
+import { ArrowRight, Check, ChevronDown, Code2, Globe, MessageCircle, Rocket, ShoppingCart, Star, Tag } from "lucide-react"
+import { deliveryApp, inr, priceRanges, startupOffer, websitePlans, whatsappPlans } from "@/lib/pricing"
 import { cn } from "@/lib/utils"
 import { CtaPanel, PageHero, Section, cardClass, reveal, trackSpotlight } from "@/components/page-sections"
 
@@ -11,15 +11,14 @@ const tiers = [
   { title: "Business Website", price: inr(websitePlans[0].price), period: `– ${inr(websitePlans[2].price)} one-time`, icon: Globe, popular: true, href: "/website-design-cost", features: ["5 to 10 pages", "Mobile-friendly & SEO-ready", "Contact form & WhatsApp button", "Google Maps & Business Profile", "Hosting & maintenance billed yearly"] },
   { title: "E-Commerce Website", price: inr(r.ecommerce.from), period: `– ${inr(r.ecommerce.to)} one-time`, icon: ShoppingCart, popular: false, features: ["Product catalogue", "Cart & checkout", "Payment gateway integration", "Admin panel & order management", "Hosting & maintenance billed yearly"] },
   { title: "WhatsApp Bot (BotForge)", price: inr(whatsappPlans[0].price), period: `– ${inr(whatsappPlans[2].price)}/month`, icon: MessageCircle, popular: false, href: "/whatsapp-bot", features: ["Instant 24/7 auto-replies", "Enquiry capture & lead management", "Broadcasts & basic automation", `Setup ${inr(whatsappPlans[0].setupFee ?? 0)} – ${inr(whatsappPlans[2].setupFee ?? 0)}, free on yearly`, "Meta messaging charges at cost"] },
-  { title: "Billing OS & CRM", price: inr(billingPlans[0].price), period: "/outlet/month", icon: Receipt, popular: false, href: "/billing-software", features: ["GST billing & POS for every industry", "KOT & table management for restaurants", "Inventory & WhatsApp bills", `CRM from ${inr(r.crm.from)}/month`, `Setup ${inr(billingPlans[0].setupFee ?? 0)}, free on yearly`] },
-  { title: "School / College Software", price: inr(r.school.from), period: `– ${inr(r.school.to)} per student/month`, icon: GraduationCap, popular: false, features: ["Attendance", "Fee collection & receipts", "Student records", "Parent communication", "Minimum annual contract"] },
-  { title: "Custom Software & Delivery Apps", price: inr(r.custom.from), period: `– ${inr(r.custom.to)}+`, icon: Code2, popular: false, href: "/delivery-app-development", features: [`Delivery apps from ${inr(deliveryApp.from)}`, "Tailored software & dashboards", "Mobile apps & ERP", "AI agents & automation", "Fixed quote after scoping"] },
+  { title: "Startup Support", price: `${startupOffer.minPct}–${startupOffer.maxPct}%`, period: "off your first version", icon: Rocket, popular: false, href: "/startup-offer", features: ["For founders with an app or platform idea", "Design, development & Play Store launch", "Discount set in writing after an idea review", "You own the app and the code"] },
+  { title: "Custom Software & Delivery Apps", price: inr(r.custom.from), period: `– ${inr(r.custom.to)}+`, icon: Code2, popular: false, href: "/delivery-app-development", features: [`Delivery apps from ${inr(deliveryApp.from)}`, "Tailored software & dashboards", "Mobile apps", "Custom AI automation & R&D", "Fixed quote after scoping"] },
 ]
 
 const faqs = [
   { q: "What is included in the starting price?", a: "The starting price covers a standard scope. Complex features, custom integrations and advanced requirements can increase the cost. You get a detailed estimate once we understand what you need." },
   { q: "Do you offer payment plans?", a: "Yes. Typically 40% upfront, 30% at the midpoint and 30% on delivery. For larger projects we can arrange monthly instalments." },
-  { q: "How long does a typical project take?", a: "A Starter website takes about a week and a Business or Pro website 2 to 3 weeks. E-commerce sites take 3 to 6 weeks. Custom software, mobile apps and ERP take 1 to 6 months depending on scope." },
+  { q: "How long does a typical project take?", a: "A Starter website takes about a week and a Business or Pro website 2 to 3 weeks. E-commerce sites take 3 to 6 weeks. Custom software and mobile apps take 1 to 6 months depending on scope." },
   { q: "What if I need changes after delivery?", a: "Every plan includes a support period for bug fixes and minor changes. Larger feature additions can be planned as a new phase or a maintenance contract." },
   { q: "Do you provide hosting and maintenance?", a: "Yes. We set up and manage hosting on AWS, DigitalOcean or your preferred provider. Hosting and maintenance are billed yearly, separately from the build price, and quoted before you start." },
 ]
@@ -32,10 +31,9 @@ export default function PricingPage() {
         icon={Tag}
         title="Clear prices,"
         accent="before we start"
-        description="Starting prices for websites, WhatsApp bots, billing software and custom builds. After a short scoping call you get a fixed quote, with hosting and maintenance priced in writing up front."
+        description="Starting prices for websites, WhatsApp bots, custom builds and startup app builds. After a short scoping call you get a fixed quote, with hosting and maintenance priced in writing up front."
         primary={{ href: "/contact", label: "Get a custom quote" }}
         secondary={{ href: "#plans", label: "See plans" }}
-        media={{ src: "/pricing-hero.mp4", label: "Pricing preview" }}
       />
 
       <Section id="plans" eyebrow="Plans" title="Starting prices by product" description="All prices in Indian rupees. Your final quote depends on scope.">

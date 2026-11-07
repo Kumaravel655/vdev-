@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useInView } from "@/hooks/use-in-view"
-import { HeroMedia } from "@/components/hero-media"
 
 type Service = { slug: string; title: string; description: string; icon: LucideIcon; highlights: string[] }
 
@@ -69,8 +68,8 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-accent/30 via-muted/20 to-background pb-16 pt-32 lg:pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 aurora-bg" />
         <div ref={heroRef.ref} className="container relative mx-auto px-4">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
-            <div className="text-center lg:text-left">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center">
               <Badge variant="secondary" className={cn("mb-4 border border-primary/30 bg-primary/10 text-primary transition-all duration-700", heroRef.isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
                 <Layers className="mr-2 h-3.5 w-3.5" aria-hidden />
                 Services
@@ -78,10 +77,10 @@ export default function ServicesPage() {
               <h1 className={cn("text-balance text-4xl font-bold tracking-tight text-foreground transition-all duration-700 delay-150 sm:text-5xl lg:text-6xl", reveal(heroRef.isInView))}>
                 Software services, <span className="text-primary">end to end</span>
               </h1>
-              <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-300 sm:text-lg lg:mx-0", reveal(heroRef.isInView))}>
+              <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-300 sm:text-lg", reveal(heroRef.isInView))}>
                 Custom software, apps, AI, cloud, design and integration. One team takes your project from scoping to launch and keeps supporting it after.
               </p>
-              <div className={cn("mt-8 flex flex-col justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row lg:justify-start", reveal(heroRef.isInView))}>
+              <div className={cn("mt-8 flex flex-col justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row", reveal(heroRef.isInView))}>
                 <Button size="lg" asChild>
                   <Link href="/contact">Discuss your project <ArrowRight className="ml-2 h-4 w-4" aria-hidden /></Link>
                 </Button>
@@ -89,10 +88,6 @@ export default function ServicesPage() {
                   <Link href="#services">See all services</Link>
                 </Button>
               </div>
-            </div>
-
-            <div className={cn("transition-all duration-1000 delay-300", reveal(heroRef.isInView))}>
-              <HeroMedia src="/services-hero.mp4" label="Animated code panels" />
             </div>
           </div>
         </div>

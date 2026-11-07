@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     default: `VelanDev — Websites from ${inr(websitePlans[0].price)} & WhatsApp Bots from ${inr(whatsappPlans[0].price)}/mo, Chennai`,
     template: '%s | VelanDev',
   },
-  description: `VelanDev builds affordable business websites (from ${inr(websitePlans[0].price)}), WhatsApp bots (from ${inr(whatsappPlans[0].price)}/month), custom software, ERP and AI solutions for small businesses and enterprises. Based in Chennai, India.`,
-  keywords: ['website design vellore', 'website design chennai', 'low cost website', 'whatsapp bot', 'whatsapp chatbot india', 'software company chennai', 'ERP', 'CRM', 'AI solutions', 'mobile app development'],
+  description: `VelanDev builds software that earns, automates and gives back: websites (from ${inr(websitePlans[0].price)}), apps and BotForge WhatsApp bots (from ${inr(whatsappPlans[0].price)}/month), custom AI automation, apps for social causes, and 50–70% off app builds for startups. Based in Chennai, India.`,
+  keywords: ['website design vellore', 'website design chennai', 'low cost website', 'whatsapp bot', 'whatsapp chatbot india', 'software company chennai', 'AI automation', 'app development for startups', 'mobile app development', 'social welfare apps'],
   alternates: { canonical: '/' },
   openGraph: { type: 'website', siteName: site.name, locale: 'en_IN', url: '/' },
   twitter: { card: 'summary_large_image' },
@@ -58,7 +58,7 @@ const organizationSchema = {
   address: { '@type': 'PostalAddress', ...site.address },
   areaServed: ['Vellore', 'Chennai', 'Tamil Nadu', 'India'],
   openingHours: 'Mo-Fr 09:00-18:00',
-  description: `Affordable websites from ${inr(websitePlans[0].price)}, WhatsApp bots from ${inr(whatsappPlans[0].price)}/month, custom software, ERP and AI solutions.`,
+  description: `Websites from ${inr(websitePlans[0].price)}, WhatsApp bots from ${inr(whatsappPlans[0].price)}/month, custom AI automation, social welfare apps and 50–70% off for startups.`,
 }
 
 export const viewport: Viewport = {

@@ -3,8 +3,8 @@ export const site = {
   name: "VelanDev",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://velandev.in").replace(/\/$/, ""),
   email: "hello@velandev.in",
-  phone: "+916369472659",
-  whatsapp: "916369472659",
+  phone: "+919042655224",
+  whatsapp: "919042655224",
   address: {
     streetAddress: "Sholinganallur",
     addressLocality: "Chennai",

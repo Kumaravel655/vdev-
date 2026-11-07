@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 
 // The page is a client component, so its metadata lives here.
 export const metadata: Metadata = {
-  title: "Software Products — WhatsApp Bot, Accountant CRM, ERP & HR",
-  description: "Ready-to-run software from VelanDev: BotForge WhatsApp bot (from ₹499/month), Accountant CRM for CA firms, ERP, College ERP, inventory, HR & payroll and CRM.",
+  title: "BotForge WhatsApp Bot — VelanDev's Product",
+  description: "BotForge, VelanDev's WhatsApp automation: auto-replies, lead capture, broadcasts and team inbox, from ₹499/month.",
   alternates: { canonical: "/products" },
 }
 

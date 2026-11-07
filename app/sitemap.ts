@@ -8,8 +8,6 @@ const routes: [path: string, priority: number, changeFrequency: "weekly" | "mont
   ["/website-design-cost", 0.9, "weekly"],
   ["/offers", 0.9, "weekly"],
   ["/startup-offer", 0.9, "weekly"],
-  ["/billing-software", 0.9, "weekly"],
-  ["/restaurant-billing-software", 0.9, "weekly"],
   ["/delivery-app-development", 0.8, "monthly"],
   ["/pricing", 0.8, "monthly"],
   ["/products", 0.8, "monthly"],

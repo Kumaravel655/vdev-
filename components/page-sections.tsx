@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { useInView } from "@/hooks/use-in-view"
-import { HeroMedia } from "@/components/hero-media"
 
 /** Shared building blocks for inner pages, matching the Services page layout. */
 
@@ -36,7 +35,6 @@ export function PageHero({
   description,
   primary,
   secondary,
-  media,
 }: {
   eyebrow: string
   icon: LucideIcon
@@ -45,7 +43,6 @@ export function PageHero({
   description: string
   primary: LinkAction
   secondary: LinkAction
-  media: { src: string; label: string }
 }) {
   const { ref, isInView } = useInView()
 
@@ -54,8 +51,8 @@ export function PageHero({
       <div className="pointer-events-none absolute inset-0 aurora-bg" />
       <div className="pointer-events-none absolute inset-0 neural-grid opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div ref={ref} className="container relative mx-auto px-4">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div className="text-center lg:text-left">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
             <Badge variant="secondary" className={cn("mb-4 border border-primary/30 bg-primary/10 text-primary transition-all duration-700", isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
               <Icon className="mr-2 h-3.5 w-3.5" aria-hidden />
               {eyebrow}
@@ -63,10 +60,10 @@ export function PageHero({
             <h1 className={cn("text-balance text-4xl font-bold tracking-tight text-foreground transition-all duration-700 delay-150 sm:text-5xl lg:text-6xl", reveal(isInView))}>
               {title} <span className="text-primary">{accent}</span>
             </h1>
-            <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-300 sm:text-lg lg:mx-0", reveal(isInView))}>
+            <p className={cn("mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-300 sm:text-lg", reveal(isInView))}>
               {description}
             </p>
-            <div className={cn("mt-8 flex flex-col justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row lg:justify-start", reveal(isInView))}>
+            <div className={cn("mt-8 flex flex-col justify-center gap-3 transition-all duration-700 delay-500 sm:flex-row", reveal(isInView))}>
               <Button size="lg" asChild>
                 <Link href={primary.href}>{primary.label} <ArrowRight className="ml-2 h-4 w-4" aria-hidden /></Link>
               </Button>
@@ -74,10 +71,6 @@ export function PageHero({
                 <Link href={secondary.href}>{secondary.label}</Link>
               </Button>
             </div>
-          </div>
-
-          <div className={cn("transition-all duration-1000 delay-300", reveal(isInView))}>
-            <HeroMedia src={media.src} label={media.label} />
           </div>
         </div>
       </div>

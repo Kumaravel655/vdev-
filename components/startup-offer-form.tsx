@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-const industries = ["Restaurant / café", "Retail shop", "Supermarket", "Pharmacy", "Salon / spa", "Bakery / sweets", "Hardware / building supply", "Clinic / healthcare", "Education / coaching", "Services", "Other"]
-const registrations = ["GST", "Udyam (MSME)", "Shop & establishment licence", "Not registered yet"]
-const needs = ["Website", "BotForge WhatsApp bot", "Billing OS", "Delivery app", "CRM"]
+const categories = ["Marketplace / e-commerce", "Delivery & logistics", "Construction & real estate", "Education", "Health", "Finance", "Social / community", "Other"]
+const stages = ["Just an idea", "Designs or a plan ready", "Partly built", "Already launched"]
+const needs = ["Android app", "iPhone app", "Web platform", "Admin panel", "AI features"]
 
 const selectClass =
   "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
@@ -22,7 +22,7 @@ export function StartupOfferForm() {
     const form = new FormData(e.currentTarget)
     const chosen = form.getAll("needs").map(String)
     if (chosen.length === 0) {
-      setError("Pick at least one thing you need.")
+      setError("Pick at least one thing you want built.")
       return
     }
     setError(null)
@@ -30,14 +30,13 @@ export function StartupOfferForm() {
 
     const field = (k: string) => String(form.get(k) || "").trim()
     const message = [
-      "STARTUP OFFER APPLICATION",
-      `Business: ${field("business")}`,
-      `Industry: ${field("industry")}`,
+      "STARTUP SUPPORT APPLICATION",
+      `Idea: ${field("business")}`,
+      `Category: ${field("category")}`,
       `City: ${field("city")}`,
-      `Started: ${field("started")}`,
-      `Registration: ${field("registration")}`,
-      `Needs: ${chosen.join(", ")}`,
-      field("notes") && `Notes: ${field("notes")}`,
+      `Stage: ${field("stage")}`,
+      `Wants built: ${chosen.join(", ")}`,
+      `Description: ${field("notes")}`,
     ].filter(Boolean).join("\n")
 
     try {
@@ -66,7 +65,7 @@ export function StartupOfferForm() {
       <div role="status" className="flex flex-col items-center rounded-3xl border border-primary/30 bg-card p-10 text-center">
         <CheckCircle2 className="h-12 w-12 text-primary" aria-hidden />
         <h3 className="mt-4 text-2xl font-bold text-foreground">Application received</h3>
-        <p className="mt-2 max-w-md text-muted-foreground">We&apos;ll check your details and reply on WhatsApp within 1 working day with your discount.</p>
+        <p className="mt-2 max-w-md text-muted-foreground">We&apos;ll read about your idea and reply on WhatsApp within 1 working day to set up your idea review.</p>
       </div>
     )
   }
@@ -74,8 +73,8 @@ export function StartupOfferForm() {
   return (
     <form onSubmit={onSubmit} className="grid gap-5 rounded-3xl border border-border/60 bg-card p-6 sm:grid-cols-2 sm:p-8">
       <div className="space-y-2">
-        <Label htmlFor="business">Business name</Label>
-        <Input id="business" name="business" required autoComplete="organization" />
+        <Label htmlFor="business">Idea or startup name</Label>
+        <Input id="business" name="business" required placeholder="A working name is fine" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="owner">Your name</Label>
@@ -90,10 +89,10 @@ export function StartupOfferForm() {
         <Input id="email" name="email" type="email" autoComplete="email" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="industry">Industry</Label>
-        <select id="industry" name="industry" required className={selectClass} defaultValue="">
-          <option value="" disabled>Select your industry</option>
-          {industries.map((i) => <option key={i}>{i}</option>)}
+        <Label htmlFor="category">Category</Label>
+        <select id="category" name="category" required className={selectClass} defaultValue="">
+          <option value="" disabled>Select a category</option>
+          {categories.map((c) => <option key={c}>{c}</option>)}
         </select>
       </div>
       <div className="space-y-2">
@@ -101,19 +100,15 @@ export function StartupOfferForm() {
         <Input id="city" name="city" required placeholder="e.g. Vellore" autoComplete="address-level2" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="started">When did your business start?</Label>
-        <Input id="started" name="started" type="month" required />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="registration">Registration</Label>
-        <select id="registration" name="registration" required className={selectClass} defaultValue="">
+        <Label htmlFor="stage">Where are you now?</Label>
+        <select id="stage" name="stage" required className={selectClass} defaultValue="">
           <option value="" disabled>Select one</option>
-          {registrations.map((r) => <option key={r}>{r}</option>)}
+          {stages.map((st) => <option key={st}>{st}</option>)}
         </select>
       </div>
 
       <fieldset className="sm:col-span-2">
-        <legend className="text-sm font-medium text-foreground">What do you need?</legend>
+        <legend className="text-sm font-medium text-foreground">What do you want built?</legend>
         <div className="mt-3 flex flex-wrap gap-2">
           {needs.map((n) => (
             <label key={n} className="flex cursor-pointer items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-sm text-foreground transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/10">
@@ -125,8 +120,8 @@ export function StartupOfferForm() {
       </fieldset>
 
       <div className="space-y-2 sm:col-span-2">
-        <Label htmlFor="notes">Anything else? <span className="text-muted-foreground">(optional)</span></Label>
-        <textarea id="notes" name="notes" rows={3} className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
+        <Label htmlFor="notes">Describe your idea</Label>
+        <textarea id="notes" name="notes" rows={4} required placeholder="What problem does it solve, and who will use it?" className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" />
       </div>
 
       {error && <p role="alert" className="text-sm font-medium text-destructive sm:col-span-2">{error}</p>}
@@ -134,9 +129,9 @@ export function StartupOfferForm() {
       <div className="sm:col-span-2">
         <Button type="submit" size="lg" className="h-12 w-full sm:w-auto" disabled={status === "sending"}>
           {status === "sending" ? <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden /> : <Send className="mr-2 h-4 w-4" aria-hidden />}
-          {status === "sending" ? "Sending…" : "Check my discount"}
+          {status === "sending" ? "Sending…" : "Apply with my idea"}
         </Button>
-        <p className="mt-3 text-xs text-muted-foreground">We use these details only to check your eligibility and contact you about this offer.</p>
+        <p className="mt-3 text-xs text-muted-foreground">We use these details only to review your idea and contact you about it.</p>
       </div>
     </form>
   )

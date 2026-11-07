@@ -19,9 +19,8 @@ const footerLinks = {
     { href: "/pricing", label: "Pricing" },
     { href: "/website-design-cost", label: "Website Prices" },
     { href: "/whatsapp-bot", label: "WhatsApp Bot" },
-    { href: "/billing-software", label: "Billing Software" },
     { href: "/delivery-app-development", label: "Delivery App" },
-    { href: "/startup-offer", label: "Startup Offer" },
+    { href: "/startup-offer", label: "Startup Support" },
     { href: "/offers", label: "Offers" },
   ],
   resources: [
@@ -39,7 +38,7 @@ const socialLinks = [
 
 const contactInfo = [
   { icon: Mail, text: "hello@velandev.in" },
-  { icon: Phone, text: "6369472659" },
+  { icon: Phone, text: "9042655224" },
   { icon: MapPin, text: "Sholinganallur, Chennai, Tamil Nadu, India" },
 ]
 

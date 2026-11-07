@@ -141,20 +141,6 @@ export default function DeliveryAppPage() {
         </div>
       </section>
 
-      {/* Cross-sell */}
-      <section className="px-4 py-20 lg:py-28">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-violet-700 to-purple-900 px-6 py-14 text-center sm:px-12">
-          <h2 className="text-balance text-3xl font-bold text-white sm:text-4xl">Connect orders to your billing counter</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/85">
-            Billing OS Premium takes online orders from your own app alongside walk-in bills, so stock and sales stay in one place.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Button size="lg" variant="secondary" asChild className="h-12 w-full sm:w-auto">
-              <Link href="/billing-software">See Billing OS <ArrowRight className="ml-2 h-4 w-4" aria-hidden /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
